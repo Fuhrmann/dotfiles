@@ -94,7 +94,11 @@ dotfiles:
   d_vifm:
     src: config/vifm
     dst: ~/.config/vifm
-    link: link
+    link: link_children
+  d_vis:
+    src: config/vis
+    dst: ~/.config/vis
+    link: link_children
 profiles:
   fridora:
     dotfiles:
@@ -121,3 +125,4 @@ profiles:
     - f_keyledsd.conf
     - f_pywal.sublime-color-scheme
     - d_vifm
+    - d_vis

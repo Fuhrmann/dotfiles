@@ -365,6 +365,9 @@ set vifminfo=dhistory,savedirs,chistory,state,tui,shistory,
 " Start shell in current directory
 nnoremap s :shell<cr>
 
+" Bookmarks
+nnoremap b :bmgo<space>
+
 " Display sorting dialog
 nnoremap S :sort<cr>
 

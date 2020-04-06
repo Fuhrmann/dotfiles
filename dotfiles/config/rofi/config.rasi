@@ -1,26 +1,79 @@
 configuration {
-  theme: "~/.cache/wal/colors-rofi-dark.rasi";
   modi: "combi,drun,window,run";
   combi-modi: "drun,run";
+  drun-display-format: "{icon} {name}";
+	location: 0;
+	yoffset: 0;
+  xoffset: 0;
+	columns: 2;
+	fake-transparency: false;
+	hide-scrollbar: true;
+	bw: 0;
+  fullscreen: false;
   show-icons: true;
-  font: "JetBrains Mono 11";
-  ssh-client: "ssh";
-  eh: 1;
-  combi-hide-mode-prefix: true;
-  display-combi: "->";
-  lines: 10;
-  terminal: "alacritty";
-  run-shell-command: "{terminal} -e {cmd}";
-  width: 25;
-  padding: 0;
+	terminal: "alacritty";
+	sidebar-mode: false;
+	width: 25%;
+	lines: 10;
+}
+
+@theme "~/.cache/wal/colors-rofi-dark"
+
+* {
+  text-font:                            "JetBrains Mono 10";
+  inputbar-margin:                      0px 0px;
+  prompt-padding:                       0px 0px;
+  entry-padding:                        0px 0px 0px 0px;
+  list-element-margin:                  @inputbar-margin;
+  list-element-padding:                 5px;
+  list-element-border:                  0px 0px 0px 0px;
+  apps-textbox-prompt-colon-padding:    0px 0px 0px 0px;
 }
 
 #window {
-  padding: 0;
+  padding: 10px 10px;
+  border: 0px;
+  border-radius: 14px;
 }
 
-#listview {
-  padding: 0;
+* {
+  font: @text-font;
 }
 
-/* vim:ft=css
+inputbar,
+prompt,
+textbox-prompt-colon,
+entry {
+  border: 0px;
+  border-radius: 10px;
+}
+
+#inputbar {
+  children: [ prompt, textbox-prompt-colon, entry ];
+  margin: @inputbar-margin;
+}
+
+#prompt {
+  text-color: @background;
+}
+
+#textbox-prompt-colon {
+  expand: false;
+  str: "  ::  ";
+  padding: @apps-textbox-prompt-colon-padding;
+}
+
+#entry {
+  padding: @entry-padding;
+}
+
+#element {
+  padding: @list-element-padding;
+  margin: @list-element-margin;
+  border: @list-element-border;
+  border-radius: 10px;
+}
+
+#element.selected {
+  border-radius: 10px;
+}
