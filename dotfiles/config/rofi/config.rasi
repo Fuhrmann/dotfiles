@@ -1,0 +1,26 @@
+configuration {
+  theme: "~/.cache/wal/colors-rofi-dark.rasi";
+  modi: "combi,drun,window,run";
+  combi-modi: "drun,run";
+  show-icons: true;
+  font: "JetBrains Mono 11";
+  ssh-client: "ssh";
+  eh: 1;
+  combi-hide-mode-prefix: true;
+  display-combi: "->";
+  lines: 10;
+  terminal: "alacritty";
+  run-shell-command: "{terminal} -e {cmd}";
+  width: 25;
+  padding: 0;
+}
+
+#window {
+  padding: 5;
+}
+
+#listview {
+  padding: 0;
+}
+
+/* vim:ft=css

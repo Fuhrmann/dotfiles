@@ -1,0 +1,48 @@
+[user]
+  name = Fuhrmann
+  email = fuhrmanns@gmail.com
+[github]
+  user = Fuhrmann
+[apply]
+  whitespace = nowarn
+[branch]
+  autosetuprebase = always
+  autosetupmerge = always
+[color]
+  branch = auto
+  diff = auto
+  status = auto
+  ui = true
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
+[alias]
+  st = status
+  ci = commit
+  ca = commit -a -m
+  co = checkout
+  br = branch -a
+  branches = branch -a
+  pick = cherry-pick
+  amend = commit --amend
+  merged = branch -a --merged
+  graph = log --graph --full-history --all --color --pretty=tformat:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s%x20%x1b[33m(%an)%x1b[0m"
+  # `latest` is ~/bin/git-latest
+  # `mine` is ~/bin/git-mine
+  # `deletemerged` is ~/bin/git-deletedmerged
+  # `squash` is ~/bin/git-squash
+
+# Any GitHub repo with my username should be checked out r/w by default
+# http://rentzsch.tumblr.com/post/564806957/public-but-hackable-git-submodules
+[url "git@github.com:Fuhrmann/"]
+  insteadOf = "git://github.com/Fuhrmann/"

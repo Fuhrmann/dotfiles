@@ -1,0 +1,25 @@
+#!/bin/sh
+
+# Persist multi monitor layout
+autorandr --change --force &&
+
+# Fix cursor
+xsetroot -cursor_name left_ptr
+
+# Xresources
+[[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
+
+# Make screen blank after 15min
+xset dpms 0 0 900
+
+# Start the notification manager
+dunst -config ~/.config/dunst/dunstrc &
+
+# Enable numlock
+numlockx &
+
+# Restore wal (pywal) colors scheme
+wal -R
+
+# Launch i3 with dbus-launch because of flameshot
+exec dbus-launch /usr/bin/i3

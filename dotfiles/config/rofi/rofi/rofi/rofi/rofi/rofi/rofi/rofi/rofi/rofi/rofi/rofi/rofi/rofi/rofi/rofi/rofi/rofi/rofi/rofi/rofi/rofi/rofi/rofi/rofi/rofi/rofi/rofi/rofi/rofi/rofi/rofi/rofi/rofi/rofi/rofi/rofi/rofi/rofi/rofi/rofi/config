@@ -1,0 +1,44 @@
+! "Enabled modi" Set from: Default
+#rofi.modi: combi,tasks:~/projetos/rofi-tasks/rofi-tasks.py,drun,window,run
+rofi.modi: combi,drun,window,run
+
+! "Set the modi to combine in combi mode" Set from: Default
+rofi.combi-modi: drun,run
+
+! "Whether to load and show icons" Set from: Default
+rofi.show-icons: true
+
+! "Font to use"
+rofi.font: JetBrains Mono 11
+
+! "Always show number of lines" Set from: Default
+! rofi.fixed-num-lines: true
+
+! "Ssh client to use" Set from: Default
+rofi.ssh-client: ssh
+
+! "Row height (in chars)" Set from: Default
+rofi.eh: 1
+
+! "Choose the strategy used for sorting: normal (levenshtein) or fzf." Set from: Default
+rofi.sorting-method: fzf
+
+! "Hide the prefix mode prefix on the combi view." Set from: Default
+rofi.combi-hide-mode-prefix: true
+
+! "The display name of this browser" Set from: Default
+rofi.display-combi: ->
+
+! "Set the matching algorithm. (normal, regex, glob, fuzzy)" Set from: Default
+rofi.matching: glob
+
+! "Number of lines" Set from: Default
+rofi.lines: 10
+
+! "Terminal to use" Set from: Default
+rofi.terminal: tilix
+
+! Theme
+rofi.theme: theme.rasi
+
+rofi.run-shell-command: {terminal} -e {cmd}

@@ -1,0 +1,164 @@
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+ZSH_THEME="spaceship"
+
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment the following line to automatically update without prompting.
+# DISABLE_UPDATE_PROMPT="true"
+
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS=true
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load?
+# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(
+	command-not-found 
+	composer 
+	extract 
+	pip 
+	python 
+	yarn 
+	zsh-z
+	zsh-autosuggestions
+	zsh-syntax-highlighting
+)
+
+zstyle ':completion:*:*:make:*' tag-order 'targets'
+
+source $HOME/.exports
+source $ZSH/oh-my-zsh.sh
+source $HOME/.aliases
+
+# Spaceship configuration
+SPACESHIP_PROMPT_FIRST_PREFIX_SHOW=false
+SPACESHIP_PROMPT_SEPARATE_LINE=true
+SPACESHIP_EXEC_TIME_SHOW=false
+SPACESHIP_HOST_SHOW=false
+SPACESHIP_CHAR_SYMBOL="$ "
+SPACESHIP_PROMPT_ADD_NEWLINE=true
+SPACESHIP_NODE_SHOW=false
+SPACESHIP_TIME_SHOW=false
+SPACESHIP_PACKAGE_SHOW=false
+SPACESHIP_JULIA_SHOW=false
+SPACESHIP_DOCKER_SHOW=false
+SPACESHIP_RUBY_SHOW=false
+SPACESHIP_AWS_SHOW=false
+SPACESHIP_PHP_SHOW=false
+SPACESHIP_BATTERY_SHOW=false
+SPACESHIP_VI_MODE_SHOW=false
+SPACESHIP_GIT_SYMBOL=""
+SPACESHIP_USER_SHOW=always
+SPACESHIP_NODE_SHOW=false
+
+# when completing from the middle of a word, move the cursor to the end of the word    
+setopt always_to_end
+
+# append
+setopt append_history           
+
+# no duplicate
+setopt hist_ignore_all_dups     
+
+# trim blanks
+setopt hist_reduce_blanks       
+
+# show before executing history commands
+setopt hist_verify              
+
+# add commands as they are typed, don't wait until shell exit 
+setopt inc_append_history
+
+# self explicit
+setopt auto_remove_slash        
+
+# resolve symlinks
+setopt chase_links              
+
+setopt extended_glob            # activate complex pattern globbing
+
+setopt glob_dots                # include dotfiles in globbing
+
+# no bell on error
+unsetopt beep                   
+
+# no bell on error in history
+unsetopt hist_beep           
+
+# ask for confirmation for `rm *' or `rm path/*'
+unsetopt rm_star_silent
+
+# Import colorscheme from 'wal' asynchronously
+# &   # Run the process in the background.
+# ( ) # Hide shell job control messages.
+(cat ~/.cache/wal/sequences &)
+
+# To add support for TTYs this line can be optionally added.
+source ~/.cache/wal/colors-tty.sh
+
+# Bancos
+alias bb="warsaw-browser bb"
+alias bbpj="warsaw-browser bbpj"
+alias cef="warsaw-browser cef"
+alias itau="warsaw-browser itau"
+
+function warsaw-browser {
+  xhost +;
+   docker run -it --rm \
+              -v /tmp/.X11-unix:/tmp/.X11-unix \
+              -v $HOME/Downloads:/home/bank/Downloads \
+              -e DISPLAY=unix$DISPLAY \
+	      --shm-size 2g \
+              --name warsaw-browser \
+              lichti/warsaw-browser $1;
+}

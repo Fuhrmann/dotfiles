@@ -1,0 +1,113 @@
+config:
+  backup: true
+  create: true
+  dotpath: dotfiles
+dotfiles:
+  f_zshrc:
+    src: zshrc
+    dst: ~/.zshrc
+    link: link
+  f_gitconfig:
+    src: gitconfig
+    dst: ~/.gitconfig
+    link: link
+  f_gitignore:
+    src: gitignore
+    dst: ~/.gitignore
+    link: link
+  f_exports:
+    src: exports
+    dst: ~/.exports
+    link: link
+  d_rofi:
+    src: config/rofi
+    dst: ~/.config/rofi
+    link: link
+  f_xinitrc:
+    src: xinitrc
+    dst: ~/.xinitrc
+    link: link
+  f_bash_profile:
+    src: bash_profile
+    dst: ~/.bash_profile
+    link: link
+  f_vimrc:
+    src: vimrc
+    dst: ~/.vimrc
+    link: link
+  f_xresources:
+    src: Xresources
+    dst: ~/.Xresources
+    link: link
+  f_bashrc:
+    src: bashrc
+    dst: ~/.bashrc
+    link: link
+  f_asoundrc:
+    src: asoundrc
+    dst: ~/.asoundrc
+    link: link
+  d_ranger:
+    src: config/ranger
+    dst: ~/.config/ranger
+    link: link
+  d_polybar:
+    src: config/polybar
+    dst: ~/.config/polybar
+    link: link
+  d_nvim:
+    src: config/nvim
+    dst: ~/.config/nvim
+    link: link
+  d_i3:
+    src: config/i3
+    dst: ~/.config/i3
+    link: link
+  d_alacritty:
+    src: config/alacritty
+    dst: ~/.config/alacritty
+    link: link
+  d_zathura:
+    src: config/zathura
+    dst: ~/.config/zathura
+    link: link
+  d_wal:
+    src: config/wal
+    dst: ~/.config/wal
+    link: link
+  d_ncspot:
+    src: config/ncspot
+    dst: ~/.config/ncspot
+    link: link_children
+  f_redshift.conf:
+    src: config/redshift.conf
+    dst: ~/.config/redshift.conf
+    link: link
+  f_keyledsd.conf:
+    src: config/keyledsd.conf
+    dst: ~/.config/keyledsd.conf
+    link: link
+profiles:
+  fridora:
+    dotfiles:
+    - f_zshrc
+    - f_gitconfig
+    - f_gitignore
+    - f_exports
+    - d_rofi
+    - f_xinitrc
+    - f_bash_profile
+    - f_vimrc
+    - f_xresources
+    - f_bashrc
+    - f_asoundrc
+    - d_ranger
+    - d_polybar
+    - d_nvim
+    - d_i3
+    - d_alacritty
+    - d_zathura
+    - d_wal
+    - d_ncspot
+    - f_redshift.conf
+    - f_keyledsd.conf
