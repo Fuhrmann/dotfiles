@@ -28,7 +28,7 @@ if __name__ == '__main__':
     global_settings['caret'] = wal_scheme['special']['foreground']
     global_settings['invisibles'] = wal_colors[1]
     global_settings['lineHighlight'] = wal_colors[2]
-    global_settings['selection'] = wal_colors[6]
+    global_settings['selection'] = wal_colors[1]
 
     # Color scheme elements
     settings = []

@@ -1,0 +1,129 @@
+{
+    "name": "Pywal",
+    "globals": {
+        "background": "#0F1A26",
+        "foreground": "#dfdacd",
+        "caret": "#dfdacd",
+        "invisibles": "#436f9c",
+        "lineHighlight": "#4a7aad",
+        "selection": "#436f9c"
+    },
+    "rules": [
+        {
+            "name": "Comment",
+            "scope": "comment",
+            "foreground": "#4a7aad"
+        },
+        {
+            "name": "String",
+            "scope": "string",
+            "foreground": "#7aadc6"
+        },
+        {
+            "name": "Number",
+            "scope": "constant.numeric",
+            "foreground": "#8cbacd"
+        },
+        {
+            "name": "Built-in constant",
+            "scope": "constant.language",
+            "foreground": "#8cbacd"
+        },
+        {
+            "name": "User-defined constant",
+            "scope": "constant.character, constant.other",
+            "foreground": "#8cbacd"
+        },
+        {
+            "name": "Variable",
+            "scope": "variable",
+            "fontStyle": ""
+        },
+        {
+            "name": "Storage",
+            "scope": "storage",
+            "foreground": "#5a8bb8",
+            "fontStyle": ""
+        },
+        {
+            "name": "Storage type",
+            "scope": "storage.type",
+            "foreground": "#76aac4",
+            "fontStyle": "italic"
+        },
+        {
+            "name": "Class name",
+            "scope": "entity.name.class",
+            "foreground": "#436f9c",
+            "fontStyle": "italic"
+        },
+        {
+            "name": "Inherited class",
+            "scope": "entity.other.inherited-class",
+            "foreground": "#436f9c",
+            "fontStyle": "italic"
+        },
+        {
+            "name": "Function name",
+            "scope": "entity.name.function",
+            "foreground": "#436f9c",
+            "fontStyle": "italic"
+        },
+        {
+            "name": "Function argument",
+            "scope": "variable.parameter",
+            "foreground": "#76aac4",
+            "fontStyle": ""
+        },
+        {
+            "name": "Tag name",
+            "scope": "entity.name.tag",
+            "foreground": "#5a8bb8",
+            "fontStyle": ""
+        },
+        {
+            "name": "Tag attribute",
+            "scope": "entity.other.attribute-name",
+            "foreground": "#436f9c",
+            "fontStyle": ""
+        },
+        {
+            "name": "Library function",
+            "scope": "support.function",
+            "foreground": "#76aac4",
+            "fontStyle": ""
+        },
+        {
+            "name": "Library constant",
+            "scope": "support.constant",
+            "foreground": "#76aac4",
+            "fontStyle": ""
+        },
+        {
+            "name": "Library class/type",
+            "scope": "support.class, support.type",
+            "foreground": "#76aac4",
+            "fontStyle": "italic"
+        },
+        {
+            "name": "Library variable",
+            "scope": "support.other.variable",
+            "fontStyle": ""
+        },
+        {
+            "name": "Invalid",
+            "scope": "invalid",
+            "fontStyle": "",
+            "foreground": "#dfdacd",
+            "background": "#8cbacd"
+        },
+        {
+            "name": "Invalid deprecaded",
+            "scope": "invalid.deprecated",
+            "fontStyle": "",
+            "foreground": "#dfdacd",
+            "background": "#7aadc6"
+        }
+    ],
+    "semanticClass": "theme.dark.pywal"
+}
