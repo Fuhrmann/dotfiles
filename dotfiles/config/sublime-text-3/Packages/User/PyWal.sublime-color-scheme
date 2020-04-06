@@ -10,6 +10,76 @@
     },
     "rules": [
         {
+            "background": "#FFFFFFFF",
+            "foreground": "#7F7F7FFF",
+            "scope": "col_FFFFFFFF"
+        },
+        {
+            "background": "#000000FF",
+            "foreground": "#808080FF",
+            "scope": "col_000000FF"
+        },
+        {
+            "background": "#F0F0F0FF",
+            "foreground": "#707070FF",
+            "scope": "col_F0F0F0FF"
+        },
+        {
+            "background": "#76AAC4FF",
+            "foreground": "#1D1D1DFF",
+            "scope": "col_76AAC4FF"
+        },
+        {
+            "background": "#436F9CFF",
+            "foreground": "#E6E6E6FF",
+            "scope": "col_436F9CFF"
+        },
+        {
+            "background": "#5A8BB8FF",
+            "foreground": "#010101FF",
+            "scope": "col_5A8BB8FF"
+        },
+        {
+            "background": "#8CBACDFF",
+            "foreground": "#2E2E2EFF",
+            "scope": "col_8CBACDFF"
+        },
+        {
+            "background": "#0E1925FF",
+            "foreground": "#979797FF",
+            "scope": "col_0E1925FF"
+        },
+        {
+            "background": "#DFDACDFF",
+            "foreground": "#5A5A5AFF",
+            "scope": "col_DFDACDFF"
+        },
+        {
+            "background": "#9C988FFF",
+            "foreground": "#181818FF",
+            "scope": "col_9C988FFF"
+        },
+        {
+            "background": "#4A7AADFF",
+            "foreground": "#F1F1F1FF",
+            "scope": "col_4A7AADFF"
+        },
+        {
+            "background": "#7AADC6FF",
+            "foreground": "#202020FF",
+            "scope": "col_7AADC6FF"
+        },
+        {
+            "scope": "col_gutter",
+            "background": "#000000",
+            "foreground": "#ffffff"
+        },
+        {
+            "scope": "col_222222FF",
+            "background": "#222222FF",
+            "foreground": "#A2A2A2FF"
+        },
+        {
             "name": "Comment",
             "scope": "comment",
             "foreground": "#4a7aad"

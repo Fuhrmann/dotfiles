@@ -1,3 +1,29 @@
+# focused border
+set_from_resource $fb i3wm.color1 #000
+
+# unfocused border
+set_from_resource $ub i3wm.background #000
+
+# unfocused text color
+set_from_resource $utc i3wm.color1 #000
+
+# Text color
+set_from_resource $tc i3wm.color7 #FFF
+
+# Foreground
+set_from_resource $fg i3wm.foreground #f0f0f0
+
+# Background
+set_from_resource $bg i3wm.background #f0f0f0
+
+# class                 border  backgr. text indicator child_border
+client.focused          $fb     $fb     $tc  $fb       $fb
+client.focused_inactive $bg     $bg     $fg  $bg       $bg
+client.unfocused        $ub     $ub     $utc $bg       $ub
+client.urgent           $bg     $bg     $fg  $bg       $bg
+client.placeholder      $bg     $bg     $fg  $bg       $bg
+client.background       $ub
+
 # Seta a mod key
 set $mod Mod4
 
@@ -73,11 +99,13 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # Define workspaces
-set $ws1 "term"
-set $ws2 "browse"
-set $ws3 "code"
-set $ws4 "chat"
-set $ws5 "music"
+set $ws1 "1: term"
+set $ws2 "2: browse"
+set $ws3 "3: code"
+set $ws4 "4: game"
+set $ws5 "5: chat"
+set $ws6 "6: music"
+set $ws7 "7: warez"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -85,6 +113,8 @@ bindsym $mod+2 workspace $ws2
 bindsym $mod+3 workspace $ws3
 bindsym $mod+4 workspace $ws4
 bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -92,6 +122,8 @@ bindsym $mod+Shift+2 move container to workspace $ws2
 bindsym $mod+Shift+3 move container to workspace $ws3
 bindsym $mod+Shift+4 move container to workspace $ws4
 bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -171,12 +203,12 @@ for_window [title="^Steam Keyboard$"] floating enable
 for_window [class="^deadcells$"] floating disable, fullscreen enable, workspace --no-auto-back-and-forth $ws3
 
 # Assign windows to workspaces
-assign [title="(?i)transmission"] → $ws2
-assign [class="^Steam$" title="^Steam$"] $ws3
-assign [instance="web.whatsapp.com" window_role="pop-up"] → $ws4
-assign [class="(?i)mpv"] → $ws5
-assign [title="musica"] → $ws5
 assign [class="Google-chrome" window_role="browser"] → $ws2
+assign [class="^Steam$" title="^Steam$"] $ws4
+assign [instance="web.whatsapp.com" window_role="pop-up"] → $ws5
+assign [class="(?i)mpv"] → $ws6
+assign [title="musica"] → $ws6
+assign [title="(?i)transmission"] → $ws7
 
 # Open up the most used configurations
 bindsym $mod+i exec --no-startup-id subl ~/.config/i3/config
@@ -193,11 +225,16 @@ bindsym $mod+Shift+less move workspace to output left
 workspace $ws1 output HDMI-0
 workspace $ws2 output HDMI-0
 workspace $ws3 output HDMI-0
-workspace $ws4 output DP-5
+workspace $ws4 output HDMI-0
 workspace $ws5 output DP-5
+workspace $ws6 output DP-5
+workspace $ws7 output DP-5
 
-# Executa polybar
+# Launch polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
+# Launche music player
+bindsym $mod+m exec --no-startup-id ~/.config/i3/scripts/open_music.sh
 
 # Persist multi monitor layout
 exec --no-startup-id autorandr --change --force
