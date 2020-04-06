@@ -1,5 +1,68 @@
+" Use the OS clipboard by default (on versions compiled with `+clipboard`)
 set clipboard+=unnamedplus
+
+" Enhance command-line completion
+set wildmenu
+
+" Add the g flag to search/replace by default
+set gdefault
+
+" Don’t create backups when editing files in certain directories
+set backupskip=/tmp/*,/private/tmp/*
+
+" Enable line numbers
+set number
+
+" Enable syntax highlighting
+syntax on
+
+" Highlight current line
+set cursorline
+
+" Make tabs as wide as two spaces
+set tabstop=2
+
+" Highlight searches
+set hlsearch
+
+" Ignore case of searches
+set ignorecase
+
+" Highlight dynamically as pattern is typed
+set incsearch
+
+" Enable mouse in all modes
+set mouse=a
+
+" Disable error bells
+set noerrorbells
+
+" Don’t reset cursor to start of line when moving around.
+set nostartofline
+
+" Show the cursor position
+" set ruler
+
+" Don’t show the intro message when starting Vim
+set shortmess=atI
+
 noremap <Leader>y "*y
 noremap <Leader>p "*p
 noremap <Leader>Y "+y
 noremap <Leader>P "+p
+
+call plug#begin(stdpath('data') . '/plugged')
+Plug 'myusuf3/numbers.vim'
+Plug 'lambdalisue/suda.vim'
+Plug 'itchyny/lightline.vim'
+call plug#end()
+
+" Enable smart edit suda.vim
+let g:suda_smart_edit = 1
+
+" Dont show the current mode
+set noshowmode
+
+"set noshowcmd  " to get rid of display of last command
+"set shortmess+=F  " to get rid of the file name displayed in the command line bar
+

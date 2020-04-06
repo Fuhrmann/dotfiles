@@ -91,6 +91,10 @@ dotfiles:
     src: config/sublime-text-3/Packages/User/PyWal.sublime-color-scheme
     dst: ~/.config/sublime-text-3/Packages/User/PyWal.sublime-color-scheme
     link: link
+  d_vifm:
+    src: config/vifm
+    dst: ~/.config/vifm
+    link: link
 profiles:
   fridora:
     dotfiles:
@@ -116,3 +120,4 @@ profiles:
     - f_redshift.conf
     - f_keyledsd.conf
     - f_pywal.sublime-color-scheme
+    - d_vifm

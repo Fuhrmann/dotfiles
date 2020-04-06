@@ -21,5 +21,8 @@ numlockx &
 # Restore wal (pywal) colors scheme
 wal -R
 
+# Automount disks
+udiskie &
+
 # Launch i3 with dbus-launch because of flameshot
 exec dbus-launch /usr/bin/i3
