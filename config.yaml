@@ -99,6 +99,18 @@ dotfiles:
     src: config/vis
     dst: ~/.config/vis
     link: link_children
+  d_kitty:
+    src: config/kitty
+    dst: ~/.config/kitty
+    link: link_children
+  f_mpd.conf:
+    src: config/mpd/mpd.conf
+    dst: ~/.config/mpd/mpd.conf
+    link: link
+  f_config:
+    src: config/ncmpcpp/config
+    dst: ~/.config/ncmpcpp/config
+    link: link
 profiles:
   fridora:
     dotfiles:
@@ -126,3 +138,6 @@ profiles:
     - f_pywal.sublime-color-scheme
     - d_vifm
     - d_vis
+    - d_kitty
+    - f_mpd.conf
+    - f_config

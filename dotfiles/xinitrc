@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Tell i3 which terminal we want to use
+export TERMINAL="kitty"
+
 # Persist multi monitor layout
 autorandr --change --force &&
 

@@ -15,12 +15,13 @@ configuration {
 	sidebar-mode: false;
 	width: 25%;
 	lines: 10;
+	font: "JetBrains Mono 10";
 }
 
 @theme "~/.cache/wal/colors-rofi-dark"
 
 * {
-  text-font:                            "JetBrains Mono 10";
+  text-font:                            "JetBrainsMono Nerd Font 10";
   inputbar-margin:                      0px 0px;
   prompt-padding:                       0px 0px;
   entry-padding:                        0px 0px 0px 0px;

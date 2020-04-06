@@ -1,0 +1,17 @@
+## Open ncspot (spotify player) and vis (cli-visualizer) vertically
+
+#enabled_layouts fat:bias=60
+layout vertical
+
+title music
+cd ~
+launch .cargo/bin/ncspot
+
+title music1
+cd ~
+launch ncmpcpp
+
+title vis
+launch vis
+
+
