@@ -173,9 +173,10 @@ for_window [class="^deadcells$"] floating disable, fullscreen enable, workspace 
 # Assign windows to workspaces
 assign [title="(?i)transmission"] → $ws2
 assign [class="^Steam$" title="^Steam$"] $ws3
-assign [instance="web.whatsapp.com"] → $ws4
+assign [instance="web.whatsapp.com" window_role="pop-up"] → $ws4
 assign [class="(?i)mpv"] → $ws5
 assign [title="musica"] → $ws5
+assign [class="Google-chrome" window_role="browser"] → $ws2
 
 # Open up the most used configurations
 bindsym $mod+i exec --no-startup-id subl ~/.config/i3/config
