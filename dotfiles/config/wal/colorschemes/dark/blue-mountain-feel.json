@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/fuhrmann/Documentos/Walllpapers/wallhaven-83w6vo.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#0F1A26",
+        "foreground": "#dfdacd",
+        "cursor": "#dfdacd"
+    },
+    "colors": {
+        "color0": "#0F1A26",
+        "color1": "#436f9c",
+        "color2": "#4a7aad",
+        "color3": "#5a8bb8",
+        "color4": "#7aadc6",
+        "color5": "#8cbacd",
+        "color6": "#76aac4",
+        "color7": "#dfdacd",
+        "color8": "#9c988f",
+        "color9": "#436f9c",
+        "color10": "#4a7aad",
+        "color11": "#5a8bb8",
+        "color12": "#7aadc6",
+        "color13": "#8cbacd",
+        "color14": "#76aac4",
+        "color15": "#dfdacd"
+    }
+}
