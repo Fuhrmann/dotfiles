@@ -6,14 +6,11 @@ configuration {
 	yoffset: 0;
   xoffset: 0;
 	columns: 2;
-	fake-transparency: false;
 	hide-scrollbar: true;
-	bw: 0;
   fullscreen: false;
   show-icons: true;
 	terminal: "alacritty";
 	sidebar-mode: false;
-	width: 25%;
 	lines: 10;
 	font: "JetBrains Mono 10";
 }
@@ -22,19 +19,16 @@ configuration {
 
 * {
   text-font:                            "JetBrainsMono Nerd Font 10";
-  inputbar-margin:                      0px 0px;
   prompt-padding:                       0px 0px;
   entry-padding:                        0px 0px 0px 0px;
   list-element-margin:                  @inputbar-margin;
   list-element-padding:                 5px;
   list-element-border:                  0px 0px 0px 0px;
-  apps-textbox-prompt-colon-padding:    0px 0px 0px 0px;
 }
 
 #window {
   padding: 10px 10px;
   border: 0px;
-  border-radius: 14px;
 }
 
 * {
@@ -46,22 +40,10 @@ prompt,
 textbox-prompt-colon,
 entry {
   border: 0px;
-  border-radius: 10px;
 }
 
 #inputbar {
-  children: [ prompt, textbox-prompt-colon, entry ];
-  margin: @inputbar-margin;
-}
-
-#prompt {
-  text-color: @background;
-}
-
-#textbox-prompt-colon {
-  expand: false;
-  str: "  ::  ";
-  padding: @apps-textbox-prompt-colon-padding;
+  children: [ textbox-prompt-colon, entry ];
 }
 
 #entry {

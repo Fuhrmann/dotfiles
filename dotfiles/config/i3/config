@@ -42,10 +42,9 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume @DEFA
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 # Media player controls
-bindsym XF86AudioPlay exec playerctl -i chrome play
-bindsym XF86AudioPause exec playerctl -i chrome pause
-bindsym XF86AudioNext exec playerctl -i chrome next
-bindsym XF86AudioPrev exec playerctl -i chrome previous
+bindsym XF86AudioPlay exec --no-startup-id playerctl -p playerctld play-pause
+bindsym XF86AudioNext exec --no-startup-id playerctl -p playerctld next
+bindsym XF86AudioPrev exec --no-startup-id playerctl -p playerctld previous
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
@@ -174,6 +173,8 @@ bindsym $mod+r mode "$mode_resize"
 
 popup_during_fullscreen smart
 default_floating_border pixel 2
+workspace_auto_back_and_forth yes
+force_display_urgency_hint 500 ms
 
 # Gaps
 for_window [class=".*"] border pixel 5
@@ -185,7 +186,7 @@ smart_borders no_gaps
 bindsym Control+space exec --no-startup-id rofi -show
 
 # Take a screenshot
-bindsym Control+Print exec --no-startup-id flameshot gui
+bindsym --release Control+Print exec --no-startup-id flameshot gui
 
 # Navegar entre workspaces
 bindsym Control+Mod1+Right workspace next
@@ -251,16 +252,38 @@ workspace $ws6 output DP-5
 workspace $ws7 output DP-5
 
 # Launch polybar
+# https://github.com/polybar/polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Launch music player
 bindsym $mod+m exec --no-startup-id $HOME/.config/i3/scripts/open_music.sh
 
 # Launch file manger
+# https://sw.kovidgoyal.net/kitty/
 bindsym $mod+f exec --no-startup-id kitty --session $HOME/.config/kitty/filemanager.kitty
 
 # Persist multi monitor layout
+# https://github.com/wertarbyte/autorandr
 exec --no-startup-id autorandr --change --force
 
 # Launch mpris-scrobbler
+# https://github.com/mariusor/mpris-scrobbler
 exec --no-startup-id mpris-scrobbler &
+
+# Launch keyledsd to control logitech keyboard leds
+# https://github.com/keyleds/keyleds
+exec --no-startup-id keyledsd &
+
+# Launch mpris support for mpd
+# https://github.com/eonpatapon/mpDris2
+exec --no-startup-id mpDris2 &
+
+# Run polkit-mate-authentication-agent-1 for polkit
+exec /usr/libexec/polkit-mate-authentication-agent-1
+
+#################
+# read 1 character and mark the current window with this character
+bindsym $mod+q exec i3-input -F 'mark %s' -l 1 -P 'Mark: '
+
+# read 1 character and go to the window with the character
+bindsym $mod+x exec i3-input -F '[con_mark="%s"] focus' -l 1 -P 'Goto: '

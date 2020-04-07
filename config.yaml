@@ -111,6 +111,18 @@ dotfiles:
     src: config/ncmpcpp/config
     dst: ~/.config/ncmpcpp/config
     link: link
+  f_config.conf:
+    src: config/neofetch/config.conf
+    dst: ~/.config/neofetch/config.conf
+    link: link
+  f_mpdris2.conf:
+    src: config/mpDris2/mpDris2.conf
+    dst: ~/.config/mpDris2/mpDris2.conf
+    link: link
+  f_htoprc:
+    src: config/htop/htoprc
+    dst: ~/.config/htop/htoprc
+    link: link
 profiles:
   fridora:
     dotfiles:
@@ -141,3 +153,6 @@ profiles:
     - d_kitty
     - f_mpd.conf
     - f_config
+    - f_config.conf
+    - f_mpdris2.conf
+    - f_htoprc

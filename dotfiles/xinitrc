@@ -6,6 +6,9 @@ export TERMINAL="kitty"
 # Persist multi monitor layout
 autorandr --change --force &&
 
+# Set keyboard auto repeat rate
+xset r rate 250 11
+
 # Fix cursor
 xsetroot -cursor_name left_ptr
 
