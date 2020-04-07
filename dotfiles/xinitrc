@@ -27,5 +27,8 @@ wal -R
 # Automount disks
 udiskie &
 
+# Start mpd server
+mpd &
+
 # Launch i3 with dbus-launch because of flameshot
 exec dbus-launch /usr/bin/i3

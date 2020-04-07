@@ -1,5 +1,9 @@
 Xcursor.size: 16
 
+XCalc*Font:6x13
+XCalc*ti.button3.font:6x13
+XCalc*ti.button3.label:SQRT
+
 URxvt*termName: rxvt-unicode-256color
 URxvt.perl-ext-common: default,matcher
 URxvt.scrollBar: false

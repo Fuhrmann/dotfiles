@@ -15,8 +15,8 @@ plugins=(
 zstyle ':completion:*:*:make:*' tag-order 'targets'
 
 source $HOME/.exports
-source $ZSH/oh-my-zsh.sh
 source $HOME/.aliases
+source $ZSH/oh-my-zsh.sh
 
 # Spaceship configuration
 SPACESHIP_PROMPT_FIRST_PREFIX_SHOW=false
