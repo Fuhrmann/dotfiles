@@ -10,6 +10,11 @@
     },
     "rules": [
         {
+            "scope": "col_FF0000FF",
+            "background": "#FF0000FF",
+            "foreground": "#CCCCCCFF"
+        },
+        {
             "foreground": "#CECECEFF",
             "background": "#E60053FF",
             "scope": "col_E60053FF"
