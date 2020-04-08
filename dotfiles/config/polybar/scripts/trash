@@ -1,10 +1,25 @@
 #!/usr/bin/env bash
 
-TRASH_COUNT=$(trash-list | wc -l)
-URGENT_VALUE=30
+FILES=0
 
-echo " $TRASH_COUNT"
+trash_empty() {
+    trash-empty
+    paplay /usr/share/sounds/freedesktop/stereo/trash-empty.oga
+		kill -USR1 "$(pgrep --oldest --parent "$1")"
+}
 
-if [[ "${TRASH_COUNT}" -ge "${URGENT_VALUE}" ]]; then
-    exit 31
+trash_list() {
+    FILES=$(trash-list | wc -l)
+}
+
+trap "trash_list" USR1
+
+if [[ $1 = "--empty" ]] || [[ $1 = "-e" ]]; then
+    # $2 is the pid polybar sends
+    trash_empty "$2"
+    exit 0
+elif [[ $1 = "--check" ]] || [[ $1 = "-c" ]]; then
+    trash_list
+		echo "$FILES"
+    exit 0
 fi
