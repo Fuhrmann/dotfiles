@@ -1,10 +1,10 @@
-#!/bin/sh
+#!/bin/env bash
 
 BAR_ICON=""
 
 get_total_updates() {
 	dnf=$(env LC_ALL=C dnf check-update 2> /dev/null)
-	UPDATES=$(echo "$dnf" | grep -E '[^@]updates' | wc -l)
+	UPDATES=$(echo "$dnf" | grep -c '[^@]updates')
 }
 
 
@@ -24,9 +24,7 @@ while true; do
     # every 10 seconds another check for updates is done
     if (( UPDATES > 0 )); then
         echo "$BAR_ICON $UPDATES"
-    else
-        echo $BAR_ICON
     fi
 
-    sleep 1800
+    sleep 5h
 done

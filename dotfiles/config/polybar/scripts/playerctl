@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+
+call_player() {
+    playerctl -p playerctld "$1"
+}
+
+is_online() {
+    ! [[ "$(call_player -l 2>&1 > /dev/null)" = "No players were found" ]]
+}
+
+is_playing() {
+    [[ "$(call_player status)" = "Playing" ]]
+}
+
+is_paused() {
+    [[ "$(call_player status)" = "Paused" ]]
+}
+
+if [[ $1 = "--toggle" ]] || [[ $1 = "-t" ]]; then
+    if is_online; then
+    		call_player play-pause
+    fi
+    exit 0
+elif [[ $1 = "--next" ]] || [[ $1 = "-n" ]]; then
+    if is_playing; then
+   		  call_player next
+    fi
+    exit 0
+elif [[ $1 = "--prev" ]] || [[ $1 = "-p" ]]; then
+    if is_playing; then
+    		call_player previous
+    fi
+    exit 0
+fi
+
+while true; do
+    if is_online; then
+				metadata=$(call_player metadata)
+        if [[ $metadata != "" ]]; then
+  					artist="$(echo "$metadata" | awk -F "xesam:artist" '/artist/{print $2}' | xargs)"
+  					title="$(echo "$metadata" | awk -F "xesam:title" '/title/{print $2}' | xargs)"
+            if [[ $title != "" && $artist != 0 ]]; then
+								if is_playing; then
+                    echo " $title - $artist"
+								else
+								    echo ""
+								fi
+            fi
+        fi
+    fi
+    sleep 1
+done

@@ -46,14 +46,19 @@ set nostartofline
 " Don’t show the intro message when starting Vim
 set shortmess=atI
 
+" Increase multi-key timeout
+set timeout timeoutlen=3000 ttimeoutlen=100
+
 noremap <Leader>y "*y
 noremap <Leader>p "*p
 noremap <Leader>Y "+y
 noremap <Leader>P "+p
 
-nnoremap <leader>d "_d
-xnoremap <leader>d "_d
-xnoremap <leader>p "_dP
+" nnoremap <leader>d "_d
+" xnoremap <leader>d "_d
+" xnoremap <leader>p "_dP
+noremap <leader>p "_d
+
 
 call plug#begin(stdpath('data') . '/plugged')
 Plug 'myusuf3/numbers.vim'

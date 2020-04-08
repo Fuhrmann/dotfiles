@@ -3,15 +3,15 @@
 #enabled_layouts fat:bias=60
 layout vertical
 
-title music
+#title music
 cd ~
 launch .cargo/bin/ncspot
 
-title music1
+#title music
 cd ~
 launch ncmpcpp
 
-title vis
+#title music
 launch vis
 
 

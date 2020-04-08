@@ -42,13 +42,15 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume @DEFA
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 # Media player controls
-bindsym XF86AudioPlay exec --no-startup-id playerctl -p playerctld play-pause
-bindsym XF86AudioNext exec --no-startup-id playerctl -p playerctld next
-bindsym XF86AudioPrev exec --no-startup-id playerctl -p playerctld previous
+bindsym XF86AudioPlay exec --no-startup-id $HOME/.config/polybar/scripts/playerctl --toggle
+bindsym XF86AudioNext exec --no-startup-id $HOME/.config/polybar/scripts/playerctl --next
+bindsym XF86AudioPrev exec --no-startup-id $HOME/.config/polybar/scripts/playerctl --prev
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+KP_Enter exec i3-sensible-terminal
+#bindsym $mod+Return exec i3-sensible-terminal
+#bindsym $mod+KP_Enter exec i3-sensible-terminal
+bindsym $mod+Return exec kitty --single-instance --listen-on unix:@mykitty
+bindsym $mod+KP_Enter exec kitty --single-instance --listen-on unix:@mykitty
 
 # Kill focused window
 bindsym $mod+w kill
@@ -105,6 +107,7 @@ set $ws4 "4: game"
 set $ws5 "5: chat"
 set $ws6 "6: music"
 set $ws7 "7: warez"
+set $ws8 "8: any"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -114,6 +117,7 @@ bindsym $mod+4 workspace $ws4
 bindsym $mod+5 workspace $ws5
 bindsym $mod+6 workspace $ws6
 bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -123,6 +127,7 @@ bindsym $mod+Shift+4 move container to workspace $ws4
 bindsym $mod+Shift+5 move container to workspace $ws5
 bindsym $mod+Shift+6 move container to workspace $ws6
 bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Tab workspace back_and_forth
 
 # reload the configuration file
@@ -133,7 +138,7 @@ bindsym $mod+Shift+r restart
 
 # exit i3 (logs you out of your X session)
 set $mode_power  power
-bindsym Control+Mod1+Delete mode "$mode_power"
+bindsym $mod+x mode "$mode_power"
 mode "$mode_power" {
     bindsym l mode "default", exec --no-startup-id $HOME/.config/i3/scripts/i3exit lock
     bindsym e mode "default", exec --no-startup-id $HOME/.config/i3/scripts/i3exit logout
@@ -209,7 +214,6 @@ for_window [class="jetbrains-phpstorm" title="win0"] $float, $center
 for_window [class="(?i)pavucontrol"] $float, resize set 758 576, $center
 
 for_window [title="Android Emulator"] floating enable
-for_window [class="mpv"] border pixel 0
 for_window [urgent="latest"] focus
 for_window [class="^Steam$" title="Steam - News"] floating enable
 for_window [class="^Steam$" title="^Settings$"] floating enable
@@ -220,7 +224,7 @@ for_window [class="^Steam$" title="^Screenshot Uploader$"] floating enable
 for_window [class="^Steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable
 for_window [title="^Steam Keyboard$"] floating enable
 for_window [class="^deadcells$"] floating disable, fullscreen enable, workspace --no-auto-back-and-forth $ws3
-for_window [title="^music$"] move to workspace $ws6
+for_window [class="^music$"] move to workspace $ws6
 
 # Assign windows to workspaces
 assign [class="Google-chrome" window_role="browser"] → $ws2
@@ -228,7 +232,7 @@ assign [class="jetbrains-phpstorm"] → $ws3
 assign [class="^Steam$" title="^Steam$"] → $ws4
 assign [instance="web.whatsapp.com" window_role="pop-up"] → $ws5
 assign [class="(?i)mpv"] → $ws6
-assign [title="^music$"] → $ws6
+assign [class="^music$"] → $ws6
 assign [title="(?i)transmission"] → $ws7
 
 # Open up the most used configurations
@@ -236,7 +240,7 @@ bindsym $mod+i exec --no-startup-id subl ~/.config/i3/config
 bindsym $mod+p exec --no-startup-id subl ~/.config/polybar/config.ini
 
 # Open up whats app
-bindsym $mod+c exec --no-startup-id $HOME/.config/i3/scripts/open_wa.sh
+bindsym $mod+c exec --no-startup-id $HOME/.config/i3/scripts/open_wa
 
 # Move focused window between monitors
 bindsym $mod+Shift+greater move workspace to output right
@@ -250,13 +254,10 @@ workspace $ws4 output HDMI-0
 workspace $ws5 output DP-5
 workspace $ws6 output DP-5
 workspace $ws7 output DP-5
-
-# Launch polybar
-# https://github.com/polybar/polybar
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+workspace $ws8 output DP-5
 
 # Launch music player
-bindsym $mod+m exec --no-startup-id $HOME/.config/i3/scripts/open_music.sh
+bindsym $mod+m exec --no-startup-id $HOME/.config/i3/scripts/open_music
 
 # Launch file manger
 # https://sw.kovidgoyal.net/kitty/
@@ -266,24 +267,28 @@ bindsym $mod+f exec --no-startup-id kitty --session $HOME/.config/kitty/filemana
 # https://github.com/wertarbyte/autorandr
 exec --no-startup-id autorandr --change --force
 
+# Run polkit-mate-authentication-agent-1 for polkit
+exec /usr/libexec/polkit-mate-authentication-agent-1
+
+# Launch polybar
+# https://github.com/polybar/polybar
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
 # Launch mpris-scrobbler
 # https://github.com/mariusor/mpris-scrobbler
-exec --no-startup-id mpris-scrobbler &
+exec_always --no-startup-id mpris-scrobbler &
 
 # Launch keyledsd to control logitech keyboard leds
 # https://github.com/keyleds/keyleds
-exec --no-startup-id keyledsd &
+exec_always --no-startup-id keyledsd &
 
 # Launch mpris support for mpd
 # https://github.com/eonpatapon/mpDris2
-exec --no-startup-id mpDris2 &
-
-# Run polkit-mate-authentication-agent-1 for polkit
-exec /usr/libexec/polkit-mate-authentication-agent-1
+exec_always --no-startup-id mpDris2 &
 
 #################
 # read 1 character and mark the current window with this character
 bindsym $mod+q exec i3-input -F 'mark %s' -l 1 -P 'Mark: '
 
 # read 1 character and go to the window with the character
-bindsym $mod+x exec i3-input -F '[con_mark="%s"] focus' -l 1 -P 'Goto: '
+bindsym $mod+y exec i3-input -F '[con_mark="%s"] focus' -l 1 -P 'Goto: '
