@@ -39,7 +39,7 @@ while true; do
         if [[ $metadata != "" ]]; then
   					artist="$(echo "$metadata" | awk -F "xesam:artist" '/artist/{print $2}' | xargs)"
   					title="$(echo "$metadata" | awk -F "xesam:title" '/title/{print $2}' | xargs)"
-            if [[ $title != "" && $artist != 0 ]]; then
+            if [[ $title != "" || $artist != 0 ]]; then
 								if is_playing; then
                     echo " $title - $artist"
 								else
