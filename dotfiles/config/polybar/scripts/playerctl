@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 call_player() {
-    playerctl -p playerctld "$1"
+    playerctl -i chrome -p playerctld "$1"
 }
 
 is_online() {
@@ -34,19 +34,17 @@ elif [[ $1 = "--prev" ]] || [[ $1 = "-p" ]]; then
 fi
 
 while true; do
-    if is_online; then
+    if is_playing; then
 				metadata=$(call_player metadata)
         if [[ $metadata != "" ]]; then
-  					artist="$(echo "$metadata" | awk -F "xesam:artist" '/artist/{print $2}' | xargs)"
-  					title="$(echo "$metadata" | awk -F "xesam:title" '/title/{print $2}' | xargs)"
+								artist="$(echo "$metadata" | awk -F "xesam:artist" '/artist/{print $2}')"
+								title="$(echo "$metadata" | awk -F "xesam:title" '/title/{print $2}')"
             if [[ $title != "" || $artist != 0 ]]; then
-								if is_playing; then
-                    echo " $title - $artist"
-								else
-								    echo ""
-								fi
+                echo " ${title} - ${artist}" | awk '$1=$1'
             fi
         fi
+    else
+        echo ""
     fi
     sleep 1
 done
