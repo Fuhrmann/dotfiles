@@ -1,8 +1,8 @@
 #!/bin/env bash
 
-count=$(pgrep ncspot)
-if [ "$count" -eq 1 ]; then
-    kitty --class music --session "$HOME"/projetos/dotfiles/dotfiles/config/kitty/ncspot-session.kitty
-else
+if pgrep -x "ncspot" > /dev/null
+then
     i3-msg "[class=music] focus"
+else
+    kitty --class music --session $HOME/projetos/dotfiles/dotfiles/config/kitty/ncspot-session.kitty
 fi

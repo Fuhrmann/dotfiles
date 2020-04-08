@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+TRASH_COUNT=$(trash-list | wc -l)
+URGENT_VALUE=30
+
+echo " $TRASH_COUNT"
+
+if [[ "${TRASH_COUNT}" -ge "${URGENT_VALUE}" ]]; then
+    exit 31
+fi
