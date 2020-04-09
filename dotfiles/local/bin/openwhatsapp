@@ -1,0 +1,11 @@
+#!/bin/env bash
+
+# Open a new whatsapp window in chrome or focus the current opened
+
+WINDOW=$(xdotool search -classname web.whatsapp.com)
+if [ -n "${WINDOW}" ]; then
+    i3-msg "[instance=web.whatsapp.com window_role=pop-up] focus" 
+else
+    google-chrome --app=https://web.whatsapp.com
+fi
+

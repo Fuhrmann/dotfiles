@@ -3,13 +3,15 @@
 # Tell i3 which terminal we want to use
 export TERMINAL="kitty"
 
+# Allow i3 to execute our custom scripts
+export PATH=$HOME/.local/bin:$PATH
+
 # Persist multi monitor layout
 autorandr --change --force &&
 
 # Set keyboard auto repeat rate
 xset r rate 260 10
 
-# Xresources
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 
 # Make screen blank after 15min

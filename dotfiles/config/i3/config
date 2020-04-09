@@ -42,9 +42,9 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume @DEFA
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 # Media player controls
-bindsym XF86AudioPlay exec --no-startup-id $HOME/.config/polybar/scripts/playerctl --toggle
-bindsym XF86AudioNext exec --no-startup-id $HOME/.config/polybar/scripts/playerctl --next
-bindsym XF86AudioPrev exec --no-startup-id $HOME/.config/polybar/scripts/playerctl --prev
+bindsym XF86AudioPlay exec --no-startup-id playercontrol --toggle
+bindsym XF86AudioNext exec --no-startup-id playercontrol --next
+bindsym XF86AudioPrev exec --no-startup-id playercontrol --prev
 
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
@@ -141,12 +141,12 @@ bindsym $mod+Shift+r restart
 set $mode_power  power
 bindsym $mod+x mode "$mode_power"
 mode "$mode_power" {
-    bindsym l mode "default", exec --no-startup-id $HOME/.config/i3/scripts/i3exit lock
-    bindsym e mode "default", exec --no-startup-id $HOME/.config/i3/scripts/i3exit logout
-    bindsym s mode "default", exec --no-startup-id $HOME/.config/i3/scripts/i3exit suspend
-    bindsym h mode "default", exec --no-startup-id $HOME/.config/i3/scripts/i3exit hibernate
-    bindsym r mode "default", exec --no-startup-id $HOME/.config/i3/scripts/i3exit reboot
-    bindsym p mode "default", exec --no-startup-id $HOME/.config/i3/scripts/i3exit shutdown
+    bindsym l mode "default", exec --no-startup-id i3exit lock
+    bindsym e mode "default", exec --no-startup-id i3exit logout
+    bindsym s mode "default", exec --no-startup-id i3exit suspend
+    bindsym h mode "default", exec --no-startup-id i3exit hibernate
+    bindsym r mode "default", exec --no-startup-id i3exit reboot
+    bindsym p mode "default", exec --no-startup-id i3exit shutdown
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
@@ -240,8 +240,11 @@ assign [title="(?i)transmission"] → $ws7
 bindsym $mod+i exec --no-startup-id subl ~/.config/i3/config
 bindsym $mod+p exec --no-startup-id subl ~/.config/polybar/config.ini
 
-# Open up whats app
-bindsym $mod+c exec --no-startup-id $HOME/.config/i3/scripts/open_wa
+# Launch whats app
+bindsym $mod+c exec --no-startup-id openwhatsapp
+
+# Launch music player
+bindsym $mod+m exec --no-startup-id openmusic
 
 # Move focused window between monitors
 bindsym $mod+Shift+greater move workspace to output right
@@ -257,9 +260,6 @@ workspace $ws6 output DP-5
 workspace $ws7 output DP-5
 workspace $ws8 output DP-5
 
-# Launch music player
-bindsym $mod+m exec --no-startup-id $HOME/.config/i3/scripts/open_music
-
 # Launch file manger
 # https://sw.kovidgoyal.net/kitty/
 bindsym $mod+f exec --no-startup-id kitty --session $HOME/.config/kitty/filemanager.kitty
@@ -273,7 +273,7 @@ exec /usr/libexec/polkit-mate-authentication-agent-1
 
 # Launch polybar
 # https://github.com/polybar/polybar
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id launchpolybar
 
 # Launch mpris-scrobbler
 # https://github.com/mariusor/mpris-scrobbler

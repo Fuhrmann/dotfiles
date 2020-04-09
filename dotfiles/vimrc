@@ -1,3 +1,6 @@
+" Disable folding
+set nofoldenable
+
 " Use the OS clipboard by default (on versions compiled with `+clipboard`)
 set clipboard+=unnamedplus
 

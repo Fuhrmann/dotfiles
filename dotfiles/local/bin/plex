@@ -41,7 +41,7 @@ usage ()
 {
   echo 'Script to control plex local docker image.'
   echo ''
-  echo 'usage: plex COMMAND'
+  echo "usage: $0 COMMAND"
   echo ''
   echo 'update	Update the plex image'
   echo 'start   Start the plex image'
