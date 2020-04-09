@@ -7,7 +7,7 @@ export TERMINAL="kitty"
 autorandr --change --force &&
 
 # Set keyboard auto repeat rate
-xset r rate 250 11
+xset r rate 260 10
 
 # Xresources
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
