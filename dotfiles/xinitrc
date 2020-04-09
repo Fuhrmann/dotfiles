@@ -9,14 +9,17 @@ autorandr --change --force &&
 # Set keyboard auto repeat rate
 xset r rate 250 11
 
-# Fix cursor
-xsetroot -cursor_name left_ptr
-
 # Xresources
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 
 # Make screen blank after 15min
 xset dpms 0 0 900
+
+# Map capslock to escape
+setxkbmap -option "caps:escape"
+
+# Fix cursor
+xsetroot -cursor_name left_ptr &
 
 # Start the notification manager
 dunst -config ~/.config/dunst/dunstrc &
@@ -32,6 +35,9 @@ udiskie &
 
 # Start mpd server
 mpd &
+
+# Start transmission daemon
+transmission-daemon &
 
 # Launch i3 with dbus-launch because of flameshot
 exec dbus-launch /usr/bin/i3

@@ -87,10 +87,6 @@ dotfiles:
     src: config/keyledsd.conf
     dst: ~/.config/keyledsd.conf
     link: link
-  f_pywal.sublime-color-scheme:
-    src: config/sublime-text-3/Packages/User/PyWal.sublime-color-scheme
-    dst: ~/.config/sublime-text-3/Packages/User/PyWal.sublime-color-scheme
-    link: link
   d_vifm:
     src: config/vifm
     dst: ~/.config/vifm
@@ -122,6 +118,10 @@ dotfiles:
   f_htoprc:
     src: config/htop/htoprc
     dst: ~/.config/htop/htoprc
+    link: link
+  f_antigenrc:
+    src: antigenrc
+    dst: ~/.antigenrc
     link: link
 profiles:
   fridora:
@@ -156,3 +156,4 @@ profiles:
     - f_config.conf
     - f_mpdris2.conf
     - f_htoprc
+    - f_antigenrc

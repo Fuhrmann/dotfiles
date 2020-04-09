@@ -49,8 +49,9 @@ bindsym XF86AudioPrev exec --no-startup-id $HOME/.config/polybar/scripts/playerc
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
 #bindsym $mod+KP_Enter exec i3-sensible-terminal
-bindsym $mod+Return exec kitty --single-instance --listen-on unix:@mykitty
-bindsym $mod+KP_Enter exec kitty --single-instance --listen-on unix:@mykitty
+bindsym $mod+Return exec $TERMINAL --single-instance
+bindsym $mod+KP_Enter exec $TERMINAL --single-instance
+bindsym Mod1+Control+d focus child; split v; exec $TERMINAL
 
 # Kill focused window
 bindsym $mod+w kill
