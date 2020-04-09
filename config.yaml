@@ -123,6 +123,10 @@ dotfiles:
     src: antigenrc
     dst: ~/.antigenrc
     link: link
+  d_bin:
+    src: local/bin
+    dst: ~/.local/bin
+    link: link
 profiles:
   fridora:
     dotfiles:
@@ -147,7 +151,6 @@ profiles:
     - d_ncspot
     - f_redshift.conf
     - f_keyledsd.conf
-    - f_pywal.sublime-color-scheme
     - d_vifm
     - d_vis
     - d_kitty
@@ -157,3 +160,4 @@ profiles:
     - f_mpdris2.conf
     - f_htoprc
     - f_antigenrc
+    - d_bin

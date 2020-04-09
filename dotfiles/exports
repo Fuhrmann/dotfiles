@@ -5,6 +5,7 @@ export ZSH_THEME=""
 export ZSH_PLUGINS_ALIAS_TIPS_EXCLUDES="_ ll vi"
 
 export PATH=$HOME/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH
 export PATH=/usr/local/bin:$PATH
 export PATH=$HOME/.config/composer/vendor/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH

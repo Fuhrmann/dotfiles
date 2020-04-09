@@ -1,0 +1,62 @@
+#!/usr/bin/env bash
+
+# Update the plex image
+update() {
+  docker pull linuxserver/plex
+  stop
+  docker rm plex
+  create
+  start
+  docker image prune
+  docker ps
+}
+
+create() {
+  docker create \
+  --name=plex \
+  --net=host \
+  -e PUID=1000 \
+  -e PGID=1000 \
+  -e VERSION=docker \
+  -e UMASK_SET=022 \
+  -e PLEX_CLAIM=claim-xyAXm_of9sKBUStYixDV \
+  -v /disks/Documentos/Plex:/config \
+  -v /disks/Seriados:/tv \
+  -v /disks/Filmes:/movies \
+  -v /disks/Documentos/Musicas:/musics \
+  --restart unless-stopped \
+  linuxserver/plex
+}
+
+start() {
+  docker start plex
+}
+
+
+stop() {
+  docker stop plex
+}
+
+usage ()
+{
+  echo 'Script to control plex local docker image.'
+  echo ''
+  echo 'usage: plex COMMAND'
+  echo ''
+  echo 'update	Update the plex image'
+  echo 'start   Start the plex image'
+  exit
+}
+
+if [[ $1 = "update" ]] || [[ $1 = "u" ]]; then
+  update
+  exit 0
+elif [[ $1 = "start" ]] || [[ $1 = "s" ]]; then
+  start
+  exit 0
+fi
+
+usage
+
+
+
