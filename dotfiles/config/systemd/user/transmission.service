@@ -1,0 +1,13 @@
+[Unit]
+Description=Transmission BitTorrent Daemon
+Wants=network-online.target
+After=network.target network-online.target
+
+[Service]
+Type=notify
+ExecStart=/usr/bin/transmission-daemon -f --log-info
+ExecReload=/bin/kill -s HUP $MAINPID
+LimitNOFILE=4096
+
+[Install]
+WantedBy=default.target

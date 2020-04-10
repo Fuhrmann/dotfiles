@@ -127,6 +127,22 @@ dotfiles:
     src: local/bin
     dst: ~/.local/bin
     link: link
+  f_user-dirs.dirs:
+    src: config/user-dirs.dirs
+    dst: ~/.config/user-dirs.dirs
+    link: link
+  f_user-dirs.locale:
+    src: config/user-dirs.locale
+    dst: ~/.config/user-dirs.locale
+    link: link
+  f_transmission.service:
+    src: config/systemd/user/transmission.service
+    dst: ~/.config/systemd/user/transmission.service
+    link: link
+  f_keyledsd.service:
+    src: config/systemd/user/keyledsd.service
+    dst: ~/.config/systemd/user/keyledsd.service
+    link: link
 profiles:
   fridora:
     dotfiles:
@@ -161,3 +177,7 @@ profiles:
     - f_htoprc
     - f_antigenrc
     - d_bin
+    - f_user-dirs.dirs
+    - f_user-dirs.locale
+    - f_transmission.service
+    - f_keyledsd.service

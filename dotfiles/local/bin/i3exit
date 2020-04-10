@@ -1,8 +1,13 @@
 #!/bin/env bash
 
+do_extra() {
+  mpc stop
+  pkill --oldest chrome
+}
+
 case "$1" in
   logout)
-    i3-msg exit
+    do_extra; i3-msg exit
     ;;
   suspend)
     systemctl suspend
@@ -11,10 +16,10 @@ case "$1" in
     systemctl hibernate
     ;;
   reboot)
-    pkill --oldest chrome; sleep 1; systemctl reboot
+    do_extra; sleep 1; systemctl reboot
     ;;
   shutdown)
-    systemctl poweroff
+    do_extra; sleep 1; systemctl poweroff
     ;;
   *)
     echo 'Script to reboot/shutdown.'

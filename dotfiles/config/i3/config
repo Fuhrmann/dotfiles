@@ -45,6 +45,7 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 bindsym XF86AudioPlay exec --no-startup-id playercontrol --toggle
 bindsym XF86AudioNext exec --no-startup-id playercontrol --next
 bindsym XF86AudioPrev exec --no-startup-id playercontrol --prev
+bindsym XF86AudioStop exec --no-startup-id playercontrol --stop
 
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
@@ -57,10 +58,10 @@ bindsym Mod1+Control+d focus child; split v; exec $TERMINAL
 bindsym $mod+w kill
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+#bindsym $mod+j focus left
+#bindsym $mod+k focus down
+#bindsym $mod+l focus up
+#bindsym $mod+semicolon focus right
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
@@ -152,6 +153,9 @@ mode "$mode_power" {
     bindsym Escape mode "default"
 }
 
+# "Lock" (not really) the screen using DPMS
+bindsym $mod+l exec --no-startup-id standby
+
 # resize window (you can also use the mouse for that)
 bindsym $mod+KP_Add resize grow width 10 px or 10 ppt
 bindsym $mod+KP_Subtract resize shrink width 10 px or 10 ppt
@@ -215,6 +219,7 @@ for_window [class="jetbrains-phpstorm" title="win0"] $float, $center
 for_window [class="(?i)pavucontrol"] $float, resize set 758 576, $center
 
 for_window [title="Android Emulator"] floating enable
+for_window [class="Sxiv"] floating enable
 for_window [urgent="latest"] focus
 for_window [class="^Steam$" title="Steam - News"] floating enable
 for_window [class="^Steam$" title="^Settings$"] floating enable
@@ -264,12 +269,10 @@ workspace $ws8 output DP-5
 # https://sw.kovidgoyal.net/kitty/
 bindsym $mod+f exec --no-startup-id kitty --session $HOME/.config/kitty/filemanager.kitty
 
-# Persist multi monitor layout
-# https://github.com/wertarbyte/autorandr
-exec --no-startup-id autorandr --change --force
-
-# Run polkit-mate-authentication-agent-1 for polkit
-exec /usr/libexec/polkit-mate-authentication-agent-1
+# Launch some windows
+exec google-chrome-stable
+exec transmission-gtk
+exec $TERMINAL --single-instance
 
 # Launch polybar
 # https://github.com/polybar/polybar
@@ -278,10 +281,6 @@ exec_always --no-startup-id launchpolybar
 # Launch mpris-scrobbler
 # https://github.com/mariusor/mpris-scrobbler
 exec_always --no-startup-id mpris-scrobbler &
-
-# Launch keyledsd to control logitech keyboard leds
-# https://github.com/keyleds/keyleds
-exec_always --no-startup-id keyledsd &
 
 # Launch mpris support for mpd
 # https://github.com/eonpatapon/mpDris2

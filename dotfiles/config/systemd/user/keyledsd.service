@@ -1,0 +1,13 @@
+[Unit]
+Description=Keyledsd service
+Documentation=https://github.com/keyleds/keyleds
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/keyledsd
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=default.target
+

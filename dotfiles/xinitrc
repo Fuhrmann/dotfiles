@@ -7,7 +7,8 @@ export TERMINAL="kitty"
 export PATH=$HOME/.local/bin:$PATH
 
 # Persist multi monitor layout
-autorandr --change --force &&
+# https://github.com/wertarbyte/autorandr
+autorandr --change --force &
 
 # Set keyboard auto repeat rate
 xset r rate 260 10
@@ -23,23 +24,14 @@ setxkbmap -option "caps:escape"
 # Fix cursor
 xsetroot -cursor_name left_ptr &
 
-# Start the notification manager
-dunst -config ~/.config/dunst/dunstrc &
-
 # Enable numlock
 numlockx &
 
 # Restore wal (pywal) colors scheme
 wal -R
 
-# Automount disks
-udiskie &
-
-# Start mpd server
-mpd &
-
-# Start transmission daemon
-transmission-daemon &
+# Run polkit-mate-authentication-agent-1 for polkit
+#/usr/libexec/polkit-mate-authentication-agent-1 &
 
 # Launch i3 with dbus-launch because of flameshot
 exec dbus-launch /usr/bin/i3

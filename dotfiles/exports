@@ -29,6 +29,10 @@ export ZSH_AUTOSUGGEST_USE_ASYNC=true
 export ZSH_AUTOSUGGEST_MANUAL_REBIND=true
 export ZSH_AUTOSUGGEST_IGNORE_WIDGETS=(bracketed-paste)
 
+# Configure zsh-syntax-highlight
+export ZSH_HIGHLIGHT_MAXLENGTH=200
+export ZSH_HIGHLIGHT_HIGHLIGHTERS=(brackets main regexp pattern)
+
 # Set the prefered editor
 export EDITOR='nvim'
 

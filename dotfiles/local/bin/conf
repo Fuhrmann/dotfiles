@@ -1,0 +1,100 @@
+#!/usr/bin/env bash
+
+shopt -s nullglob
+shopt -s globstar
+
+readonly cmd="$1"
+shift
+
+case $cmd in
+
+    vim)
+        $EDITOR \
+            ~/.vimrc \
+            ~/.vim/after/**/* \
+            ~/.vim/syntax/* \
+            "$@"
+        ;;
+
+    tmux)
+        $EDITOR \
+            ~/.tmux.conf \
+            ~/.config/tmux/**/* \
+            "$@"
+        ;;
+
+    git)
+        $EDITOR \
+            ~/.gitconfig \
+            ~/.gitignore \
+            ~/.gitmodules \
+            ~/.bin/git-* \
+            ~/.config/git/hooks/**/* \
+            "$@"
+        ;;
+
+    aur|aurutils)
+        $EDITOR \
+            ~/.bin/aur-* \
+            "$@"
+        ;;
+
+    zsh)
+        $EDITOR \
+            ~/.zshrc \
+            ~/.config/zsh/* \
+            ~/.zprofile \
+            ~/.profile \
+            "$@"
+        ;;
+
+    bash)
+        $EDITOR \
+            ~/.bashrc \
+            ~/.config/bash/* \
+            ~/.bash_profile \
+            ~/.profile \
+            "$@"
+        ;;
+
+    aw|awesome)
+        $EDITOR \
+            ~/.config/awesome/rc.lua \
+            ~/.config/awesome/themes/blackout/theme.lua \
+            ~/.config/awesome/themes/whiteout/theme.lua \
+            ~/.config/awesome/config/**/* \
+            ~/.config/awesome/widgets/**/* \
+            ~/.config/awesome/yaawl/* \
+            ~/.config/awesome/yaawl/subject/* \
+            ~/.config/awesome/yaawl/util/* \
+            "$@"
+        ;;
+
+    xorg)
+        $EDITOR \
+            ~/.xinitrc \
+            "$@"
+        ;;
+
+    gdb)
+        $EDITOR \
+            ~/.gdbinit \
+            ~/.gdbinit.d/**/* \
+            "$@"
+        ;;
+
+    bin)
+        $EDITOR \
+            ~/.bin/* \
+            "$@"
+        ;;
+
+    conf)
+        $EDITOR "$0"
+        ;;
+
+    *)
+        $EDITOR "$cmd" "$@"
+        ;;
+
+esac
