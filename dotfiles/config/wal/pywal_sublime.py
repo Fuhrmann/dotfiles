@@ -65,6 +65,11 @@ if __name__ == '__main__':
     result_scheme['semanticClass'] = 'theme.dark.pywal'
 
     theme_path = os.path.join(os.environ['HOME'], '.config/sublime-text-3/Packages/User/PyWal.sublime-color-scheme')
+    if os.path.exists(theme_path):
+        os.remove(theme_path)
+
+    os.mknod(theme_path)
+
     with open(theme_path, 'w') as file:
         json.dump(result_scheme, file, indent=4)
 

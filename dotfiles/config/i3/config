@@ -37,8 +37,8 @@ floating_modifier $mod
 font pango:JetBrains Mono 11
 
 # Adjust volumes
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl -- set-sink-volume @DEFAULT_SINK@ +10%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume @DEFAULT_SINK@ -10%
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl -- set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 # Media player controls
@@ -55,7 +55,7 @@ bindsym $mod+KP_Enter exec $TERMINAL --single-instance
 bindsym Mod1+Control+d focus child; split v; exec $TERMINAL
 
 # Kill focused window
-bindsym $mod+w kill
+bindsym $mod+q kill
 
 # change focus
 #bindsym $mod+j focus left
@@ -102,34 +102,37 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # Define workspaces
-set $ws1 "1: term"
-set $ws2 "2: browse"
-set $ws3 "3: code"
-set $ws4 "4: game"
-set $ws5 "5: chat"
-set $ws6 "6: music"
-set $ws7 "7: warez"
-set $ws8 "8: any"
+set $console "1: term"
+set $browse "2: browse"
+set $code "3: code"
+set $study "4: study"
+set $game "5: game"
+set $chat "6: chat"
+set $music "7: music"
+set $warez "8: warez"
+set $any "9: any"
 
 # switch to workspace
-bindsym $mod+1 workspace $ws1
-bindsym $mod+2 workspace $ws2
-bindsym $mod+3 workspace $ws3
-bindsym $mod+4 workspace $ws4
-bindsym $mod+5 workspace $ws5
-bindsym $mod+6 workspace $ws6
-bindsym $mod+7 workspace $ws7
-bindsym $mod+8 workspace $ws8
+bindsym $mod+1 workspace $console
+bindsym $mod+2 workspace $browse
+bindsym $mod+3 workspace $code
+bindsym $mod+4 workspace $study
+bindsym $mod+5 workspace $game
+bindsym $mod+6 workspace $chat
+bindsym $mod+7 workspace $music
+bindsym $mod+8 workspace $warez
+bindsym $mod+9 workspace $any
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace $ws1
-bindsym $mod+Shift+2 move container to workspace $ws2
-bindsym $mod+Shift+3 move container to workspace $ws3
-bindsym $mod+Shift+4 move container to workspace $ws4
-bindsym $mod+Shift+5 move container to workspace $ws5
-bindsym $mod+Shift+6 move container to workspace $ws6
-bindsym $mod+Shift+7 move container to workspace $ws7
-bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+1 move container to workspace $console
+bindsym $mod+Shift+2 move container to workspace $browse
+bindsym $mod+Shift+3 move container to workspace $code
+bindsym $mod+Shift+4 move container to workspace $study
+bindsym $mod+Shift+5 move container to workspace $game
+bindsym $mod+Shift+6 move container to workspace $chat
+bindsym $mod+Shift+7 move container to workspace $music
+bindsym $mod+Shift+8 move container to workspace $warez
+bindsym $mod+Shift+9 move container to workspace $any
 bindsym $mod+Tab workspace back_and_forth
 
 # reload the configuration file
@@ -183,12 +186,12 @@ bindsym $mod+r mode "$mode_resize"
 
 popup_during_fullscreen smart
 default_floating_border pixel 2
-workspace_auto_back_and_forth yes
+#workspace_auto_back_and_forth yes
 force_display_urgency_hint 500 ms
 
 # Gaps
 for_window [class=".*"] border pixel 5
-gaps inner 8
+gaps inner 5
 smart_gaps on
 smart_borders no_gaps
 
@@ -229,19 +232,19 @@ for_window [class="^Steam$" title="^Steam - Self Updater$"] floating enable
 for_window [class="^Steam$" title="^Screenshot Uploader$"] floating enable
 for_window [class="^Steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable
 for_window [title="^Steam Keyboard$"] floating enable
-for_window [class="^deadcells$"] floating disable, fullscreen enable, workspace --no-auto-back-and-forth $ws3
-for_window [class="^music$"] move to workspace $ws6
+for_window [class="^deadcells$"] floating disable, fullscreen enable, workspace --no-auto-back-and-forth $game
+for_window [class="^music$"] move to workspace $music
 for_window [class="Nitrogen"] $float, resize set 800 500, $center, border normal
 for_window [class="Firewall-config"] $float, $center, border normal
 
 # Assign windows to workspaces
-assign [class="Google-chrome" window_role="browser"] → $ws2
-assign [class="jetbrains-phpstorm"] → $ws3
-assign [class="^Steam$" title="^Steam$"] → $ws4
-assign [instance="web.whatsapp.com" window_role="pop-up"] → $ws5
-assign [class="(?i)mpv"] → $ws6
-assign [class="^music$"] → $ws6
-assign [title="(?i)transmission"] → $ws7
+assign [class="Google-chrome" window_role="browser"] → $browse
+assign [class="jetbrains-phpstorm"] → $code
+assign [class="^Steam$" title="^Steam$"] → $game
+assign [instance="web.whatsapp.com" window_role="pop-up"] → $chat
+assign [class="(?i)mpv"] → $music
+assign [class="^music$"] → $music
+assign [title="(?i)transmission"] → $warez
 
 # Open up the most used configurations
 bindsym $mod+i exec --no-startup-id subl ~/.config/i3/config
@@ -261,14 +264,15 @@ bindsym $mod+Shift+greater move workspace to output right
 bindsym $mod+Shift+less move workspace to output left
 
 # Move workspaces para monitores
-workspace $ws1 output HDMI-0
-workspace $ws2 output HDMI-0
-workspace $ws3 output HDMI-0
-workspace $ws4 output HDMI-0
-workspace $ws5 output DP-5
-workspace $ws6 output DP-5
-workspace $ws7 output DP-5
-workspace $ws8 output DP-5
+workspace $console output HDMI-0
+workspace $browse output HDMI-0
+workspace $code output HDMI-0
+workspace $study output HDMI-0
+workspace $game output HDMI-0
+workspace $chat output DP-5
+workspace $music output DP-5
+workspace $warez output DP-5
+workspace $any output DP-5
 
 # move the currently focused window to the scratchpad
 bindsym $mod+Shift+minus move scratchpad
@@ -300,7 +304,7 @@ exec_always --no-startup-id mpDris2 &
 
 #################
 # read 1 character and mark the current window with this character
-bindsym $mod+q exec i3-input -F 'mark %s' -l 1 -P 'Mark: '
+#bindsym $mod+q exec i3-input -F 'mark %s' -l 1 -P 'Mark: '
 
 # read 1 character and go to the window with the character
-bindsym $mod+y exec i3-input -F '[con_mark="%s"] focus' -l 1 -P 'Goto: '
+#bindsym $mod+y exec i3-input -F '[con_mark="%s"] focus' -l 1 -P 'Goto: '
