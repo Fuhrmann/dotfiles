@@ -241,7 +241,7 @@ for_window [class="^deadcells$"] floating disable, fullscreen enable, workspace 
 for_window [class="^music$"] move to workspace $music
 for_window [class="Nitrogen"] $float, resize set 800 500, $center, border normal
 for_window [class="Firewall-config"] $float, $center, border normal
-for_window [class="htop"] resize set 900 600,$float, $center, border normal
+for_window [class="htop"] $float, resize set 900 600, $center, border normal
 for_window [class="Font-manager"] resize set 526 1032, $float, $center, border normal
 for_window [class="Lxappearance"] resize set 526 1032, $float, $center, border normal
 

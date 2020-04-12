@@ -22,12 +22,10 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
 
 # Extra zsh completions
-antigen bundle zsh-users/zsh-completions
-
-# Perform tasks asynchronously without external tools
-antigen bundle mafredri/zsh-async
+# antigen bundle zsh-users/zsh-completions
 
 # Pure prompt
+antigen bundle mafredri/zsh-async
 antigen bundle sindresorhus/pure
 
 # Aply everything above
