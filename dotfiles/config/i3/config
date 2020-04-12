@@ -47,12 +47,17 @@ bindsym XF86AudioNext exec --no-startup-id playercontrol --next
 bindsym XF86AudioPrev exec --no-startup-id playercontrol --prev
 bindsym XF86AudioStop exec --no-startup-id playercontrol --stop
 
+# Winamp feelings :(
+bindsym Control+Mod1+Next exec --no-startup-id playercontrol --next
+bindsym Control+Mod1+Prior exec --no-startup-id playercontrol --prev
+bindsym Control+Mod1+Home exec --no-startup-id playercontrol --toggle
+
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
 #bindsym $mod+KP_Enter exec i3-sensible-terminal
 bindsym $mod+Return exec $TERMINAL --single-instance
 bindsym $mod+KP_Enter exec $TERMINAL --single-instance
-bindsym Mod1+Control+d focus child; split v; exec $TERMINAL
+bindsym Control+Mod1+d focus child; split v; exec $TERMINAL
 
 # Kill focused window
 bindsym $mod+q kill
@@ -236,6 +241,9 @@ for_window [class="^deadcells$"] floating disable, fullscreen enable, workspace 
 for_window [class="^music$"] move to workspace $music
 for_window [class="Nitrogen"] $float, resize set 800 500, $center, border normal
 for_window [class="Firewall-config"] $float, $center, border normal
+for_window [class="htop"] resize set 900 600,$float, $center, border normal
+for_window [class="Font-manager"] resize set 526 1032, $float, $center, border normal
+for_window [class="Lxappearance"] resize set 526 1032, $float, $center, border normal
 
 # Assign windows to workspaces
 assign [class="Google-chrome" window_role="browser"] → $browse
@@ -285,8 +293,11 @@ bindsym $mod+minus scratchpad show
 # https://sw.kovidgoyal.net/kitty/
 bindsym $mod+f exec --no-startup-id kitty --session $HOME/.config/kitty/filemanager.kitty
 
+# Launch htop
+bindsym Control+Mod1+Delete exec --no-startup-id $TERMINAL --class htop --single-instance -- htop
+
 # Launch some windows
-exec google-chrome-stable
+exec google-chrome
 exec transmission-gtk
 exec $TERMINAL --single-instance
 

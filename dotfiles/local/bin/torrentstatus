@@ -1,6 +1,10 @@
 #!/usr/bin/env sh	
 
 if command -v transmission-remote > /dev/null 2>&1; then	
+  TORRENT_LIST=$(transmission-remote -l 2>&1)
+  if [[ $TORRENT_LIST =~ "connect to server" ]]; then
+    echo ""
+  else
     echo $(transmission-remote -l | grep % |	
             sed " # This first sed command is to ensure a desirable order with sort	
             s/.*Stopped.*/A/g;	
@@ -16,4 +20,5 @@ if command -v transmission-remote > /dev/null 2>&1; then
                                     s/M//g;	
                                     s/N//g;	
 				    s/Z//g" | awk '{print $2, $1}' | tr '\n' ' ' | sed -e "s/ $//g")
+  fi
 fi
