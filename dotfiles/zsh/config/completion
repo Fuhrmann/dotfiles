@@ -1,0 +1,3 @@
+zstyle ':completion:*' menu yes select
+
+zstyle cache-path "$XDG_CACHE_HOME/zcompdump"

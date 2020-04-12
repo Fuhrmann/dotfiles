@@ -1,0 +1,37 @@
+bindkey -e
+
+# zsh-auto-suggestions: accept suggestion on space
+#bindkey '^I' autosuggest-accept
+
+# ctrl+arrows
+bindkey "\e[1;5C" forward-word
+bindkey "\e[1;5D" backward-word
+bindkey "\e[5C" forward-word
+bindkey "\e[5D" backward-word
+bindkey "\e\e[C" forward-word
+bindkey "\e\e[D" backward-word
+
+# alt+arrows
+bindkey "\e[1;3C" vi-forward-blank-word
+bindkey "\e[1;3D" vi-backward-blank-word
+bindkey "\e[3C" vi-forward-blank-word
+bindkey "\e[3D" vi-backward-blank-word
+bindkey "\e\e[C" vi-forward-blank-word
+bindkey "\e\e[D" vi-backward-blank-word
+
+# ctrl+delete
+bindkey "\e[3;5~" kill-word
+bindkey "\e[3;3~" kill-word
+
+# Home e End keys
+bindkey  "^[[H"   beginning-of-line
+bindkey  "^[[F"   end-of-line
+
+# Delete key
+bindkey "\e[3~" delete-char 
+
+# Backspace
+bindkey '^?' backward-delete-char
+
+# Control+Backspace
+bindkey '^H' backward-kill-word

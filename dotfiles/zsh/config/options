@@ -1,0 +1,31 @@
+## when completing from the middle of a word, move the cursor to the end of the word    
+setopt always_to_end
+
+setopt menu_complete
+
+# Dont push multiple copies of the same directory onto the stack
+setopt pushd_ignore_dups
+
+# self explicit
+setopt auto_remove_slash
+
+# resolve symlinks
+setopt chase_links         
+
+# activate complex pattern globbing
+setopt extended_glob
+
+# include dotfiles in globbing
+setopt glob_dots
+
+# no bell on error
+unsetopt beep
+
+# ask for confirmation for `rm *' or `rm path/*'
+unsetopt rm_star_silent
+
+# Perform the cd command into the directory automatically
+setopt autocd
+
+setopt +o nomatch
+

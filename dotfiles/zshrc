@@ -1,8 +1,11 @@
-source $HOME/.exports
-source /usr/share/antigen.zsh
+export ZDOTDIR=~/.zsh
 
-# Initialize antigen plugin manager
-antigen init $HOME/.antigenrc
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
 # Import colorscheme from 'wal' asynchronously
 # &   # Run the process in the background.
@@ -12,43 +15,67 @@ antigen init $HOME/.antigenrc
 # To add support for TTYs this line can be optionally added.
 [ -f $HOME/.cache/wal/colors-tty.sh ] && source $HOME/.cache/wal/colors-tty.sh
 
-source $HOME/.aliases
+### Added by Zinit's installer
+if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
+    print -P "%F{33}▓▒░ %F{220}Installing DHARMA Initiative Plugin Manager (zdharma/zinit)…%f"
+    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
+    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
+        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
+        print -P "%F{160}▓▒░ The clone has failed.%f%b"
+fi
 
-# when completing from the middle of a word, move the cursor to the end of the word    
-setopt always_to_end
+source "$HOME/.zinit/bin/zinit.zsh"
 
-# append
-setopt append_history     
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
 
-# Remove older duplicate entries from history 
-setopt hist_ignore_all_dups
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+    zinit-zsh/z-a-patch-dl \
+    zinit-zsh/z-a-as-monitor \
+    zinit-zsh/z-a-bin-gem-node
 
-# trim blanks
-setopt hist_reduce_blanks
+# Git aliases
+zinit ice svn; zinit snippet PZT::modules/git
 
-# show before executing history commands
-setopt hist_verify
+# DNF aliases
+zinit snippet OMZ::plugins/dnf/dnf.plugin.zsh
 
-# add commands as they are typed, don't wait until shell exit 
-setopt inc_append_history
+# Extract aliases
+zinit snippet OMZ::plugins/extract/extract.plugin.zsh
 
-# self explicit
-setopt auto_remove_slash
+# fuck!
+zinit snippet OMZ::plugins/thefuck/thefuck.plugin.zsh
 
-# resolve symlinks
-setopt chase_links         
+# z fast navigation
+zinit snippet https://github.com/agkozak/zsh-z/blob/master/zsh-z.plugin.zsh
 
-# activate complex pattern globbing
-setopt extended_glob
+# docker completion
+zinit ice as"completion"
+zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
 
-# include dotfiles in globbing
-setopt glob_dots
+# Help remembering aliases
+zinit light djui/alias-tips
 
-# no bell on error
-unsetopt beep
+# Introduce a new ctrl+r
+zinit light zdharma/history-search-multi-word
 
-# no bell on error in history
-unsetopt hist_beep
+# Prompt
+zinit ice depth=1; zinit light romkatv/powerlevel10k
 
-# ask for confirmation for `rm *' or `rm path/*'
-unsetopt rm_star_silent
+# Best combination
+zinit wait lucid for \
+ atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+    zdharma/fast-syntax-highlighting \
+ blockf \
+    zsh-users/zsh-completions \
+ atload"!_zsh_autosuggest_start" \
+    zsh-users/zsh-autosuggestions
+
+
+# Local local files
+zpl ice atinit'local i; for i in *; do source $i; done'; zpl light $ZDOTDIR/config
+
+# To customize prompt, run `p10k configure` or edit ~/.zsh/.p10k.zsh.
+[[ ! -f ${ZDOTDIR}/.p10k.zsh ]] || source ${ZDOTDIR}/.p10k.zsh

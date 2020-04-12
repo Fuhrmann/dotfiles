@@ -15,10 +15,6 @@ dotfiles:
     src: gitignore
     dst: ~/.gitignore
     link: link
-  f_exports:
-    src: exports
-    dst: ~/.exports
-    link: link
   d_rofi:
     src: config/rofi
     dst: ~/.config/rofi
@@ -119,10 +115,6 @@ dotfiles:
     src: config/htop/htoprc
     dst: ~/.config/htop/htoprc
     link: link
-  f_antigenrc:
-    src: antigenrc
-    dst: ~/.antigenrc
-    link: link
   d_bin:
     src: local/bin
     dst: ~/.local/bin
@@ -143,13 +135,16 @@ dotfiles:
     src: config/systemd/user/keyledsd.service
     dst: ~/.config/systemd/user/keyledsd.service
     link: link
+  d_config:
+    src: zsh/config
+    dst: ~/.zsh/config
+    link: link
 profiles:
   fridora:
     dotfiles:
     - f_zshrc
     - f_gitconfig
     - f_gitignore
-    - f_exports
     - d_rofi
     - f_xinitrc
     - f_bash_profile
@@ -175,9 +170,9 @@ profiles:
     - f_config.conf
     - f_mpdris2.conf
     - f_htoprc
-    - f_antigenrc
     - d_bin
     - f_user-dirs.dirs
     - f_user-dirs.locale
     - f_transmission.service
     - f_keyledsd.service
+    - d_config

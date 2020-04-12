@@ -1,0 +1,35 @@
+# add a timestamp and the duration of each command
+setopt extendedhistory
+
+# append
+setopt append_history     
+
+# Remove older duplicate entries from history 
+setopt hist_ignore_all_dups
+setopt hist_ignore_space
+
+# trim blanks
+setopt hist_reduce_blanks
+
+# show before executing history commands
+setopt hist_verify
+
+# add commands as they are typed, don't wait until shell exit 
+setopt inc_append_history
+
+# no bell on error in history
+unsetopt hist_beep
+
+# History directory
+HISTDIR="${ZDOTDIR}/history"
+if [ ! -d "${HISTDIR}" ]; then
+    mkdir -p "${HISTDIR}"
+fi
+
+HISTFILE="${HISTDIR}/history"
+
+HISTSIZE=1000000
+SAVEHIST=1000000
+
+export HISTFILE HISTSIZE SAVEHIST
+unset HISTDIR

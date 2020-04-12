@@ -1,8 +1,11 @@
-# pure prompt need this
-export ZSH_THEME=""
+export LANG=pt_BR.UTF-8
+export LC_ALL=pt_BR.UTF-8
 
 # djui/alias-tips
 export ZSH_PLUGINS_ALIAS_TIPS_EXCLUDES="_ ll vi"
+
+# agkozak/zsh-z
+export ZSHZ_DATA=$ZDOTDIR/.z
 
 export PATH=$HOME/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
@@ -20,18 +23,14 @@ export KEYLEDS_DEVICE=137436733730
 
 # Set LD_LIBRARY_PATH for keyleds
 export LD_LIBRARY_PATH=/usr/local/lib:/usr/lib64
+export LD_PRELOAD=/usr/lib/libwcwidth-icons.so
+
 
 # Configure zsh-autosuggestions
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#4b4b4b,underline"
 export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=6
 export ZSH_AUTOSUGGEST_USE_ASYNC=true
-export ZSH_AUTOSUGGEST_MANUAL_REBIND=true
-export ZSH_AUTOSUGGEST_IGNORE_WIDGETS=(bracketed-paste)
-
-# Configure zsh-syntax-highlight
-export ZSH_HIGHLIGHT_MAXLENGTH=200
-export ZSH_HIGHLIGHT_HIGHLIGHTERS=(brackets main regexp pattern)
 
 # Set the prefered editor
 export EDITOR='nvim'
@@ -53,5 +52,4 @@ export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
-# LS colors https://github.com/sharkdp/vivid
-export LS_COLORS="$(vivid generate molokai)"
+source $HOME/.local/share/lscolors.sh

@@ -1,0 +1,41 @@
+#alias rm="echo Use 'trash', or the full path i.e. '/bin/rm'"
+alias apache-restart='sudo service apache2 restart'
+alias www='cd ~/projetos'
+alias commit='git add -A && git commit'
+
+# bring job to fg
+foreground-job() {
+    fg
+}
+zle     -N   foreground-job
+bindkey '^Z' foreground-job
+
+alias ssh_singest='ssh -i "$HOME/gepecsp.pem" ubuntu@ec2-52-67-201-136.sa-east-1.compute.amazonaws.com'
+alias ssh_sasp_prod='ssh fuhrmann@104.248.28.233'
+alias ssh_sasp_dev='ssh fuhrmann@206.81.23.155'
+alias ssh_pi='ssh pi@pihole.frida'
+alias ssh_fuhrmann='ssh -i "$HOME/fuhrmann.pem" ubuntu@ec2-18-229-19-175.sa-east-1.compute.amazonaws.com'
+
+alias d='docker-compose'
+alias firmware-update='sudo fwupdmgr update'
+alias t='sudo timeshift'
+alias copy='xclip -selection clipboard'
+alias paste='xclip -selection clipboard -o'
+alias portas='sudo netstat -tlnp'
+alias lanplay='sudo ./lan-play-linux --netif enp6s0 --relay-server-addr frog-skins.com:11451 --pmtu 500'
+
+# Dirs
+alias l='exa --long --classify --all --sort=type'
+alias ll='l'
+
+alias la='ls -A --group-directories-first'
+alias lla='ls -lA --group-directories-first'
+alias lh='ls -lh --group-directories-first'
+alias lah='ls -lah --group-directories-first'
+alias lash='ls -laSh --group-directories-first'
+
+# xclipboard
+alias xcopy='xclip -selection clipboard'
+alias xpaste='xclip -o -selection clipboard'
+
+alias battery='sudo g933-utils get battery -d 1-3'

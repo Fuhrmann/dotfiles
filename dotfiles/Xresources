@@ -8,7 +8,8 @@ URxvt*termName: rxvt-unicode-256color
 URxvt.perl-ext-common: default,matcher
 URxvt.scrollBar: false
 URxvt.scrollstyle: plain
-.font: xft:JetBrainsMono Nerd Font Mono:pixelsize=13:antialias=true:hinting=true
+;URxvt.font: xft:JetBrainsMono Nerd Font Mono:pixelsize=14:antialias=true:hinting=true
+URxvt.font: xft:MesloLGSDZ Nerd Font:pixelsize=14:antialias=true:hinting=true
 
 URxvt.letterSpace: 0
 URxvt.lineSpace: 0
@@ -22,7 +23,8 @@ URxvt.iso14755: false
 URxvt.mapAlert: true
 URxvt.visualBell: true
 URxvt.pastableTabs: false
-URxvt.borderless: true
+;URxvt.borderless: true
+URxvt.internalBorder:  10
 
 !! Custom keybinds for copy/paste
 URxvt.keysym.Shift-Control-V: eval:paste_clipboard
