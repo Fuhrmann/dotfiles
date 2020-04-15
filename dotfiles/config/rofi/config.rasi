@@ -1,49 +1,42 @@
 configuration {
-  modi: "combi,drun,window,run,tasks:~/.config/rofi/modi/tasks";
-  combi-modi: "drun,run,tasks";
+  modi: "combi,drun,window,tasks:~/.config/rofi/modi/tasks";
+  combi-modi: "drun";
+  display-drun:"";
+  combi-hide-mode-prefix: true;
+  width: 20;
   drun-display-format: "{icon} {name}";
-	location: 0;
-	yoffset: 0;
+  location: 0;
+  yoffset: 0;
   xoffset: 0;
-	columns: 2;
-	hide-scrollbar: true;
+  columns: 1;
+  hide-scrollbar: true;
   fullscreen: false;
   show-icons: true;
-	terminal: "alacritty";
-	sidebar-mode: false;
-	lines: 10;
-	font: "JetBrains Mono 10";
+  terminal: "urxvt";
+  sidebar-mode: false;
+  lines: 10;
 }
 
 @theme "~/.cache/wal/colors-rofi-dark"
 
 * {
   text-font:                            "JetBrainsMono Nerd Font 10";
-  prompt-padding:                       0px 0px;
-  entry-padding:                        0px 0px 0px 0px;
+  entry-padding:                        10px;
   list-element-margin:                  @inputbar-margin;
-  list-element-padding:                 5px;
+  list-element-padding:                 5px 10px 5px 10px;
   list-element-border:                  0px 0px 0px 0px;
 }
 
 #window {
-  padding: 10px 10px;
-  border: 0px;
+  padding: 0px 0px 10px 0px;
 }
 
 * {
   font: @text-font;
 }
 
-inputbar,
-prompt,
-textbox-prompt-colon,
-entry {
-  border: 0px;
-}
-
 #inputbar {
-  children: [ textbox-prompt-colon, entry ];
+  children: [ entry ];
 }
 
 #entry {
@@ -54,9 +47,4 @@ entry {
   padding: @list-element-padding;
   margin: @list-element-margin;
   border: @list-element-border;
-  border-radius: 10px;
-}
-
-#element.selected {
-  border-radius: 10px;
 }

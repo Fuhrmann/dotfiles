@@ -39,3 +39,9 @@ alias xcopy='xclip -selection clipboard'
 alias xpaste='xclip -o -selection clipboard'
 
 alias battery='sudo g933-utils get battery -d 1-3'
+
+GREP_OPTS='--color=auto --exclude-dir={.git,.hg,.svn}'
+alias grep="grep $GREP_OPTS"
+alias egrep="egrep $GREP_OPTS"
+alias fgrep="fgrep $GREP_OPTS"
+unset GREP_OPTS

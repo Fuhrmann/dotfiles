@@ -1,5 +1,5 @@
 # focused border
-set_from_resource $fb i3wm.color1 #000
+set_from_resource $fb i3wm.color10 #000
 
 # unfocused border
 set_from_resource $ub i3wm.background #000
@@ -34,7 +34,7 @@ exec --no-startup-id nitrogen --restore
 floating_modifier $mod
 
 # Defining the font
-font pango:JetBrains Mono 11
+font pango:Cousine Nerd Font Mono 11
 
 # Adjust volumes
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl -- set-sink-volume @DEFAULT_SINK@ +5%
@@ -55,8 +55,8 @@ bindsym Control+Mod1+Home exec --no-startup-id playercontrol --toggle
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
 #bindsym $mod+KP_Enter exec i3-sensible-terminal
-bindsym $mod+Return exec --no-startup-id $TERMINAL
-bindsym $mod+KP_Enter exec --no-startup-id $TERMINAL 
+bindsym $mod+Return focus child;exec $TERMINAL --single-instance
+bindsym $mod+KP_Enter focus child;exec $TERMINAL --single-instance
 bindsym Control+Mod1+d focus child; split v; exec $TERMINAL
 
 # Kill focused window
@@ -150,12 +150,11 @@ bindsym $mod+Shift+r restart
 set $mode_power  power
 bindsym $mod+x mode "$mode_power"
 mode "$mode_power" {
-    bindsym l mode "default", exec --no-startup-id i3exit lock
-    bindsym e mode "default", exec --no-startup-id i3exit logout
-    bindsym s mode "default", exec --no-startup-id i3exit suspend
-    bindsym h mode "default", exec --no-startup-id i3exit hibernate
+    #bindsym l mode "default", exec --no-startup-id i3exit lock
+    #bindsym e mode "default", exec --no-startup-id i3exit logout
+    #bindsym h mode "default", exec --no-startup-id i3exit hibernate
     bindsym r mode "default", exec --no-startup-id i3exit reboot
-    bindsym p mode "default", exec --no-startup-id i3exit shutdown
+    bindsym s mode "default", exec --no-startup-id i3exit shutdown
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
@@ -170,16 +169,16 @@ bindsym $mod+KP_Subtract resize shrink width 10 px or 10 ppt
 
 set $mode_resize  resize
 mode "$mode_resize" {
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym j resize shrink width 5 px or 5 ppt
+        bindsym k resize grow height 5 px or 5 ppt
+        bindsym l resize shrink height 5 px or 5 ppt
+        bindsym semicolon resize grow width 5 px or 5 ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Left resize shrink width 5 px or 5 ppt
+        bindsym Down resize grow height 5 px or 5 ppt
+        bindsym Up resize shrink height 5 px or 5 ppt
+        bindsym Right resize grow width 5 px or 5 ppt
 
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
@@ -191,13 +190,12 @@ bindsym $mod+r mode "$mode_resize"
 
 popup_during_fullscreen smart
 default_floating_border pixel 2
-#workspace_auto_back_and_forth yes
 force_display_urgency_hint 500 ms
 
 # Gaps
-for_window [class=".*"] border pixel 5
+for_window [class=".*"] border pixel 3
 gaps inner 5
-smart_gaps on
+#smart_gaps on
 smart_borders no_gaps
 
 # Open rofi
@@ -209,6 +207,8 @@ bindsym --release Control+Print exec --no-startup-id flameshot gui
 # Navegar entre workspaces
 bindsym Control+Mod1+Right workspace next
 bindsym Control+Mod1+Left workspace prev
+bindsym --whole-window button8 workspace prev 
+bindsym --whole-window button9 workspace next
 
 # Configuration for windows
 set $float floating enable, border pixel 2
@@ -241,10 +241,11 @@ for_window [class="^deadcells$"] floating disable, fullscreen enable, workspace 
 for_window [class="^music$"] move to workspace $music
 for_window [class="Nitrogen"] $float, resize set 800 500, $center, border normal
 for_window [class="Firewall-config"] $float, $center, border normal
-for_window [class="htop"] $float, resize set 900 600, $center, border normal
+for_window [class="^htop$"] $float, resize set 900 600, $center, border normal
 for_window [class="Font-manager"] resize set 526 1032, $float, $center, border normal
 for_window [class="Lxappearance"] resize set 526 1032, $float, $center, border normal
 for_window [class="Nvidia-settings"] resize set 900 600, $float, $center, border normal
+for_window [class="Wpg"] resize set 900 600, $float, $center, border normal
 
 # Assign windows to workspaces
 assign [class="Google-chrome" window_role="browser"] → $browse
@@ -260,13 +261,13 @@ bindsym $mod+i exec --no-startup-id subl ~/.config/i3/config
 bindsym $mod+p exec --no-startup-id subl ~/.config/polybar/config.ini
 
 # Launch whats app
-bindsym $mod+c exec --no-startup-id openwhatsapp
+bindsym $mod+c exec --no-startup-id raiseorlaunch --instance web.whatsapp.com --exec "google-chrome --app=https://web.whatsapp.com"
 
 # Launch music player
 bindsym $mod+m exec --no-startup-id openmusic
 
 # Launch xkill utility
-bindsym $mod+Ctrl+x --release exec --no-startup-id xkillq
+bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 
 # Move focused window between monitors
 bindsym $mod+Shift+greater move workspace to output right
@@ -297,14 +298,25 @@ bindsym $mod+f exec --no-startup-id kitty --session $HOME/.config/kitty/filemana
 # Launch htop
 bindsym Control+Mod1+Delete exec --no-startup-id $TERMINAL --class htop --single-instance -- htop
 
+# Change sinks
+bindsym $mod+slash exec --no-startup-id changesink --toggle
+
 # Launch some windows
 exec google-chrome
 exec transmission-gtk
 exec $TERMINAL
 
+# Launch i3altlayout
+# https://github.com/deadc0de6/i3altlayout
+exec_always --no-startup-id i3altlayout &
+
 # Launch polybar
 # https://github.com/polybar/polybar
 exec_always --no-startup-id launchpolybar
+
+# Launch clipster
+# https://github.com/mrichar1/clipster
+exec_always --no-startup-id clipster -d &
 
 # Launch mpris-scrobbler
 # https://github.com/mariusor/mpris-scrobbler
@@ -314,12 +326,4 @@ exec_always --no-startup-id mpris-scrobbler &
 # https://github.com/eonpatapon/mpDris2
 exec_always --no-startup-id mpDris2 &
 
-#################
-# read 1 character and mark the current window with this character
-#bindsym $mod+q exec i3-input -F 'mark %s' -l 1 -P 'Mark: '
-
-# read 1 character and go to the window with the character
-#bindsym $mod+y exec i3-input -F '[con_mark="%s"] focus' -l 1 -P 'Goto: '
-
-exec_always killall -9 picom
 exec_always --no-startup-id picom --experimental-backends -b --config ~/.config/picom/picom.conf

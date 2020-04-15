@@ -1,25 +1,20 @@
 [
   {
-    "name": "Area screenshot",
-    "command": "gnome-screenshot -a"
+    "name": "Trello",
+    "command": "google-chrome trello.com"
   },
   {
-    "name": "Window screenshot",
-    "command": "gnome-screenshot -w"
+    "name": "Screenshot",
+    "command": "flameshot gui"
   },
   {
-    "name": "Power off",
+    "name": "Shutdown",
     "confirm": true,
-    "command": "systemctl poweroff"
+    "command": "i3exit shutdown"
   },
   {
     "name": "Reboot",
     "confirm": true,
-    "command": "systemctl reboot"
-  },
-  {
-    "name": "Suspend",
-    "confirm": true,
-    "command": "systemctl suspend"
+    "command": "i3exit reboot"
   }
 ]

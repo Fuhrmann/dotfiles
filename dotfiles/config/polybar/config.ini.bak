@@ -15,12 +15,12 @@ compositing-underline = over
 compositing-border = over
 
 [colors]
-background = #101916
-foreground = #78B183
-foreground-inactive = #4E734F
-separator = #78B183
-workspace-background = #233730
-alert = #4E734F
+background = ${xrdb:color0:#222}
+foreground = ${xrdb:color6:#000}
+foreground-inactive = ${xrdb:color4:#222}
+separator = ${xrdb:color6:#000}
+workspace-background = ${xrdb:color8:#222}
+alert = ${xrdb:color1:#222}
 transparent = #00000000
 
 [sizes]
@@ -31,6 +31,7 @@ bar_height = 35
 monitor = ${env:MONITOR:HDMI-0}
 background = ${colors.background}
 foreground = ${colors.foreground}
+wm-restack = i3
 bottom = true
 fixed-center = false
 cursor-click = pointer
@@ -58,9 +59,9 @@ font-1 = "Font Awesome 5 Pro:style=Regular:size=10;3"
 font-2 = "Font Awesome 5 Pro:style=Solid:size=10;4"
 font-3 = "Font Awesome 5 Brands Regular:style=Regular:size=10;4"
 
-modules-left = bspwm 
+modules-left = i3 
 modules-center = 
-modules-right = playing fs_home fs_movies trash pulseaudio date
+modules-right = playing fs_home fs_movies trash pulseaudio network date
 
 [bar/second]
 inherit = bar/main
@@ -69,27 +70,27 @@ modules-left = i3
 modules-center =
 modules-right =
 
-[module/bspwm]
-type = internal/bspwm
+[module/i3]
+type = internal/i3
 pin-workspaces = true
 index-sort = true
 enable-click = true
 wrapping-scroll = false
 reverse-scroll = false
 format = <label-state> <label-mode>
-strip-wsnumbers = true
+strip-wsnumbers = false
 fuzzy-match = true
 
 label-mode-padding = 2
 label-mode-background = ${colors.workspace-background}
 
-label-focused = %icon% %name%
+label-focused = %index%
 label-focused-padding = 1
 label-focused-background = ${colors.workspace-background}
 label-focused-underline = ${colors.foreground-inactive}
 
-label-unfocused = %icon% %name%
-label-unfocused-padding = 2
+label-unfocused = %index%
+label-unfocused-padding = 1
 label-unfocused-foreground = ${colors.foreground-inactive}
 
 label-visible = %index%
@@ -135,19 +136,19 @@ label-font = 0
 type = internal/fs
 interval = 25
 format-mounted = <label-mounted>
+label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-inactive}
 
 [module/fs_movies]
 inherit = module/fs_abstract
 mount-0 = /disks/Filmes
-label-mounted = %{B#233730} %{F#4E734F}%{F-} %{B-} %percentage_used%%
+label-mounted =  %percentage_used%%
 
 [module/fs_home]
 inherit = module/fs_abstract
 mount-0 = /home
-label-mounted = %{B#233730} %{F#4E734F}%{F-} %{B-} %percentage_used%%
-background = ${colors.workspace-background}
+label-mounted =  %percentage_used%%
 
 [module/pkg]
 type = custom/script
@@ -159,7 +160,7 @@ type = custom/script
 exec = trashstatus --check
 tail = true
 click-left = trashstatus --empty %pid%
-format-prefix = %{B#233730} %{F#4E734F}%{F-} %{B-}
+format-prefix = " "
 
 [module/pulseaudio]
 type = internal/pulseaudio
@@ -168,16 +169,16 @@ format-volume = %{A3:pavucontrol & disown:}<ramp-volume> <label-volume>%{A}
 format-muted = <label-muted>
 label-muted = %{A3:pavucontrol & disown:}%{A}
 label-muted-foreground = ${colors.foreground-inactive}
-ramp-volume-0 = %{B#233730} %{F#4E734F}%{F-} %{B-}
-ramp-volume-1 = %{B#233730} %{F#4E734F}%{F-} %{B-}
-ramp-volume-2 = %{B#233730} %{F#4E734F}%{F-} %{B-}
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
 
 [module/network]
 type = internal/network
 interface = enp6s0
 interval = 3.0
 unknown-as-up = true
-label-connected = %{F#4E734F}%{F-}
+label-connected = 
 label-disconnected = 
 label-disconnected-foreground = ${colors.alert}
 
@@ -186,4 +187,4 @@ type = internal/date
 interval = 30
 time = %a, %d de %b %H:%M
 format = <label>
-label = %{B#233730} %{F#4E734F}%{F-} %{B-} %time%
+label =  %time%

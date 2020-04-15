@@ -20,6 +20,6 @@ if [[ $1 = "--empty" ]] || [[ $1 = "-e" ]]; then
     exit 0
 elif [[ $1 = "--check" ]] || [[ $1 = "-c" ]]; then
     trash_list
-		echo "$FILES"
+    echo " $FILES"
     exit 0
 fi

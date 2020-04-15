@@ -31,6 +31,7 @@ bar_height = 35
 monitor = ${env:MONITOR:HDMI-0}
 background = ${colors.background}
 foreground = ${colors.foreground}
+wm-restack = i3
 bottom = true
 fixed-center = false
 cursor-click = pointer
@@ -58,7 +59,7 @@ font-1 = "Font Awesome 5 Pro:style=Regular:size=10;3"
 font-2 = "Font Awesome 5 Pro:style=Solid:size=10;4"
 font-3 = "Font Awesome 5 Brands Regular:style=Regular:size=10;4"
 
-modules-left = bspwm 
+modules-left = i3 
 modules-center = 
 modules-right = playing fs_home fs_movies trash pulseaudio date
 
@@ -69,27 +70,27 @@ modules-left = i3
 modules-center =
 modules-right =
 
-[module/bspwm]
-type = internal/bspwm
+[module/i3]
+type = internal/i3
 pin-workspaces = true
 index-sort = true
 enable-click = true
 wrapping-scroll = false
 reverse-scroll = false
 format = <label-state> <label-mode>
-strip-wsnumbers = true
+strip-wsnumbers = false
 fuzzy-match = true
 
 label-mode-padding = 2
 label-mode-background = ${colors.workspace-background}
 
-label-focused = %icon% %name%
+label-focused = %index%
 label-focused-padding = 1
 label-focused-background = ${colors.workspace-background}
 label-focused-underline = ${colors.foreground-inactive}
 
-label-unfocused = %icon% %name%
-label-unfocused-padding = 2
+label-unfocused = %index%
+label-unfocused-padding = 1
 label-unfocused-foreground = ${colors.foreground-inactive}
 
 label-visible = %index%

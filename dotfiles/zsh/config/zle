@@ -2,6 +2,11 @@ bindkey -e
 
 # zsh-auto-suggestions: accept suggestion on space
 #bindkey '^I' autosuggest-accept
+zmodload zsh/complist
+bindkey -M menuselect ${terminfo[kcbt]}	reverse-menu-complete	# shift-tab
+bindkey -M menuselect ${terminfo[kpp]}	backward-word
+bindkey -M menuselect ${terminfo[knp]}	forward-word
+bindkey -M menuselect '\eo'				accept-and-infer-next-history
 
 # ctrl+arrows
 bindkey "\e[1;5C" forward-word
@@ -24,8 +29,12 @@ bindkey "\e[3;5~" kill-word
 bindkey "\e[3;3~" kill-word
 
 # Home e End keys
-bindkey  "^[[H"   beginning-of-line
-bindkey  "^[[F"   end-of-line
+if [[ "${terminfo[khome]}" != "" ]]; then
+  bindkey "${terminfo[khome]}" beginning-of-line      # [Home] - Go to beginning of line
+fi
+if [[ "${terminfo[kend]}" != "" ]]; then
+  bindkey "${terminfo[kend]}"  end-of-line            # [End] - Go to end of line
+fi
 
 # Delete key
 bindkey "\e[3~" delete-char 
@@ -34,4 +43,10 @@ bindkey "\e[3~" delete-char
 bindkey '^?' backward-delete-char
 
 # Control+Backspace
-bindkey '^H' backward-kill-word
+backward-kill-dir () {
+    local WORDCHARS=${WORDCHARS/\/}
+    zle backward-kill-word
+}
+zle -N backward-kill-dir
+bindkey '^H' backward-kill-dir
+bindkey '\e\C-?' backward-kill-dir

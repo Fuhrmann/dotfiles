@@ -1,3 +1,4 @@
+export TERMINAL=kitty
 export LANG=pt_BR.UTF-8
 export LC_ALL=pt_BR.UTF-8
 
@@ -27,7 +28,7 @@ export LD_PRELOAD=/usr/lib/libwcwidth-icons.so
 
 
 # Configure zsh-autosuggestions
-export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#4b4b4b,underline"
+#export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#4b4b4b,underline"
 export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=6
 export ZSH_AUTOSUGGEST_USE_ASYNC=true

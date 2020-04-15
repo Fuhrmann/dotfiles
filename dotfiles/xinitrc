@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Tell i3 which terminal we want to use
-export TERMINAL="urxvt256c"
+export TERMINAL="kitty"
 
 # Allow i3 to execute our custom scripts
 export PATH=$HOME/.local/bin:$PATH
@@ -11,15 +11,15 @@ export PATH=$HOME/.local/bin:$PATH
 autorandr --change --force &
 
 # Set keyboard auto repeat rate
-xset r rate 260 10
+xset r rate 260 10 &
 
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 
 # Make screen blank after 15min
-xset dpms 0 0 900
+xset dpms 0 0 900 &
 
 # Map capslock to escape
-setxkbmap -option "caps:escape"
+setxkbmap -option "caps:escape" &
 
 # Fix cursor
 xsetroot -cursor_name left_ptr &
@@ -28,10 +28,10 @@ xsetroot -cursor_name left_ptr &
 numlockx &
 
 # Restore wal (pywal) colors scheme
-wal -R
-
-# Run polkit-mate-authentication-agent-1 for polkit
-#/usr/libexec/polkit-mate-authentication-agent-1 &
+#wal -R &
+$HOME/.config/wpg/wp_init.sh
 
 # Launch i3 with dbus-launch because of flameshot
-exec dbus-launch /usr/bin/i3
+#exec dbus-launch /usr/bin/i3
+
+exec bspwm
