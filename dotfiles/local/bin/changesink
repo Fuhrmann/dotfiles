@@ -25,15 +25,13 @@ function setCard() {
   echo "Moving input: $INPUT to sink: $NEW_SINK";
   echo "Setting default sink to: $NEW_SINK";
 
-  notify-send --urgency=low "Audio Switching" "SINK: $NEW_SINK"
+  notify-send --urgency=low "Audio Switching" "SINK: $1"
 }
 
 function toggleSinks() {
   echo $CURRENT_SINK
   if [ "$CURRENT_SINK" == "$CARD1" ]
     then
-      echo 'setting'
-      echo $CARD2
       setCard $CARD2
     else
       setCard $CARD1

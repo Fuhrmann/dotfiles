@@ -1,4 +1,4 @@
-## when completing from the middle of a word, move the cursor to the end of the word    
+## when completing from the middle of a word, move the cursor to the end of the word
 setopt always_to_end
 
 setopt menu_complete
@@ -10,7 +10,7 @@ setopt pushd_ignore_dups
 setopt auto_remove_slash
 
 # resolve symlinks
-setopt chase_links         
+setopt chase_links
 
 # activate complex pattern globbing
 setopt extended_glob
