@@ -1,0 +1,3 @@
+#!/usr/bin/sh
+
+python $HOME/.config/wpg/scripts/sublime-text-colors.py

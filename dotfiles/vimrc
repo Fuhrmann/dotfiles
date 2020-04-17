@@ -1,3 +1,22 @@
+let mapleader=" "
+
+" -----Basic AutoCmd-----
+" Fix tex file type set
+autocmd BufRead,BufNewFile *.tex set filetype=tex
+
+" Vertically center document when entering insert mode
+autocmd InsertEnter * norm zz
+
+" Remove trailing whitespace on save
+autocmd BufWritePre * %s/\s\+$//e
+
+" Alias replace all to S
+nnoremap S :%s//gI<Left><Left><Left>
+
+" Alias write and quit to Q
+nnoremap <leader>q :wq<CR>
+nnoremap <leader>w :w<CR>
+
 " Disable folding
 set nofoldenable
 
@@ -14,7 +33,7 @@ set gdefault
 set backupskip=/tmp/*,/private/tmp/*
 
 " Enable line numbers
-set number
+set number relativenumber
 
 " Enable syntax highlighting
 syntax on
@@ -22,11 +41,13 @@ syntax on
 " Highlight current line
 set cursorline
 
+
 " Highlight searches
 set hlsearch
 
 " Ignore case of searches
 set ignorecase
+set smartcase
 
 " Highlight dynamically as pattern is typed
 set incsearch
@@ -49,21 +70,23 @@ set shortmess=atI
 " Increase multi-key timeout
 set timeout timeoutlen=3000 ttimeoutlen=100
 
-noremap <Leader>y "*y
-noremap <Leader>p "*p
-noremap <Leader>Y "+y
-noremap <Leader>P "+p
+" Autocompletion
+set wildmode=longest,list,full
 
-" nnoremap <leader>d "_d
-" xnoremap <leader>d "_d
-" xnoremap <leader>p "_dP
-noremap <leader>p "_d
+set expandtab
+set shiftwidth=2
+set softtabstop=2
+set tabstop=2
 
+" Cant set this because messes up colorscheme
+" set termguicolors
 
 call plug#begin(stdpath('data') . '/plugged')
 Plug 'myusuf3/numbers.vim'
 Plug 'lambdalisue/suda.vim'
 Plug 'itchyny/lightline.vim'
+Plug 'tpope/vim-commentary'
+Plug 'dylanaraps/wal.vim'
 call plug#end()
 
 " Enable smart edit suda.vim
@@ -75,7 +98,8 @@ set noshowmode
 " Detect filetypes
 :filetype on
 
+" Set pywal compatible color scheme
+colorscheme wal
 
-"set noshowcmd  " to get rid of display of last command
-"set shortmess+=F  " to get rid of the file name displayed in the command line bar
-
+" Change line highlight color
+highlight CursorLine ctermbg=0 ctermfg=None cterm=None

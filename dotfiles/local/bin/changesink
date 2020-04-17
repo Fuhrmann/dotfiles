@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/sh
 
 # get list of sinks/cards (for settings CARD1/CARD2)
 # pacmd list-sinks | awk '/name:/ {print $0};' | awk '{ print $2}' | sed 's/<//g; s/>//g'

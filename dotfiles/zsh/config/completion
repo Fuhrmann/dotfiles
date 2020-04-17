@@ -1,10 +1,11 @@
-zstyle ':completion:*' menu yes select
-
+# Set zcompdump location
 zstyle cache-path "$ZDOTDIR/zcompdump"
+
+# Set menu completion style
+zstyle ':completion:*' menu yes select
 
 # Enable approximate completions
 zstyle ':completion:*' completer _complete _ignored _approximate
-
 zstyle ':completion:*' rehash true
 
 # Verbose completion results

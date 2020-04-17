@@ -1,11 +1,11 @@
-configuration {
+configuration {{
   modi: "combi,window,drun,tasks:~/.config/rofi/modi/tasks";
-  font: "JetBrainsMonoMedium Nerd Font 10";
+  font: "{font} {font_size}";
   combi-modi: "window,drun";
   display-drun:"";
   combi-hide-mode-prefix: true;
   width: 20;
-  drun-display-format: "{icon} {name}";
+  drun-display-format: "{{icon}} {{name}}";
   location: 0;
   yoffset: 0;
   xoffset: 0;
@@ -16,19 +16,19 @@ configuration {
   terminal: "alacritty";
   sidebar-mode: false;
   lines: 10;
-}
+}}
 
-* {
+* {{
   entry-padding:                        10px;
   list-element-margin:                  @inputbar-margin;
   list-element-padding:                 5px 10px 5px 10px;
   list-element-border:                  0px 0px 0px 0px;
 
-  active-background: #dabe72;
-  active-foreground: #272733;
+  active-background: {color3};
+  active-foreground: {color0};
   normal-background: @background;
   normal-foreground: @foreground;
-  urgent-background: #d65f2f;
+  urgent-background: {color1};
   urgent-foreground: @foreground;
 
   alternate-active-background: @background;
@@ -38,128 +38,128 @@ configuration {
   alternate-urgent-background: @background;
   alternate-urgent-foreground: @foreground;
 
-  selected-active-background: #dabe72;
-  selected-active-foreground: #272733;
-  selected-normal-background: #dabe72;
-  selected-normal-foreground: #272733;
-  selected-urgent-background: #dabe72;
-  selected-urgent-foreground: #272733;
+  selected-active-background: {color3};
+  selected-active-foreground: {color0};
+  selected-normal-background: {color3};
+  selected-normal-foreground: {color0};
+  selected-urgent-background: {color3};
+  selected-urgent-foreground: {color0};
 
   background-color: @background;
-  background: #272733;
-  foreground: #d5d1c6;
+  background: {background};
+  foreground: {foreground};
   border-color: @background;
-}
+}}
 
-#window {
+#window {{
   background-color: @background;
   padding: 0px 0px 10px 0px;
   border: 4px 4px 4px 4px;
-  border-color: #d65f2f;
-}
+  border-color: {color9};
+}}
 
-#inputbar {
+#inputbar {{
   children: [ entry ];
   text-color: @normal-foreground;
-}
+}}
 
-#case-indicator {
+#case-indicator {{
     spacing: 0;
     text-color: @normal-foreground;
-}
+}}
 
 
-#message {
+#message {{
     border: 2px 0px 0px;
     border-color: @border-color;
     padding: 1px;
-}
+}}
 
-#entry {
+#entry {{
   padding: @entry-padding;
   text-color: @normal-foreground;
-}
+}}
 
-#textbox {
+#textbox {{
     text-color: @foreground;
-}
+}}
 
-#element {
+#element {{
   padding: @list-element-padding;
   margin: @list-element-margin;
   border: @list-element-border;
-}
+}}
 
-#listview {
+#listview {{
     fixed-height: 0;
     border: 2px 0px 0px;
     border-color: @border-color;
     spacing: 2px;
     scrollbar: true;
     padding: 2px 0px 0px;
-}
+}}
 
-#element.normal.normal {
+#element.normal.normal {{
     background-color: @normal-background;
     text-color: @normal-foreground;
-}
+}}
 
-#element.normal.urgent {
+#element.normal.urgent {{
     background-color: @urgent-background;
     text-color: @urgent-foreground;
-}
+}}
 
-#element.normal.active {
+#element.normal.active {{
     border: 0px 0px 0px 4px;
-    border-color: #d65f2f;
+    border-color: {color9};
     background-color: @active-background;
     text-color: @active-foreground;
-}
+}}
 
-#element.selected.normal {
+#element.selected.normal {{
     border: 0px 0px 0px 4px;
-    border-color: #d65f2f;
+    border-color: {color9};
     background-color: @selected-normal-background;
     text-color: @selected-normal-foreground;
-}
+}}
 
-#element.selected.urgent {
+#element.selected.urgent {{
     background-color: @selected-urgent-background;
     text-color: @selected-urgent-foreground;
-}
+}}
 
-#element.selected.active {
+#element.selected.active {{
     border: 0px 0px 0px 4px;
-    border-color: #d65f2f;
+    border-color: {color9};
     background-color: @selected-active-background;
     text-color: @selected-active-foreground;
-}
+}}
 
-#element.alternate.normal {
+#element.alternate.normal {{
     background-color: @alternate-normal-background;
     text-color: @alternate-normal-foreground;
-}
+}}
 
-#element.alternate.urgent {
+#element.alternate.urgent {{
     background-color: @alternate-urgent-background;
     text-color: @alternate-urgent-foreground;
-}
+}}
 
-#element.alternate.active {
+#element.alternate.active {{
     background-color: @alternate-active-background;
     text-color: @alternate-active-foreground;
-}
+}}
 
-#button {
+#button {{
     text-color: @normal-foreground;
-}
+}}
 
-#button.selected {
+#button.selected {{
     background-color: @selected-normal-background;
     text-color: @selected-normal-foreground;
-}
+}}
 
-#prompt {
+#prompt {{
     spacing: 0;
     text-color: @normal-foreground;
-}
+}}

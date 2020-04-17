@@ -2,11 +2,11 @@ window:
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
   padding:
-    x: 5
-    y: 0
+    x: 2
+    y: 2
 
   # Spread additional padding evenly around the terminal content.
-  dynamic_padding: true 
+  #dynamic_padding: true 
 
   # Window title
   title: Alacritty
@@ -18,35 +18,42 @@ scrolling:
 # Font configuration
 font:
   normal:
-    family: JetBrainsMono Nerd Font
-    style: Regular
+    family: "JetBrainsMono Nerd Font"
+    style: Medium
 
-  # Bold font face
-  bold:
-    family: JetBrainsMono Nerd Font
-    style: Bold
+    # Bold font face
+  #bold:
+  #family: JetBrainsMono Nerd Font
+  #style: Bold
 
   # Italic font face
-  italic:
-    family: JetBrainsMono Nerd Font
-    style: Italic
+  #italic:
+  #family: JetBrainsMono Nerd Font
+  #style: Italic
 
   # Bold italic font face
-  bold_italic:
-    family: JetBrainsMono Nerd Font
-    style: Bold Italic
+  #bold_italic:
+  #family: JetBrainsMono Nerd Font
+  #style: Bold Italic
 
   # Point size
-  size: 10.0
+  size: 11 
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
-  #offset:
-  #  x: 0
-  #  y: 0
+  offset:
+    x: -1
+    y: -1
+
+  # Glyph offset determines the locations of the glyphs within their cells with
+  # the default being at the bottom. Increasing `x` moves the glyph to the right,
+  # increasing `y` moves the glyph upwards.
+  glyph_offset:
+    x: 0
+    y: 0
   
 # If `true`, bold text is drawn using the bright color variants.
-#draw_bold_text_with_bright_colors: false
+draw_bold_text_with_bright_colors: true
 
 # Colors (atelier lake side dark)
 colors:
@@ -125,7 +132,7 @@ cursor:
   #   - ▇ Block
   #   - _ Underline
   #   - | Beam
-  style: Block
+  style: Underline
 
   # If this is `true`, the cursor will be rendered as a hollow box when the
   # window is not focused.

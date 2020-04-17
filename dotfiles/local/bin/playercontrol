@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/sh
 
 call_player() {
     playerctl -i chrome -p playerctld "$1"

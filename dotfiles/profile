@@ -1,0 +1,25 @@
+# .profile
+
+# Restore wpg colors on terminal
+[[ ! -f $HOME/.config/wpg/wp_init.sh ]] || (source $HOME/.config/wpg/wp_init.sh 2>&1 > /dev/null)
+
+export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:=$HOME/.config}"
+export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/gnupg/S.gpg-agent.ssh
+
+# User specific environment and startup programs
+export TERMINAL=alacritty
+PATH=$PATH:$HOME/.local/bin:$HOME/bin
+
+if [ -f ~/.cargo/env ]; then
+  . ~/.cargo/env
+fi
+
+if [ -d $HOME/.nvm ]; then
+  export NVM_DIR="$HOME/.nvm"
+fi
+
+if [ -f /usr/local/opt/nvm/nvm.sh ]; then
+  . /usr/local/opt/nvm/nvm.sh
+fi
+
+export PATH

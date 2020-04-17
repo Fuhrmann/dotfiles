@@ -1,4 +1,3 @@
-export TERMINAL=kitty
 export LANG=pt_BR.UTF-8
 export LC_ALL=pt_BR.UTF-8
 
@@ -24,8 +23,6 @@ export KEYLEDS_DEVICE=137436733730
 
 # Set LD_LIBRARY_PATH for keyleds
 export LD_LIBRARY_PATH=/usr/local/lib:/usr/lib64
-export LD_PRELOAD=/usr/lib/libwcwidth-icons.so
-
 
 # Configure zsh-autosuggestions
 #export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#4b4b4b,underline"
@@ -35,9 +32,6 @@ export ZSH_AUTOSUGGEST_USE_ASYNC=true
 
 # Set the prefered editor
 export EDITOR='nvim'
-
-# Set the path to projects
-export PATH_TO_PROJECTS="$HOME/projetos"
 
 # Configure git-friendly
 export GIT_FRIENDLY_NO_BUNDLE=true

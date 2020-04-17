@@ -19,10 +19,6 @@ dotfiles:
     src: config/rofi
     dst: ~/.config/rofi
     link: link
-  f_xinitrc:
-    src: xinitrc
-    dst: ~/.xinitrc
-    link: link
   f_bash_profile:
     src: bash_profile
     dst: ~/.bash_profile
@@ -67,10 +63,6 @@ dotfiles:
     src: config/zathura
     dst: ~/.config/zathura
     link: link
-  d_wal:
-    src: config/wal
-    dst: ~/.config/wal
-    link: link
   d_ncspot:
     src: config/ncspot
     dst: ~/.config/ncspot
@@ -83,10 +75,6 @@ dotfiles:
     src: config/keyledsd.conf
     dst: ~/.config/keyledsd.conf
     link: link
-  d_vifm:
-    src: config/vifm
-    dst: ~/.config/vifm
-    link: link_children
   d_vis:
     src: config/vis
     dst: ~/.config/vis
@@ -139,6 +127,38 @@ dotfiles:
     src: zsh/config
     dst: ~/.zsh/config
     link: link
+  f_p10k.zsh:
+    src: zsh/.p10k.zsh
+    dst: ~/.zsh/.p10k.zsh
+    link: link
+  f_xclients:
+    src: Xclients
+    dst: ~/.Xclients
+    link: link
+  f_zprofile:
+    src: zprofile
+    dst: ~/.zprofile
+    link: link
+  f_profile:
+    src: profile
+    dst: ~/.profile
+    link: link
+  f_flameshot.ini:
+    src: config/Dharkael/flameshot.ini
+    dst: ~/.config/Dharkael/flameshot.ini
+    link: link
+  f_dunstrc:
+    src: config/dunst/dunstrc
+    dst: ~/.config/dunst/dunstrc
+    link: link
+  f_settings.json:
+    src: config/transmission-daemon/settings.json
+    dst: ~/.config/transmission-daemon/settings.json
+    link: link
+  d_wpg:
+    src: config/wpg
+    dst: ~/.config/wpg
+    link: link
 profiles:
   fridora:
     dotfiles:
@@ -146,7 +166,6 @@ profiles:
     - f_gitconfig
     - f_gitignore
     - d_rofi
-    - f_xinitrc
     - f_bash_profile
     - f_vimrc
     - f_xresources
@@ -158,11 +177,9 @@ profiles:
     - d_i3
     - d_alacritty
     - d_zathura
-    - d_wal
     - d_ncspot
     - f_redshift.conf
     - f_keyledsd.conf
-    - d_vifm
     - d_vis
     - d_kitty
     - f_mpd.conf
@@ -176,3 +193,11 @@ profiles:
     - f_transmission.service
     - f_keyledsd.service
     - d_config
+    - f_p10k.zsh
+    - f_xclients
+    - f_zprofile
+    - f_profile
+    - f_flameshot.ini
+    - f_dunstrc
+    - f_settings.json
+    - d_wpg

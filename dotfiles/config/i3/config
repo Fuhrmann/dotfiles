@@ -1,5 +1,5 @@
 # focused border
-set_from_resource $fb i3wm.color10 #000
+set_from_resource $fb i3wm.color1 #000
 
 # unfocused border
 set_from_resource $ub i3wm.background #000
@@ -17,9 +17,9 @@ set_from_resource $fg i3wm.foreground #f0f0f0
 set_from_resource $bg i3wm.background #f0f0f0
 
 # class                 border  backgr. text indicator child_border
-client.focused          $fb     $fb     $tc  $fb       $fb
-client.focused_inactive $bg     $bg     $fg  $bg       $bg
-client.unfocused        $ub     $ub     $utc $bg       $ub
+client.focused          $fb     $fb     $fb  $fb       $fb
+client.focused_inactive $bg     $bg     $fb  $bg       $bg
+client.unfocused        $ub     $ub     $fg $bg       $ub
 client.urgent           $bg     $bg     $fg  $bg       $bg
 client.placeholder      $bg     $bg     $fg  $bg       $bg
 client.background       $ub
@@ -34,7 +34,7 @@ exec --no-startup-id nitrogen --restore
 floating_modifier $mod
 
 # Defining the font
-font pango:Cousine Nerd Font Mono 11
+font pango:JetBrainsMonoMedium Nerd Font 11, pango:Font Awesome 5 Pro 12
 
 # Adjust volumes
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl -- set-sink-volume @DEFAULT_SINK@ +5%
@@ -55,12 +55,12 @@ bindsym Control+Mod1+Home exec --no-startup-id playercontrol --toggle
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
 #bindsym $mod+KP_Enter exec i3-sensible-terminal
-bindsym $mod+Return focus child;exec $TERMINAL --single-instance
-bindsym $mod+KP_Enter focus child;exec $TERMINAL --single-instance
-bindsym Control+Mod1+d focus child; split v; exec $TERMINAL
+bindsym $mod+Return focus child;exec --no-startup-id $TERMINAL
+bindsym $mod+KP_Enter focus child;exec --no-startup-id $TERMINAL
+bindsym Control+Mod1+d focus child; split v; exec --no-startup-id $TERMINAL
 
 # Kill focused window
-bindsym $mod+q kill
+bindsym $mod+w kill
 
 # change focus
 #bindsym $mod+j focus left
@@ -104,7 +104,7 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+d focus child
 
 # Define workspaces
 set $console "1: term"
@@ -167,7 +167,7 @@ bindsym $mod+l exec --no-startup-id standby
 bindsym $mod+KP_Add resize grow width 10 px or 10 ppt
 bindsym $mod+KP_Subtract resize shrink width 10 px or 10 ppt
 
-set $mode_resize  resize
+set $mode_resize  resize
 mode "$mode_resize" {
         bindsym j resize shrink width 5 px or 5 ppt
         bindsym k resize grow height 5 px or 5 ppt
@@ -193,9 +193,8 @@ default_floating_border pixel 2
 force_display_urgency_hint 500 ms
 
 # Gaps
-for_window [class=".*"] border pixel 3
-gaps inner 5
-#smart_gaps on
+for_window [class=".*"] border pixel 5
+gaps inner 8
 smart_borders no_gaps
 
 # Open rofi
@@ -211,7 +210,7 @@ bindsym --whole-window button8 workspace prev
 bindsym --whole-window button9 workspace next
 
 # Configuration for windows
-set $float floating enable, border pixel 2
+set $float floating enable
 set $center move position center
 
 for_window [class=".*"] title_format "<b> %title</b>"
@@ -239,13 +238,13 @@ for_window [class="^Steam$" title="^Steam Guard - Computer Authorization Require
 for_window [title="^Steam Keyboard$"] floating enable
 for_window [class="^deadcells$"] floating disable, fullscreen enable, workspace --no-auto-back-and-forth $game
 for_window [class="^music$"] move to workspace $music
-for_window [class="Nitrogen"] $float, resize set 800 500, $center, border normal
-for_window [class="Firewall-config"] $float, $center, border normal
-for_window [class="^htop$"] $float, resize set 900 600, $center, border normal
-for_window [class="Font-manager"] resize set 526 1032, $float, $center, border normal
-for_window [class="Lxappearance"] resize set 526 1032, $float, $center, border normal
-for_window [class="Nvidia-settings"] resize set 900 600, $float, $center, border normal
-for_window [class="Wpg"] resize set 900 600, $float, $center, border normal
+for_window [class="Nitrogen"] $float, resize set 800 500, $center
+for_window [class="Firewall-config"] $float, $center
+for_window [instance="^htop$"] $float, resize set 900 600, $center
+for_window [class="Font-manager"] resize set 526 1032, $float, $center
+for_window [class="Lxappearance"] resize set 526 1032, $float, $center
+for_window [class="Nvidia-settings"] resize set 900 600, $float, $center
+for_window [class="^Wpg"] resize set 900 600, $float, $center
 
 # Assign windows to workspaces
 assign [class="Google-chrome" window_role="browser"] → $browse
@@ -274,15 +273,15 @@ bindsym $mod+Shift+greater move workspace to output right
 bindsym $mod+Shift+less move workspace to output left
 
 # Move workspaces para monitores
-workspace $console output HDMI-0
-workspace $browse output HDMI-0
-workspace $code output HDMI-0
-workspace $study output HDMI-0
-workspace $game output HDMI-0
-workspace $chat output DP-5
-workspace $music output DP-5
-workspace $warez output DP-5
-workspace $any output DP-5
+workspace $console output HDMI-1
+workspace $browse output HDMI-1
+workspace $code output HDMI-1
+workspace $study output HDMI-1
+workspace $game output HDMI-1
+workspace $chat output DP-3
+workspace $music output DP-3
+workspace $warez output DP-3
+workspace $any output DP-3
 
 # move the currently focused window to the scratchpad
 bindsym $mod+Shift+minus move scratchpad
@@ -296,15 +295,14 @@ bindsym $mod+minus scratchpad show
 bindsym $mod+f exec --no-startup-id kitty --session $HOME/.config/kitty/filemanager.kitty
 
 # Launch htop
-bindsym Control+Mod1+Delete exec --no-startup-id $TERMINAL --class htop --single-instance -- htop
+bindsym Control+Mod1+Delete exec --no-startup-id $TERMINAL --class htop -e htop
 
-# Change sinks
+# Change audio sinks
 bindsym $mod+slash exec --no-startup-id changesink --toggle
 
 # Launch some windows
-exec google-chrome
-exec transmission-gtk
-exec $TERMINAL
+#exec --no-startup-id google-chrome
+#exec --no-startup-id $TERMINAL
 
 # Launch i3altlayout
 # https://github.com/deadc0de6/i3altlayout
@@ -320,10 +318,12 @@ exec_always --no-startup-id clipster -d &
 
 # Launch mpris-scrobbler
 # https://github.com/mariusor/mpris-scrobbler
-exec_always --no-startup-id mpris-scrobbler &
+#exec_always --no-startup-id mpris-scrobbler &
 
 # Launch mpris support for mpd
 # https://github.com/eonpatapon/mpDris2
-exec_always --no-startup-id mpDris2 &
+#exec_always --no-startup-id mpDris2 &
 
-exec_always --no-startup-id picom --experimental-backends -b --config ~/.config/picom/picom.conf
+# Autostart some applications
+# https://gott50.github.io/i3wm-autostart/
+exec --no-startup-id bash $HOME/.config/i3/autostart.sh

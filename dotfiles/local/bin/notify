@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/sh
 
 notify-send 'Notify' 'Command has been executed.' \
     --expire-time=0 --urgency=critical

@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!/usr/bin/sh
 
 # Open a new kitty session or focus the current opened window
 if pgrep -x "ncspot" > /dev/null

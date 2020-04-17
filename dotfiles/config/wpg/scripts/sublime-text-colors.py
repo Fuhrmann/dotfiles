@@ -23,17 +23,18 @@ if __name__ == '__main__':
 
     # global settings
     global_settings = {}
-    global_settings['background'] = wal_scheme['special']['background']
-    global_settings['foreground'] = wal_scheme['special']['foreground']
-    global_settings['caret'] = wal_scheme['special']['foreground']
+    global_settings['background'] = wal_colors[0]
+    global_settings['foreground'] = wal_colors[7]
+    global_settings['caret'] = wal_colors[3]
     global_settings['invisibles'] = wal_colors[1]
-    global_settings['lineHighlight'] = wal_colors[2]
-    global_settings['selection'] = wal_colors[1]
+    global_settings['lineHighlight'] = wal_colors[0]
+    global_settings['selection'] = wal_colors[3]
+    global_settings['selection_foreground'] = wal_colors[0]
 
     # Color scheme elements
     settings = []
     settings.append(make_element('Comment', 'comment', foreground=wal_colors[2]))
-    settings.append(make_element('String', 'string', foreground=wal_colors[4]))
+    settings.append(make_element('String', 'string', foreground=wal_colors[3]))
     settings.append(make_element('Number', 'constant.numeric', foreground=wal_colors[5]))
     settings.append(make_element('Built-in constant', 'constant.language', foreground=wal_colors[5]))
     settings.append(make_element('User-defined constant', 'constant.character, constant.other',
