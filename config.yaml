@@ -163,6 +163,10 @@ dotfiles:
     src: config/wpg
     dst: ~/.config/wpg
     link: link
+  d_fonts:
+    src: local/share/fonts
+    dst: ~/.local/share/fonts
+    link: link
 profiles:
   fridora:
     dotfiles:
@@ -206,3 +210,4 @@ profiles:
     - f_dunstrc
     - f_settings.json
     - d_wpg
+    - d_fonts

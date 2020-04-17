@@ -12,11 +12,6 @@ foreground-job() {
 zle     -N   foreground-job
 bindkey '^Z' foreground-job
 
-alias ssh_singest='ssh -i "$HOME/gepecsp.pem" ubuntu@ec2-52-67-201-136.sa-east-1.compute.amazonaws.com'
-alias ssh_sasp_prod='ssh fuhrmann@104.248.28.233'
-alias ssh_sasp_dev='ssh fuhrmann@206.81.23.155'
-alias ssh_pi='ssh pi@pihole.frida'
-
 alias d='docker-compose'
 alias firmware-update='sudo fwupdmgr update'
 alias t='sudo timeshift'

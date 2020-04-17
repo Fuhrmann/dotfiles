@@ -25,7 +25,7 @@ export KEYLEDS_DEVICE=137436733730
 export LD_LIBRARY_PATH=/usr/local/lib:/usr/lib64
 
 # Configure zsh-autosuggestions
-#export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#4b4b4b,underline"
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#4b4b4b,underline"
 export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=6
 export ZSH_AUTOSUGGEST_USE_ASYNC=true
