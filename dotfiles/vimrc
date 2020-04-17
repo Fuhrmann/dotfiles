@@ -13,6 +13,9 @@ autocmd BufWritePre * %s/\s\+$//e
 " Alias replace all to S
 nnoremap S :%s//gI<Left><Left><Left>
 
+" Alias to duplicate line
+nnoremap W :t.<Enter>
+
 " Alias write and quit to Q
 nnoremap <leader>q :wq<CR>
 nnoremap <leader>w :w<CR>
