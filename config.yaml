@@ -3,6 +3,10 @@ config:
   create: true
   dotpath: dotfiles
 dotfiles:
+  d_ssh:
+    src: ssh
+    dst: ~/.ssh
+    link: link
   f_zshrc:
     src: zshrc
     dst: ~/.zshrc
@@ -162,6 +166,7 @@ dotfiles:
 profiles:
   fridora:
     dotfiles:
+    - d_ssh
     - f_zshrc
     - f_gitconfig
     - f_gitignore
