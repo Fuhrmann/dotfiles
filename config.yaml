@@ -167,6 +167,10 @@ dotfiles:
     src: local/share/fonts
     dst: ~/.local/share/fonts
     link: link
+  f_lscolors.sh:
+    src: local/share/lscolors.sh
+    dst: ~/.local/share/lscolors.sh
+    link: link
 profiles:
   fridora:
     dotfiles:
@@ -211,3 +215,4 @@ profiles:
     - f_settings.json
     - d_wpg
     - d_fonts
+    - f_lscolors.sh
