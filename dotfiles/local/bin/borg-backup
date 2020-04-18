@@ -1,0 +1,31 @@
+#!/usr/bin/sh
+
+export REPOSITORY="/disks/Backups/home"
+
+borg create -v --stats --compression lz4 \
+  $REPOSITORY::'{hostname}-{now:%Y-%m-%d@%H:%M}' /home \
+--exclude-from /disks/Backups/home/exclude.txt         \
+--exclude-caches                                       \
+
+# Route the normal process logging to journalctl
+2>&1
+
+# If there is an error backing up, reset password envvar and exit
+if [ "$?" = "1" ] ; then
+    exit 1
+fi
+
+# Prune the repo of extra backups
+borg prune -v $REPOSITORY --prefix '{hostname}-'         \
+    --keep-hourly=6                                      \
+    --keep-daily=7                                       \
+    --keep-weekly=4                                      \
+    --keep-monthly=6                                     \
+
+# Include the remaining device capacity in the log
+df -hl | grep --color=never /dev/sdb2
+
+borg list $REPOSITORY
+
+# Unset the password
+exit 0

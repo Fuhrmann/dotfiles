@@ -171,6 +171,14 @@ dotfiles:
     src: local/share/lscolors.sh
     dst: ~/.local/share/lscolors.sh
     link: link
+  f_borg-backup.service:
+    src: config/systemd/user/borg-backup.service
+    dst: ~/.config/systemd/user/borg-backup.service
+    link: link
+  f_borg-backup.timer:
+    src: config/systemd/user/borg-backup.timer
+    dst: ~/.config/systemd/user/borg-backup.timer
+    link: link
 profiles:
   fridora:
     dotfiles:
@@ -216,3 +224,5 @@ profiles:
     - d_wpg
     - d_fonts
     - f_lscolors.sh
+    - f_borg-backup.service
+    - f_borg-backup.timer

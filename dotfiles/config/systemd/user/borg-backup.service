@@ -1,0 +1,11 @@
+[Unit]
+Description=Borg User Backup
+Documentation=https://blog.andrewkeech.com/posts/170719_borg.html
+
+[Service]
+Type=simple
+Nice=19
+IOSchedulingClass=2
+IOSchedulingPriority=7
+ExecStartPre=/usr/bin/borg break-lock /disks/Backups/home
+ExecStart=/home/fuhrmann/.local/bin/borg-backup

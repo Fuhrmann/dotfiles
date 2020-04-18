@@ -30,7 +30,7 @@ set clipboard+=unnamedplus
 set wildmenu
 
 " Add the g flag to search/replace by default
-set gdefault
+set nogdefault
 
 " Don’t create backups when editing files in certain directories
 set backupskip=/tmp/*,/private/tmp/*
