@@ -179,6 +179,10 @@ dotfiles:
     src: config/systemd/user/borg-backup.timer
     dst: ~/.config/systemd/user/borg-backup.timer
     link: link
+  d_flatcolor:
+    src: local/share/themes/FlatColor
+    dst: ~/.local/share/themes/FlatColor
+    link: link
 profiles:
   fridora:
     dotfiles:
@@ -226,3 +230,4 @@ profiles:
     - f_lscolors.sh
     - f_borg-backup.service
     - f_borg-backup.timer
+    - d_flatcolor
