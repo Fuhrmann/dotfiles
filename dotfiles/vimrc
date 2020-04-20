@@ -44,6 +44,8 @@ syntax on
 " Highlight current line
 set cursorline
 
+" Copy indent from last line when starting new line
+set autoindent
 
 " Highlight searches
 set hlsearch
@@ -90,6 +92,7 @@ Plug 'lambdalisue/suda.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-commentary'
 Plug 'dylanaraps/wal.vim'
+Plug 'mboughaba/i3config.vim'
 call plug#end()
 
 " Enable smart edit suda.vim

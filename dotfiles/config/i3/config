@@ -1,3 +1,5 @@
+# vim: filetype=i3config
+
 # focused border
 set_from_resource $fb i3wm.color1 #000
 
@@ -161,7 +163,7 @@ mode "$mode_power" {
 }
 
 # "Lock" (not really) the screen using DPMS
-bindsym $mod+Backspace exec --no-startup-id standby
+bindsym $mod+BackSpace exec --no-startup-id standby
 
 # resize window (you can also use the mouse for that)
 bindsym $mod+KP_Add resize grow width 10 px or 10 ppt
@@ -191,9 +193,10 @@ bindsym $mod+r mode "$mode_resize"
 popup_during_fullscreen smart
 default_floating_border pixel 2
 force_display_urgency_hint 500 ms
+hide_edge_borders smart
 
 # Gaps
-for_window [class=".*"] border pixel 5
+for_window [class=".*"] border pixel 3
 gaps inner 8
 smart_borders no_gaps
 
@@ -207,7 +210,7 @@ bindsym --release Control+Print exec --no-startup-id flameshot gui
 # Navegar entre workspaces
 bindsym Control+Mod1+Right workspace next
 bindsym Control+Mod1+Left workspace prev
-bindsym --whole-window button8 workspace prev 
+bindsym --whole-window button8 workspace prev
 bindsym --whole-window button9 workspace next
 
 # Configuration for windows
@@ -224,6 +227,7 @@ for_window [window_role="Preferences"] $float, $center
 for_window [window_type="dialog"] $float, $center
 for_window [window_type="menu"] $float, $center
 for_window [class="XCalc"] $float, $center
+for_window [class="Galculator"] $float, $center
 for_window [class="jetbrains-phpstorm" title="win0"] $float, $center
 for_window [class="(?i)pavucontrol"] $float, resize set 758 576, $center
 for_window [title="Android Emulator"] floating enable

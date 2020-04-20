@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=mpris-scrobbler
+Comment=scrobbler
+Exec=/usr/bin/mpris-scrobbler
+Icon=audio-headphones
+StartupNotify=false
+Type=Application
+Categories=Audio;Music;Player;AudioVideo;
+NoDisplay=true
+X-GNOME-UsesNotifications=false

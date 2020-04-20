@@ -1,6 +1,6 @@
 pcm.hdmi_hw {
   type hw
-  card 1 
+  card 1
   device 3
 }
 
@@ -11,4 +11,12 @@ pcm.hdmi_complete {
   control.card 1
 }
 
-pcm.!default hdmi_complete 
+pcm.!default hdmi_complete
+
+pcm.pulse {
+    type pulse
+}
+
+ctl.pulse {
+    type pulse
+}

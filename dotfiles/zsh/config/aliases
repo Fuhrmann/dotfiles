@@ -1,6 +1,7 @@
 alias www='cd ~/projetos'
 alias commit='git add -A && git commit'
 alias e=nvim
+alias update-music='mpc update --wait --verbose'
 
 # Fix docker ps
 alias dps='docker ps --format="table {{.Image}}\t{{.Status}}\t{{.Ports}}\t{{.Names}}"'

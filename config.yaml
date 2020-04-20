@@ -183,6 +183,10 @@ dotfiles:
     src: local/share/themes/FlatColor
     dst: ~/.local/share/themes/FlatColor
     link: link
+  f_mpris-scrobbler.desktop:
+    src: config/autostart/mpris-scrobbler.desktop
+    dst: ~/.config/autostart/mpris-scrobbler.desktop
+    link: link
 profiles:
   fridora:
     dotfiles:
@@ -231,3 +235,4 @@ profiles:
     - f_borg-backup.service
     - f_borg-backup.timer
     - d_flatcolor
+    - f_mpris-scrobbler.desktop

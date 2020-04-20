@@ -1,3 +1,10 @@
+Xft.antialias: 1
+Xft.dpi: 96
+Xft.hinting: 0
+Xft.hintstyle: hintnone
+Xft.lcdfilter: lcddefault
+Xft.rgba: rgb
+
 Xcursor.size: 16
 
 XCalc*Font:6x13
