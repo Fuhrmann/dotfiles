@@ -321,14 +321,9 @@ exec_always --no-startup-id launchpolybar
 # https://github.com/mrichar1/clipster
 exec_always --no-startup-id clipster -d &
 
-# Launch mpris-scrobbler
-# https://github.com/mariusor/mpris-scrobbler
-#exec_always --no-startup-id mpris-scrobbler &
-
-# Launch mpris support for mpd
-# https://github.com/eonpatapon/mpDris2
-#exec_always --no-startup-id mpDris2 &
-
 # Autostart some applications
 # https://gott50.github.io/i3wm-autostart/
 exec --no-startup-id bash $HOME/.config/i3/autostart.sh
+
+# Always change sink to speakers at boot
+exec --no-startup-id changesink -s
