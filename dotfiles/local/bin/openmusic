@@ -1,9 +1,13 @@
 #!/usr/bin/sh
 
-# Open a new kitty session or focus the current opened window
-if pgrep -x "ncspot" > /dev/null
+if pgrep -x "spotify" > /dev/null
 then
-    i3-msg "[class=music] focus"
+    i3-msg "workspace 7: music"
 else
-    kitty --class music --session $HOME/projetos/dotfiles/dotfiles/config/kitty/ncspot-session.kitty
+    sh -c 'i3-msg "workspace 7: music"'
+    sh -c 'alacritty --title music -e ncmpcpp &'
+    sh -c 'sleep .2; i3-msg "splitv"'
+    sh -c 'sleep .2; exec alacritty --title lyrics -e lyrics &'
+    sh -c 'sleep .2; i3-msg "focus parent; focus parent; splith"'
+    sh -c 'sleep .1; exec flatpak run com.spotify.Client &'
 fi

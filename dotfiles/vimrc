@@ -4,9 +4,6 @@ let mapleader=" "
 " Fix tex file type set
 autocmd BufRead,BufNewFile *.tex set filetype=tex
 
-" Vertically center document when entering insert mode
-autocmd InsertEnter * norm zz
-
 " Remove trailing whitespace on save
 autocmd BufWritePre * %s/\s\+$//e
 

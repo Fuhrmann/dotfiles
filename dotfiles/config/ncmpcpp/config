@@ -11,7 +11,7 @@ search_engine_display_mode = "columns"
 autocenter_mode = "yes"
 mouse_support = "yes"
 centered_cursor = "yes"
-user_interface = "classic"
+user_interface = "alternative"
 follow_now_playing_lyrics = "yes"
 locked_screen_width_part = "60"
 display_bitrate = "no"
@@ -32,7 +32,6 @@ visualizer_color = "blue, cyan, green, yellow, magenta, red, black"
 playlist_shorten_total_times = "yes"
 playlist_display_mode = "classic"
 playlist_editor_display_mode = "columns"
-
 
 [statusbar]
 progressbar_elapsed_color = "white"

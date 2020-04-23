@@ -57,8 +57,8 @@ bindsym Control+Mod1+Home exec --no-startup-id playercontrol --toggle
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
 #bindsym $mod+KP_Enter exec i3-sensible-terminal
-bindsym $mod+Return focus child;exec --no-startup-id $TERMINAL
-bindsym $mod+KP_Enter focus child;exec --no-startup-id $TERMINAL
+bindsym $mod+Return exec --no-startup-id $TERMINAL
+bindsym $mod+KP_Enter exec --no-startup-id $TERMINAL
 bindsym Control+Mod1+d focus child; split v; exec --no-startup-id $TERMINAL
 
 # Kill focused window
@@ -119,6 +119,7 @@ set $music "7: music"
 set $warez "8: warez"
 set $any "9: any"
 
+
 # switch to workspace
 bindsym $mod+1 workspace $console
 bindsym $mod+2 workspace $browse
@@ -166,9 +167,6 @@ mode "$mode_power" {
 bindsym $mod+BackSpace exec --no-startup-id standby
 
 # resize window (you can also use the mouse for that)
-bindsym $mod+KP_Add resize grow width 10 px or 10 ppt
-bindsym $mod+KP_Subtract resize shrink width 10 px or 10 ppt
-
 set $mode_resize  resize
 mode "$mode_resize" {
         bindsym j resize shrink width 5 px or 5 ppt
@@ -217,22 +215,22 @@ bindsym --whole-window button9 workspace next
 set $float floating enable
 set $center move position center
 
-for_window [class=".*"] title_format "<b> %title</b>"
+# General windows
 for_window [window_role="GtkFileChooserDialog"] $float, resize set 900 600, $center
-for_window [class="Arandr"] $float, $center
-for_window [title="Exit DBeaver"] $float, $center
 for_window [window_role="bubble"] $float, $center
-for_window [window_role="task_dialog"] $float, $center
-for_window [window_role="Preferences"] $float, $center
-for_window [window_type="dialog"] $float, $center
 for_window [window_type="menu"] $float, $center
+for_window [window_role="Preferences"] $float, $center
+for_window [class=".*"] title_format "<b> %title</b>"
+for_window [urgent="latest"] focus
+
+# Application specific
+for_window [class="^Arandr$"] $float, $center
+for_window [title="Exit DBeaver"] $float, $center
 for_window [class="XCalc"] $float, $center
-for_window [class="Galculator"] $float, $center
-for_window [class="jetbrains-phpstorm" title="win0"] $float, $center
-for_window [class="(?i)pavucontrol"] $float, resize set 758 576, $center
+for_window [class="^Galculator$"] $float, $center
+for_window [class="^Pavucontrol$"] $float, resize set 758 576, $center
 for_window [title="Android Emulator"] floating enable
 for_window [class="Sxiv"] floating enable
-for_window [urgent="latest"] focus
 for_window [class="^Steam$" title="Steam - News"] floating enable
 for_window [class="^Steam$" title="^Settings$"] floating enable
 for_window [class="^Steam$" title=".* - event started"] floating enable
@@ -242,23 +240,33 @@ for_window [class="^Steam$" title="^Screenshot Uploader$"] floating enable
 for_window [class="^Steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable
 for_window [title="^Steam Keyboard$"] floating enable
 for_window [class="^deadcells$"] floating disable, fullscreen enable, workspace --no-auto-back-and-forth $game
-for_window [class="^music$"] move to workspace $music
-for_window [class="Nitrogen"] $float, resize set 800 500, $center
-for_window [class="Firewall-config"] $float, $center
+for_window [class="^Nitrogen$"] $float, resize set 800 500, $center
+for_window [class="^Firewall-config$"] $float, $center
 for_window [instance="^htop$"] $float, resize set 900 600, $center
-for_window [class="Font-manager"] resize set 526 1032, $float, $center
-for_window [class="Lxappearance"] resize set 526 1032, $float, $center
-for_window [class="Nvidia-settings"] resize set 900 600, $float, $center
+for_window [class="^Font-manager$"] resize set 526 1032, $float, $center
+for_window [class="^Lxappearance$"] resize set 526 1032, $float, $center
+for_window [class="^Nvidia-settings$"] resize set 900 600, $float, $center
 for_window [class="^Wpg"] resize set 900 600, $float, $center
+
+#for_window [window_role="task_dialog"] $float, $center
+#for_window [class="jetbrains-phpstorm" title="win0"] $float, $center
+#for_window [class="jetbrains-phpstorm" window_type="dialog"] $float, $center
+#for_window [window_type="dialog"] $wait, resize set 900 600, floating enable, move position mouse
+#for_window [workspace=$code] layout tabbed
+
+# Move windows to workspaces
+for_window [title="^music$"] move to workspace $music
+for_window [class="^Spotify$"] move to workspace $music
 
 # Assign windows to workspaces
 assign [class="Google-chrome" window_role="browser"] → $browse
-#assign [class="jetbrains-phpstorm" window_role="normal"] → $code
+assign [class="jetbrains-phpstorm" window_role="normal"] → $code
 assign [class="^Steam$" title="^Steam$"] → $game
 assign [instance="web.whatsapp.com" window_role="pop-up"] → $chat
 assign [class="(?i)mpv"] → $music
 assign [class="^music$"] → $music
 assign [title="(?i)transmission"] → $warez
+assign [class="^Spotify$" instance="^spotify$"] → $music
 
 # Open up the most used configurations
 bindsym $mod+i exec --no-startup-id subl ~/.config/i3/config
@@ -297,7 +305,7 @@ bindsym $mod+minus scratchpad show
 
 # Launch file manger
 # https://sw.kovidgoyal.net/kitty/
-bindsym $mod+f exec --no-startup-id kitty --session $HOME/.config/kitty/filemanager.kitty
+bindsym $mod+f exec --no-startup-id $TERMINAL --title ranger -e ranger
 
 # Launch htop
 bindsym Control+Mod1+Delete exec --no-startup-id $TERMINAL --class htop -e htop
