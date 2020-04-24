@@ -2,39 +2,20 @@
 
 # Update the plex image
 update() {
-  docker pull linuxserver/plex
-  stop
-  docker rm plex
-  create
+  cd $HOME/apps/docker/plex
+  docker-compose pull plex
   start
-  docker image prune
-  docker ps
-}
-
-create() {
-  docker create \
-  --name=plex \
-  --net=host \
-  -e PUID=1000 \
-  -e PGID=1000 \
-  -e VERSION=docker \
-  -e UMASK_SET=022 \
-  -e PLEX_CLAIM=claim-nnpqbNuxsgen-FRPrZQT \
-  -v /disks/Documentos/Plex:/config \
-  -v /disks/Seriados:/tv \
-  -v /disks/Filmes:/movies \
-  -v /disks/Documentos/Musicas:/musics \
-  --restart unless-stopped \
-  linuxserver/plex
+  docker image prune -f
+  docker ps | grep plex
 }
 
 start() {
-  docker start plex
+  docker-compose -f $HOME/apps/docker/plex/docker-compose.yml up -d
 }
 
 
 stop() {
-  docker stop plex
+  docker-compose -f $HOME/apps/docker/plex/docker-compose.yml stop
 }
 
 usage ()
@@ -43,19 +24,20 @@ usage ()
   echo ''
   echo "usage: $0 COMMAND"
   echo ''
-  echo 'update	Update the plex image'
-  echo 'start   Start the plex image'
+  echo 'update	Update the plex container'
+  echo 'start   Start the plex container'
+  echo 'stop    Stop the plex container'
   exit
 }
 
-if [[ $1 = "update" ]] || [[ $1 = "u" ]]; then
+if [[ $1 = "update" ]]; then
   update
   exit 0
-elif [[ $1 = "start" ]] || [[ $1 = "s" ]]; then
+elif [[ $1 = "start" ]]; then
   start
   exit 0
-elif [[ $1 = "create" ]] || [[ $1 = "c" ]]; then
-  create
+elif [[ $1 = "stop" ]]; then
+  stop
   exit 0
 fi
 
