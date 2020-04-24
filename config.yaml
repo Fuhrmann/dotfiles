@@ -187,6 +187,10 @@ dotfiles:
     src: config/autostart/mpris-scrobbler.desktop
     dst: ~/.config/autostart/mpris-scrobbler.desktop
     link: link
+  d_plex:
+    src: apps/docker/plex
+    dst: ~/apps/docker/plex
+    link: link
 profiles:
   fridora:
     dotfiles:
@@ -236,3 +240,4 @@ profiles:
     - f_borg-backup.timer
     - d_flatcolor
     - f_mpris-scrobbler.desktop
+    - d_plex
