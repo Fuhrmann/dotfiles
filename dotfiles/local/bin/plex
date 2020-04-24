@@ -20,7 +20,7 @@ stop() {
 
 usage ()
 {
-  echo 'Script to control plex local docker image.'
+  echo 'Script to control plex docker container.'
   echo ''
   echo "usage: $0 COMMAND"
   echo ''

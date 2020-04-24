@@ -191,6 +191,10 @@ dotfiles:
     src: apps/docker/plex
     dst: ~/apps/docker/plex
     link: link
+  d_sabnzbd:
+    src: apps/docker/sabnzbd
+    dst: ~/apps/docker/sabnzbd
+    link: link
 profiles:
   fridora:
     dotfiles:
@@ -241,3 +245,4 @@ profiles:
     - d_flatcolor
     - f_mpris-scrobbler.desktop
     - d_plex
+    - d_sabnzbd

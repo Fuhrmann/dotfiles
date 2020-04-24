@@ -1,0 +1,47 @@
+#!/usr/bin/sh
+
+# Update the sabnzbd image
+update() {
+  cd $HOME/apps/docker/sabnzbd
+  docker-compose pull sabnzbd
+  start
+  docker image prune -f
+  docker ps | grep sabnzbd
+}
+
+start() {
+  docker-compose -f $HOME/apps/docker/sabnzbd/docker-compose.yml up -d
+}
+
+
+stop() {
+  docker-compose -f $HOME/apps/docker/sabnzbd/docker-compose.yml stop
+}
+
+usage ()
+{
+  echo 'Script to control sabnzbd docker container.'
+  echo ''
+  echo "usage: $0 COMMAND"
+  echo ''
+  echo 'update	Update the sabnzbd container'
+  echo 'start   Start the sabnzbd container'
+  echo 'stop    Stop the sabnzbd container'
+  exit
+}
+
+if [[ $1 = "update" ]]; then
+  update
+  exit 0
+elif [[ $1 = "start" ]]; then
+  start
+  exit 0
+elif [[ $1 = "stop" ]]; then
+  stop
+  exit 0
+fi
+
+usage
+
+
+

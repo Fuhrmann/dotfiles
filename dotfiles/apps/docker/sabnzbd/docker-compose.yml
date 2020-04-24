@@ -1,0 +1,18 @@
+---
+version: "2.1"
+services:
+  sabnzbd:
+    image: linuxserver/sabnzbd
+    container_name: sabnzbd
+    network_mode: host
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Campo_Grande
+    volumes:
+      - /disks/Documentos/Apps/sabnzbd:/config
+      - /disks/Documentos/Downloads/sabnzbd:/downloads
+    ports:
+      - 8080:8080
+      - 9090:9090
+    restart: unless-stopped
