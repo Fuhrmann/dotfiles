@@ -37,13 +37,10 @@
   pick = cherry-pick
   amend = commit --amend
   merged = branch -a --merged
-  graph = log --graph --full-history --all --color --pretty=tformat:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s%x20%x1b[33m(%an)%x1b[0m"
-  # `latest` is ~/bin/git-latest
-  # `mine` is ~/bin/git-mine
-  # `deletemerged` is ~/bin/git-deletedmerged
-  # `squash` is ~/bin/git-squash
 
 # Any GitHub repo with my username should be checked out r/w by default
 # http://rentzsch.tumblr.com/post/564806957/public-but-hackable-git-submodules
 [url "git@github.com:Fuhrmann/"]
   insteadOf = "git://github.com/Fuhrmann/"
+[gpg]
+	program = gpg2
