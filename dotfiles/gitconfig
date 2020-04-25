@@ -1,6 +1,7 @@
 [user]
   name = Fuhrmann
   email = fuhrmanns@gmail.com
+	signingkey = 4B3B79AFE117C1D9
 [github]
   user = Fuhrmann
 [apply]
