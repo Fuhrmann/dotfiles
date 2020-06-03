@@ -263,7 +263,7 @@ assign [class="Google-chrome" window_role="browser"] → $browse
 assign [class="jetbrains-phpstorm" window_role="normal"] → $code
 assign [class="^Steam$" title="^Steam$"] → $game
 assign [instance="web.whatsapp.com" window_role="pop-up"] → $chat
-assign [class="(?i)mpv"] → $music
+#assign [class="(?i)mpv"] → $music
 assign [class="^music$"] → $music
 assign [title="(?i)transmission"] → $warez
 assign [class="^Spotify$" instance="^spotify$"] → $music
@@ -291,10 +291,10 @@ workspace $browse output HDMI-1
 workspace $code output HDMI-1
 workspace $study output HDMI-1
 workspace $game output HDMI-1
-workspace $chat output DP-3
-workspace $music output DP-3
-workspace $warez output DP-3
-workspace $any output DP-3
+workspace $chat output HDMI-1
+workspace $music output HDMI-1
+workspace $warez output HDMI-1
+workspace $any output HDMI-1
 
 # move the currently focused window to the scratchpad
 bindsym $mod+Shift+minus move scratchpad
