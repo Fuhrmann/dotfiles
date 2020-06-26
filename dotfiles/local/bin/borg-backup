@@ -18,9 +18,9 @@ fi
 # Prune the repo of extra backups
 borg prune -v $REPOSITORY --prefix '{hostname}-'         \
     --keep-hourly=5                                      \
-    --keep-daily=7                                       \
-    --keep-weekly=4                                      \
-    --keep-monthly=6                                     \
+    --keep-daily=3                                       \
+    --keep-weekly=2                                      \
+    --keep-monthly=3                                     \
 
 # Include the remaining device capacity in the log
 df -hl | grep --color=never /dev/sdb2
