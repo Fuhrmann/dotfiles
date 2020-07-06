@@ -195,6 +195,10 @@ dotfiles:
     src: apps/docker/sabnzbd
     dst: ~/apps/docker/sabnzbd
     link: link
+  d_sonarr:
+    src: apps/docker/sonarr
+    dst: ~/apps/docker/sonarr
+    link: link
 profiles:
   fridora:
     dotfiles:
@@ -246,3 +250,4 @@ profiles:
     - f_mpris-scrobbler.desktop
     - d_plex
     - d_sabnzbd
+    - d_sonarr

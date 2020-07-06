@@ -1,10 +1,16 @@
----
 version: "2.1"
+
+networks:
+  traefik:
+    external: true
+
 services:
   sabnzbd:
     image: linuxserver/sabnzbd
     container_name: sabnzbd
-    network_mode: host
+    networks:
+      - traefik
+    #network_mode: host
     environment:
       - PUID=1000
       - PGID=1000
@@ -12,7 +18,9 @@ services:
     volumes:
       - /disks/Documentos/Apps/sabnzbd:/config
       - /disks/Documentos/Downloads/sabnzbd:/downloads
-    ports:
-      - 8080:8080
-      - 9090:9090
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.sabnzbd.rule=Host(`sabnzbd.localhost`)
+      - traefik.http.routers.sabnzbd.entrypoints=http
+      - traefik.port=8080
     restart: unless-stopped

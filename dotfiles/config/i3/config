@@ -311,7 +311,7 @@ bindsym $mod+f exec --no-startup-id $TERMINAL --title ranger -e ranger
 bindsym Control+Mod1+Delete exec --no-startup-id $TERMINAL --class htop -e htop
 
 # Change audio sinks
-bindsym $mod+slash exec --no-startup-id changesink --toggle
+bindsym $mod+KP_Divide exec --no-startup-id changesink --toggle
 
 # Launch some windows
 #exec --no-startup-id google-chrome
