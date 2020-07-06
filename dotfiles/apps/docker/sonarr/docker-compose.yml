@@ -21,8 +21,9 @@ services:
       - /disks/Documentos/Downloads/sabnzbd:/downloads
     labels:
       - traefik.enable=true
-      - traefik.http.routers.sonarr.rule=Host(`sonarr.localhost`)
-      - traefik.http.routers.sonarr.entrypoints=http
+      - traefik.http.routers.sonarr.rule=Host(`sonarr.localhost.dev`)
+      - traefik.http.routers.sonarr.tls=true
+      - traefik.http.routers.sonarr.entrypoints=http,https
       - traefik.port=8989
     expose:
       - 8989

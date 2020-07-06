@@ -22,8 +22,9 @@ services:
       - /disks/Documentos/Musicas:/musics
     labels:
       - traefik.enable=true
-      - traefik.http.routers.plex.rule=Host(`plex.localhost`)
-      - traefik.http.routers.plex.entrypoints=http
+      - traefik.http.routers.plex.rule=Host(`plex.localhost.dev`)
+      - traefik.http.routers.plex.entrypoints=http,https
+      - traefik.http.routers.plex.tls=true
       - traefik.http.services.plex.loadbalancer.server.port=32400
     expose:
       - 32400

@@ -39,10 +39,6 @@ dotfiles:
     src: bashrc
     dst: ~/.bashrc
     link: link
-  f_asoundrc:
-    src: asoundrc
-    dst: ~/.asoundrc
-    link: link
   d_ranger:
     src: config/ranger
     dst: ~/.config/ranger
@@ -199,6 +195,10 @@ dotfiles:
     src: apps/docker/sonarr
     dst: ~/apps/docker/sonarr
     link: link
+  d_traefik:
+    src: apps/docker/traefik
+    dst: ~/apps/docker/traefik
+    link: link
 profiles:
   fridora:
     dotfiles:
@@ -211,7 +211,6 @@ profiles:
     - f_vimrc
     - f_xresources
     - f_bashrc
-    - f_asoundrc
     - d_ranger
     - d_polybar
     - d_nvim
@@ -251,3 +250,4 @@ profiles:
     - d_plex
     - d_sabnzbd
     - d_sonarr
+    - d_traefik
