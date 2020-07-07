@@ -1,4 +1,4 @@
-# Configuração certificado localhost.dev e traefik:
+## Configuração certificado localhost.dev e traefik:
 
 ### Gerar o certificado:
 `mkcert --cert-file localhost.dev.crt --key-file localhost.dev.key localhost.dev "*.localhost.dev"`
@@ -8,28 +8,32 @@
 
 ### Configurar dnsmasq
 
-Editar o arquivo `/etc/NetworkManager/dnsmasq.d/dnsmasq-localhost.conf` e acrescentar:
+Editar o arquivo `/etc/NetworkManager/dnsmasq.d/localhost.dev.conf` e acrescentar:
 
 `address=/localhost.dev/127.0.0.1`
 
-Se estiver com problema na porta 53, executar o seguinte comando para ver quem está escutando na porta 53:
+Se estiver com problema na `porta 53`, execute o seguinte comando para ver o que está escutando:
 
 `sudo ss -lp "sport = :domain"`
 
-Se for o systemd-resolver, editar o arquivo `/etc/systemd/resolved.conf` e adicionar ou editar a linha
+Se for o `systemd-resolved`, editar o arquivo `/etc/systemd/resolved.conf` e adicionar ou editar a linha:
 
 `DNSStubListener=no`
 
+Não esqueça de reiniciar:
+
+`sudo systemctl restart systemd-resolved`
+
 ### Configurar NetworkManager
 
-Editar o arquivo `/etc/NetworkManager/NetworkManager.conf` e adicionar:
+Editar o arquivo `/etc/NetworkManager/conf.d/dnsmasq.conf` (criar caso não exista) e adicione:
 
 ```
 [main]
 dns=dnsmasq
 ```
 
-### No caso de usar PIHOLE:
+### No caso de usar PIHOLE (em dúvida sobre isso ainda):
 Editar o arquivo `/etc/dnsmasq.conf` e adicionar:
 
 ```
@@ -41,6 +45,10 @@ server=192.168.100.7
 
 ### Reiniciar serviços:
 
-sudo systemctl restart systemd-resolved dnsmasq NetworkManager
+`sudo systemctl restart dnsmasq NetworkManager`
 
+---
 
+#### Links úteis:
+
+https://brunopaz.dev/blog/setup-a-local-dns-server-for-your-projects-on-linux-with-dnsmasq
