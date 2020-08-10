@@ -106,3 +106,9 @@ colorscheme wal
 
 " Change line highlight color
 highlight CursorLine ctermbg=0 ctermfg=None cterm=None
+
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swap//
+set undodir=~/.vim/undo//
+
+set backupcopy=yes

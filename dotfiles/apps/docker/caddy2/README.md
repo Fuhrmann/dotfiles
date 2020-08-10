@@ -1,7 +1,7 @@
 ## Configuração certificado localhost.dev e traefik:
 
 ### Gerar o certificado:
-`mkcert --cert-file localhost.dev.crt --key-file localhost.dev.key localhost.dev "*.localhost.dev"`
+`mkcert --cert-file localhost.crt --key-file localhost.key localhost 127.0.0.1 ::1 local.dev "*.local.dev"`
 
 ### Instalar dnsmasq:
 `dnfi dnsmasq`
@@ -10,7 +10,7 @@
 
 Editar o arquivo `/etc/NetworkManager/dnsmasq.d/localhost.dev.conf` e acrescentar:
 
-`address=/localhost.dev/127.0.0.1`
+`address=/local.dev/127.0.0.1`
 
 Se estiver com problema na `porta 53`, execute o seguinte comando para ver o que está escutando:
 
@@ -52,3 +52,20 @@ server=192.168.100.7
 #### Links úteis:
 
 https://brunopaz.dev/blog/setup-a-local-dns-server-for-your-projects-on-linux-with-dnsmasq
+
+# Trabalhando com a API
+
+### Adicionar mais um host
+
+```
+curl -X POST -H \
+  "Content-Type: application/json" \
+  -d '["smt.local.dev", "smt1.local.dev"]' \
+  "http://localhost:2019/config/apps/http/servers/srv0/routes/0/match/0/host/..."
+```
+
+### Carregar as configurações atuais
+
+`curl localhost:2019/config/ | jq`
+
+

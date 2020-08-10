@@ -1,7 +1,7 @@
 version: "2.1"
 
 networks:
-  traefik:
+  proxy:
     external: true
 
 services:
@@ -9,7 +9,7 @@ services:
     image: linuxserver/sonarr
     container_name: sonarr
     networks:
-      - traefik
+      - proxy
     environment:
       - PUID=1000
       - PGID=1000
@@ -19,12 +19,6 @@ services:
       - /disks/Documentos/Apps/sonarr:/config
       - /disks/Seriados:/tv
       - /disks/Documentos/Downloads/sabnzbd:/downloads
-    labels:
-      - traefik.enable=true
-      - traefik.http.routers.sonarr.rule=Host(`sonarr.localhost.dev`)
-      - traefik.http.routers.sonarr.tls=true
-      - traefik.http.routers.sonarr.entrypoints=http,https
-      - traefik.port=8989
     expose:
       - 8989
     restart: unless-stopped

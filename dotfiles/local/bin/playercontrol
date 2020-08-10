@@ -43,7 +43,7 @@ while true; do
 								artist="$(echo "$metadata" | awk -F "xesam:artist" '/artist/{print $2}')"
 								title="$(echo "$metadata" | awk -F "xesam:title" '/title/{print $2}')"
             if [[ $title != "" || $artist != 0 ]]; then
-                echo " ${title} - ${artist}" | awk '$1=$1'
+                echo "${title} - ${artist}" | awk '$1=$1'
             fi
         fi
     else

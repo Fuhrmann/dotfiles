@@ -1,7 +1,7 @@
 version: "2.1"
 
 networks:
-  traefik:
+  proxy:
     external: true
 
 services:
@@ -9,7 +9,7 @@ services:
     image: linuxserver/plex
     container_name: plex
     networks:
-      - traefik
+      - proxy
     environment:
       - PUID=1000
       - PGID=1000
@@ -20,6 +20,7 @@ services:
       - /disks/Seriados:/tv
       - /disks/Filmes:/movies
       - /disks/Documentos/Musicas:/musics
+      - /disks/Documentos/Videos:/videos
     labels:
       - traefik.enable=true
       - traefik.http.routers.plex.rule=Host(`plex.localhost.dev`)

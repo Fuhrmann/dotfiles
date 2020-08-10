@@ -65,10 +65,10 @@ bindsym Control+Mod1+d focus child; split v; exec --no-startup-id $TERMINAL
 bindsym $mod+w kill
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+#bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
@@ -92,7 +92,7 @@ bindsym $mod+v split v
 bindsym $mod+shift+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
+#bindsym $mod+s layout stacking
 bindsym $mod+t layout tabbed
 bindsym $mod+e layout toggle split
 
@@ -122,14 +122,23 @@ set $any "9: any"
 
 # switch to workspace
 bindsym $mod+1 workspace $console
+bindsym $mod+Mod2+KP_1 workspace $console
 bindsym $mod+2 workspace $browse
+bindsym $mod+Mod2+KP_2 workspace $browse
 bindsym $mod+3 workspace $code
+bindsym $mod+Mod2+KP_3 workspace $code
 bindsym $mod+4 workspace $study
+bindsym $mod+Mod2+KP_4 workspace $study
 bindsym $mod+5 workspace $game
+bindsym $mod+Mod2+KP_5 workspace $game
 bindsym $mod+6 workspace $chat
+bindsym $mod+Mod2+KP_6 workspace $chat
 bindsym $mod+7 workspace $music
+bindsym $mod+Mod2+KP_7 workspace $music
 bindsym $mod+8 workspace $warez
+bindsym $mod+Mod2+KP_8 workspace $warez
 bindsym $mod+9 workspace $any
+bindsym $mod+Mod2+KP_9 workspace $any
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $console
@@ -194,13 +203,12 @@ force_display_urgency_hint 500 ms
 hide_edge_borders smart
 
 # Gaps
-for_window [class=".*"] border pixel 3
-gaps inner 8
+for_window [class=".*"] border pixel 2
+gaps inner 5
 smart_borders no_gaps
 
 # Open rofi
 bindsym Control+space exec --no-startup-id rofi -show
-bindsym $mod+Escape exec --no-startup-id rofi -show window
 
 # Take a screenshot
 bindsym --release Control+Print exec --no-startup-id flameshot gui
@@ -208,6 +216,9 @@ bindsym --release Control+Print exec --no-startup-id flameshot gui
 # Navegar entre workspaces
 bindsym Control+Mod1+Right workspace next
 bindsym Control+Mod1+Left workspace prev
+bindsym Control+Mod1+h workspace prev
+bindsym Control+Mod1+l workspace next
+
 bindsym --whole-window button8 workspace prev
 bindsym --whole-window button9 workspace next
 
@@ -247,6 +258,10 @@ for_window [class="^Font-manager$"] resize set 526 1032, $float, $center
 for_window [class="^Lxappearance$"] resize set 526 1032, $float, $center
 for_window [class="^Nvidia-settings$"] resize set 900 600, $float, $center
 for_window [class="^Wpg"] resize set 900 600, $float, $center
+for_window [instance="^kapow$"] $float, resize set 800 500, $center
+for_window [instance="^notable$"] $float, resize set 1200 800, $center
+for_window [title="Getting started - GTK+"] floating enable
+for_window [title="Gkeyleds"] floating enable
 
 #for_window [window_role="task_dialog"] $float, $center
 #for_window [class="jetbrains-phpstorm" title="win0"] $float, $center
@@ -297,15 +312,14 @@ workspace $warez output HDMI-1
 workspace $any output HDMI-1
 
 # move the currently focused window to the scratchpad
-bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+Shift+s move scratchpad
 
 # Show the next scratchpad window or hide the focused scratchpad window.
 # If there are multiple scratchpad windows, this command cycles through them.
-bindsym $mod+minus scratchpad show
+bindsym $mod+s scratchpad show
 
 # Launch file manger
-# https://sw.kovidgoyal.net/kitty/
-bindsym $mod+f exec --no-startup-id $TERMINAL --title ranger -e ranger
+bindsym $mod+f exec --no-startup-id nautilus
 
 # Launch htop
 bindsym Control+Mod1+Delete exec --no-startup-id $TERMINAL --class htop -e htop
@@ -313,13 +327,12 @@ bindsym Control+Mod1+Delete exec --no-startup-id $TERMINAL --class htop -e htop
 # Change audio sinks
 bindsym $mod+KP_Divide exec --no-startup-id changesink --toggle
 
+# Launch notable app
+bindsym $mod+n exec --no-startup-id notable
+
 # Launch some windows
 #exec --no-startup-id google-chrome
 #exec --no-startup-id $TERMINAL
-
-# Launch i3altlayout
-# https://github.com/deadc0de6/i3altlayout
-exec_always --no-startup-id i3altlayout &
 
 # Launch polybar
 # https://github.com/polybar/polybar
@@ -335,3 +348,9 @@ exec --no-startup-id bash $HOME/.config/i3/autostart.sh
 
 # Always change sink to speakers at boot
 exec --no-startup-id changesink -s
+
+# Autotiling
+#https://github.com/nwg-piotr/autotiling
+exec_always --no-startup-id autotiling
+
+focus_follows_mouse no

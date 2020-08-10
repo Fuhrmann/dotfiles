@@ -3,7 +3,7 @@ Description=Borg User Backup Timer
 
 [Timer]
 WakeSystem=false
-OnCalendar=*-*-* 0/4:00:00
+OnCalendar=*-*-* 0/8:00:00
 RandomizedDelaySec=10min
 
 [Install]

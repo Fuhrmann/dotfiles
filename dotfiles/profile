@@ -23,3 +23,5 @@ if [ -f /usr/local/opt/nvm/nvm.sh ]; then
 fi
 
 export PATH
+
+export PATH="$HOME/.cargo/bin:$PATH"

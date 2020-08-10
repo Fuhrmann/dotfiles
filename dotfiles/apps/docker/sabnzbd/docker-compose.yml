@@ -1,7 +1,7 @@
 version: "2.1"
 
 networks:
-  traefik:
+  proxy:
     external: true
 
 services:
@@ -9,8 +9,7 @@ services:
     image: linuxserver/sabnzbd
     container_name: sabnzbd
     networks:
-      - traefik
-    #network_mode: host
+      - proxy
     environment:
       - PUID=1000
       - PGID=1000
@@ -18,10 +17,4 @@ services:
     volumes:
       - /disks/Documentos/Apps/sabnzbd:/config
       - /disks/Documentos/Downloads/sabnzbd:/downloads
-    labels:
-      - traefik.enable=true
-      - traefik.http.routers.sabnzbd.rule=Host(`sabnzbd.localhost.dev`)
-      - traefik.http.routers.sabnzbd.entrypoints=http,https
-      - traefik.http.routers.sabnzbd.tls=true
-      - traefik.port=8080
     restart: unless-stopped

@@ -195,9 +195,9 @@ dotfiles:
     src: apps/docker/sonarr
     dst: ~/apps/docker/sonarr
     link: link
-  d_traefik:
-    src: apps/docker/traefik
-    dst: ~/apps/docker/traefik
+  d_caddy2:
+    src: apps/docker/caddy2
+    dst: ~/apps/docker/caddy2
     link: link
 profiles:
   fridora:
@@ -250,4 +250,4 @@ profiles:
     - d_plex
     - d_sabnzbd
     - d_sonarr
-    - d_traefik
+    - d_caddy2

@@ -1,0 +1,90 @@
+{
+  default_sni local.dev
+  admin :2019
+  local_certs
+}
+
+(tls) {
+  encode gzip
+  tls /certs/localhost.crt /certs/localhost.key {
+    on_demand
+  }
+}
+
+# Cache static files for 60 days
+(static) {
+	@static {
+		file
+		path *.ico *.css *.js *.gif *.jpg *.jpeg *.png *.svg *.woff *.json
+	}
+	header @static Cache-Control max-age=5184000
+}
+
+(security) {
+   header * {
+    -Server
+    Server "Apache/2"
+    Powered-By "PHP/5.4"
+    # ****** Security - Use in Production ******
+    # Strict-Transport-Security	"max-age=30758400"
+    # X-Content-Type-Options		"nosniff"
+    # X-Frame-Options			"deny"
+    # X-XSS-Protection		"1; mode=block"
+    # Referrer-Policy			"same-origin"
+    # ****** End Security ******
+    -x-powered-by
+  }
+}
+
+
+local.dev, localhost {
+  respond "nada por aqui"
+}
+
+plex.local.dev {
+  import tls
+  reverse_proxy plex:32400
+}
+
+sonarr.local.dev {
+  import tls
+  reverse_proxy sonarr:8989
+}
+
+sabnzbd.local.dev {
+  import tls
+  reverse_proxy sabnzbd:8080
+}
+
+smartcollect.local.dev {
+  import static
+  import security
+  import tls
+  reverse_proxy smtcollect-nginx:80
+}
+
+conferencia.local.dev {
+  import static
+  import security
+  import tls
+  reverse_proxy conferencia-nginx:80
+}
+
+consultoria.local.dev {
+  import static
+  import security
+  import tls
+  reverse_proxy consultoria-nginx:80
+}
+
+sisge.local.dev {
+  import static
+  import security
+  import tls
+  reverse_proxy sisge-nginx:80
+}
+
+ricardof.local.dev {
+  import tls
+  reverse_proxy ricardof.dev:4000
+}
