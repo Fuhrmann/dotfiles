@@ -199,6 +199,14 @@ dotfiles:
     src: apps/docker/caddy2
     dst: ~/apps/docker/caddy2
     link: link
+  d_sxhkd:
+    src: config/sxhkd
+    dst: ~/.config/sxhkd
+    link: link
+  d_bspwm:
+    src: config/bspwm
+    dst: ~/.config/bspwm
+    link: link
 profiles:
   fridora:
     dotfiles:
@@ -251,3 +259,5 @@ profiles:
     - d_sabnzbd
     - d_sonarr
     - d_caddy2
+    - d_sxhkd
+    - d_bspwm
