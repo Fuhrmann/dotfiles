@@ -46,9 +46,6 @@ zinit snippet OMZ::plugins/systemd/systemd.plugin.zsh
 # Extract aliases
 zinit snippet OMZ::plugins/extract/extract.plugin.zsh
 
-# fuck!
-zinit snippet OMZ::plugins/thefuck/thefuck.plugin.zsh
-
 # z fast navigation
 zinit snippet https://github.com/agkozak/zsh-z/blob/master/zsh-z.plugin.zsh
 
