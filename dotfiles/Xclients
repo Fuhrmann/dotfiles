@@ -17,4 +17,5 @@ setxkbmap -option "caps:escape" &
 xsetroot -cursor_name left_ptr &
 
 # Launch i3 with dbus-launch because of flameshot
-dbus-launch /usr/bin/i3
+#dbus-launch /usr/bin/i3
+bspwm
