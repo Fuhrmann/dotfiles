@@ -216,6 +216,8 @@ bindsym --release Control+Print exec --no-startup-id flameshot gui
 # Navegar entre workspaces
 bindsym Control+Mod1+Right workspace next
 bindsym Control+Mod1+Left workspace prev
+# bindsym $mod+Next workspace next
+# bindsym $mod+Prior workspace prev
 bindsym Control+Mod1+h workspace prev
 bindsym Control+Mod1+l workspace next
 
@@ -325,7 +327,7 @@ bindsym $mod+f exec --no-startup-id nautilus
 bindsym Control+Mod1+Delete exec --no-startup-id $TERMINAL --class htop -e htop
 
 # Change audio sinks
-bindsym $mod+KP_Divide exec --no-startup-id changesink --toggle
+bindsym $mod+slash exec --no-startup-id changesink --toggle
 
 # Launch notable app
 bindsym $mod+n exec --no-startup-id notable

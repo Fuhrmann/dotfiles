@@ -77,12 +77,20 @@ consultoria.local.dev {
   reverse_proxy consultoria-nginx:80
 }
 
-sisge.local.dev {
+pano.local.dev, sisge.local.dev, amed.local.dev, libera.local.dev {
   import static
   import security
   import tls
   reverse_proxy sisge-nginx:80
 }
+
+ava.local.dev {
+  import static
+  import security
+  import tls
+  reverse_proxy sisge-moodle:8080
+}
+
 
 ricardof.local.dev {
   import tls
