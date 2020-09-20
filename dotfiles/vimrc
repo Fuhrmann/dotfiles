@@ -102,7 +102,7 @@ set noshowmode
 :filetype on
 
 " Set pywal compatible color scheme
-colorscheme wal
+" colorscheme wal
 
 " Change line highlight color
 highlight CursorLine ctermbg=0 ctermfg=None cterm=None

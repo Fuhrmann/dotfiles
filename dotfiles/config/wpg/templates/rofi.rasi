@@ -24,11 +24,11 @@ configuration {
   list-element-padding:                 5px 10px 5px 10px;
   list-element-border:                  0px 0px 0px 0px;
 
-  active-background: #efac4d;
-  active-foreground: #100e0e;
+  active-background: #b39580;
+  active-foreground: #252a32;
   normal-background: @background;
   normal-foreground: @foreground;
-  urgent-background: #f63f3f;
+  urgent-background: #876058;
   urgent-foreground: @foreground;
 
   alternate-active-background: @background;
@@ -38,24 +38,24 @@ configuration {
   alternate-urgent-background: @background;
   alternate-urgent-foreground: @foreground;
 
-  selected-active-background: #efac4d;
-  selected-active-foreground: #100e0e;
-  selected-normal-background: #efac4d;
-  selected-normal-foreground: #100e0e;
-  selected-urgent-background: #efac4d;
-  selected-urgent-foreground: #100e0e;
+  selected-active-background: #b39580;
+  selected-active-foreground: #252a32;
+  selected-normal-background: #b39580;
+  selected-normal-foreground: #252a32;
+  selected-urgent-background: #b39580;
+  selected-urgent-foreground: #252a32;
 
   background-color: @background;
-  background: #100e0e;
-  foreground: #f3c7c7;
+  background: #252a32;
+  foreground: #dfdedd;
   border-color: @background;
 }
 
 #window {
   background-color: @background;
   padding: 0px 0px 10px 0px;
-  border: 2px 2px 2px 2px;
-  border-color: #de2f2f;
+  border: 4px 4px 4px 4px;
+  border-color: #876058;
 }
 
 #inputbar {
@@ -111,14 +111,14 @@ configuration {
 
 #element.normal.active {
     border: 0px 0px 0px 4px;
-    border-color: #de2f2f;
+    border-color: #876058;
     background-color: @active-background;
     text-color: @active-foreground;
 }
 
 #element.selected.normal {
     border: 0px 0px 0px 4px;
-    border-color: #de2f2f;
+    border-color: #876058;
     background-color: @selected-normal-background;
     text-color: @selected-normal-foreground;
 }
@@ -130,7 +130,7 @@ configuration {
 
 #element.selected.active {
     border: 0px 0px 0px 4px;
-    border-color: #de2f2f;
+    border-color: #876058;
     background-color: @selected-active-background;
     text-color: @selected-active-foreground;
 }

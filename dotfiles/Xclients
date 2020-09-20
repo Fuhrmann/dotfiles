@@ -14,5 +14,5 @@ xset dpms 0 0 900 &
 xsetroot -cursor_name left_ptr &
 
 # Launch i3 with dbus-launch because of flameshot
-dbus-launch /usr/bin/i3
-#bspwm
+#dbus-launch /usr/bin/i3
+bspwm

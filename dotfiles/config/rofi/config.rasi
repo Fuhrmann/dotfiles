@@ -1,7 +1,7 @@
 configuration {
-  modi: "combi,window,drun,tasks:~/.config/rofi/modi/tasks";
+  modi: "combi,drun,tasks:~/.config/rofi/modi/tasks";
   font: "JetBrainsMonoMedium Nerd Font 10";
-  combi-modi: "window,drun";
+  combi-modi: "drun";
   display-drun:"";
   combi-hide-mode-prefix: true;
   width: 20;

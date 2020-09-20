@@ -19,7 +19,7 @@ alias firmware-update='sudo fwupdmgr update'
 alias t='sudo timeshift'
 alias portas='sudo netstat -tlnp'
 alias lanplay='sudo ./lan-play-linux --netif enp6s0 --relay-server-addr frog-skins.com:11451 --pmtu 500'
-
+alias gst='git status'
 # Dirs
 alias l='exa --long --classify --all --sort=type --icons'
 alias ll='l'
