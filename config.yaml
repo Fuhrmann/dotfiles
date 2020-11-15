@@ -211,6 +211,10 @@ dotfiles:
     src: apps/docker/keyboard
     dst: ~/apps/docker/keyboard
     link: link
+  d_docker_transmission:
+    src: apps/docker/transmission
+    dst: ~/apps/docker/transmission
+    link: link
 profiles:
   fridora:
     dotfiles:
@@ -266,3 +270,4 @@ profiles:
     - d_sxhkd
     - d_bspwm
     - d_keyboard
+    - d_docker_transmission

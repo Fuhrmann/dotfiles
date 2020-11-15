@@ -1,0 +1,18 @@
+version: "2.1"
+services:
+  transmission:
+    image: linuxserver/transmission
+    container_name: transmission
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Campo_Grande
+    volumes:
+      - /disks/Documentos/Apps/transmission:/config
+      - /disks/Documentos/Downloads/transmission:/downloads
+      - /disks/Documentos/Downloads/transmission:/watch
+    ports:
+      - 9091:9091
+      - 51413:51413
+      - 51413:51413/udp
+    restart: unless-stopped
