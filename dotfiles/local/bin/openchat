@@ -1,0 +1,10 @@
+#!/usr/bin/sh
+
+bspc desktop --focus ^6
+
+if xdotool search --classname "web.whatsapp.com" > /dev/null
+then
+ bspc desktop --focus ^6
+else
+    exec google-chrome --app=https://web.whatsapp.com
+fi

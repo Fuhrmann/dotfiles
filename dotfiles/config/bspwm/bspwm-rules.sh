@@ -81,7 +81,11 @@ wpg() {
 	rectangle='600x600+0+0';
 }
 
-jetbrains_idea() {
+chat() {
+  desktop=^6;
+}
+
+phpstorm() {
 	local name;
 
 	read -r _ _ name <<-IN
@@ -101,6 +105,7 @@ jetbrains_idea() {
 }
 
 case $instance.$class in
+  (*web.whatsapp.com*) chat;;
 	(*.Spotify) spotify;;
 	(*.[Gg]alculator) calculator;;
 	(*.[Gg]oogle-chrome) browser;;
@@ -108,9 +113,9 @@ case $instance.$class in
 	([lL]ibre[oO]ffice*) libreoffice;;
 	(*pavucontrol*) pavucontrol;;
 	(*sublime_text*) sublime;;
-	(jetbrains-idea.jetbrains-idea) jetbrains_idea;;
+	(jetbrains-phpstorm.jetbrains-phpstorm) phpstorm;;
 	(htop.Alacritty) htop;;
-	(Peek) peek;;
+	(*peek*) peek;;
 	(*.[Ww]pg) wpg;;
 	(.)
 		case $(ps -p "$(xdo pid "$id")" -o comm= 2>/dev/null) in

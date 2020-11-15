@@ -1,6 +1,6 @@
 alias www='cd ~/projetos'
 alias open='xdg-open'
-alias commit='git add -A && git commit -S'
+alias commit='git add -A && git commit'
 alias e=nvim
 alias update-music='mpc update --wait --verbose'
 

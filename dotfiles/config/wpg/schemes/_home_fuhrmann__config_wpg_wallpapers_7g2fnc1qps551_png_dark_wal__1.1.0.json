@@ -1,0 +1,28 @@
+{
+    "wallpaper": "/home/fuhrmann/.config/wpg/wallpapers/7g2fnc1qps551.png",
+    "alpha": "100",
+
+    "special": {
+        "background": "#211b16",
+        "foreground": "#dadc9b",
+        "cursor": "#dadc9b"
+    },
+    "colors": {
+        "color0": "#211b16",
+        "color1": "#A86645",
+        "color2": "#469750",
+        "color3": "#BB9951",
+        "color4": "#356E53",
+        "color5": "#897198",
+        "color6": "#576055",
+        "color7": "#95966a",
+        "color8": "#3f3329",
+        "color9": "#e97f4a",
+        "color10": "#4cd25d",
+        "color11": "#ffcd57",
+        "color12": "#3a996c",
+        "color13": "#b681d6",
+        "color14": "#698862",
+        "color15": "#dadc9b"
+    }
+}

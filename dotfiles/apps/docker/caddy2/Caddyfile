@@ -96,3 +96,13 @@ ricardof.local.dev {
   import tls
   reverse_proxy ricardof.dev:4000
 }
+
+cadastromedico.local.dev {
+  import tls
+  reverse_proxy cadastromedico-nginx:80
+}
+
+cadastrousuario.local.dev {
+  import tls
+  reverse_proxy cadastrousuario-nginx:80
+}

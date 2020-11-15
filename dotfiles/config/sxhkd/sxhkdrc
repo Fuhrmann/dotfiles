@@ -16,14 +16,30 @@ ctrl + alt + Delete
 
 # Launch spotify
 super + m
-  spotify
+  openmusic
+
+# Open polybar config
+super + p
+  subl ~/.config/polybar/config.ini
+
+# Printscreen
+ctrl + Print
+  flameshot gui
+
+# Turn off monitor
+super + BackSpace
+  standby
+
+# Chat
+super + c
+  openchat
 
 # Media
 XF86AudioRaiseVolume
-  pactl -- set-sink-volume @DEFAULT_SINK@ +5%
+  changevolume +5%
 
 XF86AudioLowerVolume
-  pactl -- set-sink-volume @DEFAULT_SINK@ -5%
+  changevolume -5%
 
 XF86AudioMute
   pactl set-sink-mute @DEFAULT_SINK@ toggle
@@ -55,7 +71,7 @@ super + shift + c
 
 # kill and close
 super + {_,shift + }w
-	bspc node -{k,c}
+	bspc node -{c,k}
 
 # close with mouse middle button
 super + ~button2

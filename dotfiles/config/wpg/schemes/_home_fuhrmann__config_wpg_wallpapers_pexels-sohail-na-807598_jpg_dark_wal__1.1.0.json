@@ -1,0 +1,28 @@
+{
+    "wallpaper": "/home/fuhrmann/.config/wpg/wallpapers/pexels-sohail-na-807598.jpg",
+    "alpha": "100",
+
+    "special": {
+        "background": "#202020",
+        "foreground": "#ffffff",
+        "cursor": "#ffffff"
+    },
+    "colors": {
+        "color0": "#202020",
+        "color1": "#ce5c00",
+        "color2": "#93d44f",
+        "color3": "#eab93d",
+        "color4": "#204a87",
+        "color5": "#ff6565",
+        "color6": "#89b6e2",
+        "color7": "#cccccc",
+        "color8": "#393939",
+        "color9": "#ff7701",
+        "color10": "#bfff53",
+        "color11": "#fff83c",
+        "color12": "#1e5eba",
+        "color13": "#ff6c6c",
+        "color14": "#9aecff",
+        "color15": "#ffffff"
+    }
+}

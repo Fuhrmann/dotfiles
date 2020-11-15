@@ -1,7 +1,6 @@
 [user]
   name = Fuhrmann
   email = fuhrmanns@gmail.com
-	signingkey = 4B3B79AFE117C1D9
 [github]
   user = Fuhrmann
 [apply]
@@ -42,5 +41,3 @@
 # http://rentzsch.tumblr.com/post/564806957/public-but-hackable-git-submodules
 [url "git@github.com:Fuhrmann/"]
   insteadOf = "git://github.com/Fuhrmann/"
-[gpg]
-	program = gpg2
