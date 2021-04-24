@@ -1,10 +1,9 @@
 #!/usr/bin/sh
 
-bspc desktop --focus ^7
-
 if pgrep -x "spotify" > /dev/null
 then
- bspc desktop --focus ^7
+    i3-msg "workspace 7: music"
 else
-    exec spotify &
+    sh -c 'i3-msg "workspace 7: music"'
+    sh -c 'sleep .1; exec flatpak run com.spotify.Client &'
 fi

@@ -1,8 +1,15 @@
 version: "2.1"
+
+networks:
+  proxy:
+    external: true
+
 services:
   transmission:
     image: linuxserver/transmission
     container_name: transmission
+    networks:
+      - proxy
     environment:
       - PUID=1000
       - PGID=1000
@@ -12,7 +19,7 @@ services:
       - /disks/Documentos/Downloads/transmission:/downloads
       - /disks/Documentos/Downloads/transmission:/watch
     ports:
-      - 9091:9091
+      - 9091
       - 51413:51413
       - 51413:51413/udp
     restart: unless-stopped

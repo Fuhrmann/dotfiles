@@ -5,6 +5,7 @@
 
 export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:=$HOME/.config}"
 export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/gnupg/S.gpg-agent.ssh
+export DOCKER_BUILDKIT=1
 
 # User specific environment and startup programs
 export TERMINAL=alacritty
@@ -25,4 +26,3 @@ fi
 export PATH
 
 export PATH="$HOME/.cargo/bin:$PATH"
-. "$HOME/.controller_config"

@@ -204,8 +204,10 @@ hide_edge_borders smart
 
 # Gaps
 for_window [class=".*"] border pixel 2
-gaps inner 5
+gaps inner 2
 smart_borders no_gaps
+smart_gaps on
+hide_edge_borders smart_no_gaps
 
 # Open rofi
 bindsym Control+space exec --no-startup-id rofi -show
@@ -244,6 +246,7 @@ for_window [class="^Galculator$"] $float, $center
 for_window [class="^Pavucontrol$"] $float, resize set 758 576, $center
 for_window [title="Android Emulator"] floating enable
 for_window [class="Sxiv"] floating enable
+
 for_window [class="^Steam$" title="Steam - News"] floating enable
 for_window [class="^Steam$" title="^Settings$"] floating enable
 for_window [class="^Steam$" title=".* - event started"] floating enable
@@ -252,7 +255,23 @@ for_window [class="^Steam$" title="^Steam - Self Updater$"] floating enable
 for_window [class="^Steam$" title="^Screenshot Uploader$"] floating enable
 for_window [class="^Steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable
 for_window [title="^Steam Keyboard$"] floating enable
-for_window [class="^deadcells$"] floating disable, fullscreen enable, workspace --no-auto-back-and-forth $game
+for_window [class="^Steam$" title="^Friends$"] floating enable
+for_window [class="^Steam$" title="Steam - News"] floating enable
+for_window [class="^Steam$" title=".* - Chat"] floating enable
+for_window [class="^Steam$" title="^Settings$"] floating enable
+for_window [class="^Steam$" title=".* - event started"] floating enable
+for_window [class="^Steam$" title=".* CD key"] floating enable
+for_window [class="^Steam$" title="^Steam - Self Updater$"] floating enable
+for_window [class="^Steam$" title="^Screenshot Uploader$"] floating enable
+for_window [class="^Steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable
+for_window [class="^Steam$" title="^Create or select new Steam library folder:$"] floating enable
+for_window [title="^Steam Keyboard$"] floating enable
+for_window [class="^Steam$" title="^Steam Library Folders$"] floating enable
+no_focus [title="title=^Steam - Self Updater$"]
+no_focus [title="^Steam$"]
+
+
+for_window [class="^deadcells$"] floating disable, fullscreen enable, workspace --no-auto-back-and-forth $any
 for_window [class="^Nitrogen$"] $float, resize set 800 500, $center
 for_window [class="^Firewall-config$"] $float, $center
 for_window [instance="^htop$"] $float, resize set 900 600, $center
@@ -266,8 +285,8 @@ for_window [title="Getting started - GTK+"] floating enable
 for_window [title="Gkeyleds"] floating enable
 
 #for_window [window_role="task_dialog"] $float, $center
-#for_window [class="jetbrains-phpstorm" title="win0"] $float, $center
-#for_window [class="jetbrains-phpstorm" window_type="dialog"] $float, $center
+for_window [class="jetbrains-phpstorm" title="win0"] $float, $center
+for_window [class="jetbrains-phpstorm" window_type="dialog"] $float, $center
 #for_window [window_type="dialog"] $wait, resize set 900 600, floating enable, move position mouse
 #for_window [workspace=$code] layout tabbed
 
@@ -277,13 +296,17 @@ for_window [class="^Spotify$"] move to workspace $music
 
 # Assign windows to workspaces
 assign [class="Google-chrome" window_role="browser"] → $browse
-assign [class="jetbrains-phpstorm" window_role="normal"] → $code
-assign [class="^Steam$" title="^Steam$"] → $game
+assign [class="jetbrains-phpstorm"] → $code
+
+assign [class="^Steam$" title="^Steam$"] → $any
+assign [class="steam" title="steam"] → $any
+assign [class="Steam"] → $any
 assign [instance="web.whatsapp.com" window_role="pop-up"] → $chat
 #assign [class="(?i)mpv"] → $music
 assign [class="^music$"] → $music
 assign [title="(?i)transmission"] → $warez
 assign [class="^Spotify$" instance="^spotify$"] → $music
+assign [class="^Sublime_text$"] → $study
 
 # Open up the most used configurations
 bindsym $mod+i exec --no-startup-id subl ~/.config/i3/config
@@ -303,15 +326,15 @@ bindsym $mod+Shift+greater move workspace to output right
 bindsym $mod+Shift+less move workspace to output left
 
 # Move workspaces para monitores
-workspace $console output HDMI-1
-workspace $browse output HDMI-1
-workspace $code output HDMI-1
-workspace $study output HDMI-1
-workspace $game output HDMI-1
-workspace $chat output HDMI-1
-workspace $music output HDMI-1
-workspace $warez output HDMI-1
-workspace $any output HDMI-1
+workspace $console output DP-5
+workspace $browse output DP-5
+workspace $code output DP-5
+workspace $study output DP-5
+workspace $game output DP-5
+workspace $chat output DP-5
+workspace $music output DP-5
+workspace $warez output DP-5
+workspace $any output HDMI-0
 
 # move the currently focused window to the scratchpad
 bindsym $mod+Shift+s move scratchpad

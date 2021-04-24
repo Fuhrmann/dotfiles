@@ -17,7 +17,7 @@
 		file
 		path *.ico *.css *.js *.gif *.jpg *.jpeg *.png *.svg *.woff *.json
 	}
-	header @static Cache-Control max-age=5184000
+	header @static Cache-Control max-age=31536000
 }
 
 (security) {
@@ -25,13 +25,6 @@
     -Server
     Server "Apache/2"
     Powered-By "PHP/5.4"
-    # ****** Security - Use in Production ******
-    # Strict-Transport-Security	"max-age=30758400"
-    # X-Content-Type-Options		"nosniff"
-    # X-Frame-Options			"deny"
-    # X-XSS-Protection		"1; mode=block"
-    # Referrer-Policy			"same-origin"
-    # ****** End Security ******
     -x-powered-by
   }
 }
@@ -41,9 +34,26 @@ local.dev, localhost {
   respond "nada por aqui"
 }
 
+switch.local.dev {
+  import tls
+  root * /srv/jogos
+  file_server browse
+}
+
+soualugue.local.dev {
+  import static
+  import tls
+  reverse_proxy soualugue-nginx:80
+}
+
 plex.local.dev {
   import tls
   reverse_proxy plex:32400
+}
+
+transmission.local.dev {
+  import tls
+  reverse_proxy transmission:9091
 }
 
 sonarr.local.dev {
@@ -70,18 +80,39 @@ conferencia.local.dev {
   reverse_proxy conferencia-nginx:80
 }
 
-consultoria.local.dev {
-  import static
-  import security
-  import tls
-  reverse_proxy consultoria-nginx:80
+websockets.local.dev {
+  @websockets {
+    header Connection *Upgrade*
+    header Upgrade    websocket
+  }
+  reverse_proxy @websockets sisge-websockets:6001 {
+    header_up Host {host}
+    header_up X-Real-IP {remote_host}
+    header_up X-Forwarded-For {remote_host}
+    header_up X-Forwarded-Proto {scheme}
+  }
 }
 
-pano.local.dev, sisge.local.dev, amed.local.dev, libera.local.dev {
+app.local.dev, ricardo.local.dev, pano.local.dev, sisge.local.dev, amed.local.dev, libera.local.dev {
   import static
   import security
   import tls
   reverse_proxy sisge-nginx:80
+}
+
+consultare.local.dev, saei.local.dev, clubedoprofessor.local.dev, central-consultare.local.dev {
+  import static
+  import security
+  import tls
+  reverse_proxy consultare-nginx:80
+}
+
+consultare.local.dev:3306 {
+  reverse_proxy consultare-mysql:3306
+}
+
+chrome.local.dev {
+  reverse_proxy consultare-chrome:9222
 }
 
 ava.local.dev {

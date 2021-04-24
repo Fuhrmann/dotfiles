@@ -1,0 +1,28 @@
+{
+    "wallpaper": "/home/fuhrmann/.config/wpg/wallpapers/vincent-giersch-Jky9coxzeHI-unsplash.jpg",
+    "alpha": "100",
+
+    "special": {
+        "background": "#181515",
+        "foreground": "#c7accc",
+        "cursor": "#c7accc"
+    },
+    "colors": {
+        "color0": "#181515",
+        "color1": "#948686",
+        "color2": "#95cc76",
+        "color3": "#cacc65",
+        "color4": "#7ac8ae",
+        "color5": "#d76ba9",
+        "color6": "#71b0bf",
+        "color7": "#9e82d1",
+        "color8": "#322d2d",
+        "color9": "#c9a1a1",
+        "color10": "#b6d17f",
+        "color11": "#d1d36f",
+        "color12": "#85d1d1",
+        "color13": "#d174d1",
+        "color14": "#7dd1d1",
+        "color15": "#c7accc"
+    }
+}
